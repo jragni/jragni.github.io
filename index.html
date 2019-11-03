@@ -1,77 +1,72 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
     <head>
-        <title> Jhensen Ray Agni's Bio Page</title>
+        <title> Jhensen Ray Agni's Bio</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
         <meta name="Jhensen's Website" content="Bio Website">
         <meta name="keywords" content="HTML,CSS,XML,JavaScript">
         <meta name="author" content="Jhensen Ray Agni">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         
-    
-        <div id="bodyWrapper">
+        <nav class="navbar navbar-dark bg-dark sticky-top">
+                <div class="navbar-header">
+                    <span class="navbar-brand mb-0 h1 contain-fluid">JhensenSoft</span>
+                </div>
                 
-                <header id="heading">
-    
-                        <div id="myName"> Jhensen Ray Agni</div>
-                            <div id="nav">
-                                <a id="about" href="index.html">About</a>
-                                <a id="portfolio">Portfolio</a>
-                                <a id="contact" href="contact.html">Contact</a>
-                            </div>
-                </header>
+                    <ul class="nav navbar-right active">
+                        <li class="nav-item headSpace"><a href="index.html">About</a></li>
+                        <li class="nav-item  headSpace"><a href="portfolio.html">Portfolio</a></li>
+                        <li class="nav-item  headSpace"><a href="contact.html">Contact</a></li>
+                    </ul>
             
-         
-            <div id="aboutMeBlock">
-               
-                <div id="aboutHeading">About Me</div>
-                <div id="lineSeparator"></div>
-                <div id="textBlock">
-                    <img id="bioImage" src="images/grad.jpg" height=200px; width=150px;>
-                    <p id="text1">
+        </nav>
+        
+        <div class="container text-white custom">
+            <div class="jumbotron hero-image"> 
+                <div id="headerLine">
+                    <h1 id="intro"> Hello, I'm <strong>Jhensen Ray Agni!</strong> </h1>
+                    <p id="introP"><strong>Every day I get closer to becoming a <em>Software Engineer</em>.
+                </div>
+            </div>
+        </div>    
+
+        <div class="container aboutMe">
+            <h1 id="about-me-header">About Me</h1>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img id="grad"> 
+                </div>
+                <div class="col-sm-9">
+                    <div clas="row-lg">
+                        <p id="text1">
                             Recently graduating from the <em> University of California, Riverside</em> with a <strong><em>B.S. Mechanical Engineering</em></strong>,
                             Jhensen Ray Agni is currently working as a Systems Engineer for the Naval Surface Warface Center in Corona. At a young age, Jhensen was exposed to the various cartoons and video games, such as Iron Man, Halo, and Zoids which has fueled his imagination and passion for
                             science and engineering. After completing courses in Engineering Design, Robotics and Mechatronics while attending university, he realized his childhood dreams of building robots was only limited by his imagination (and Physics!). Today, Jhensen is working towards becoming a
                             Software Engineer in order to continuously grow and learn every aspect that would supplement his robotics dream.
-                    
-                    <br>
-                
-                    <br>
-                    <strong> BUT What does Jhensen Ray Agni do on his "free-time" !?</strong>
-                    <br>
-                
-                    
-                                When Jhensen isn't working to become the next Tony Stark, he enjoys: 
-                                <em> Bodybuilding/Powerlifting,
-                                 Swimming,
-                                Real Estate Investing,
-                                Foodie-ing,
-                                Airsofting,
-                                Self-Development and Personal Transformation, and
-                                Reading.
-                                </em>
-                                Pretty much anything that allows him to become present in the moment! 
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            
+            <div class="row-md-8">
+                <br>
+                <div class="col-md-1"></div>
+                <div class="col-11">
+                    <h4><strong> BUT What does Jhensen Ray Agni do on his "free-time" !?</strong></h4>
+                    <p id="text1">When Jhensen isn't working to become the next Tony Stark, he enjoys: 
+                        <em> Bodybuilding/Powerlifting, Swimming, Real Estate Investing, Foodie-ing, Airsofting, Self-Development and Personal Transformation, and
+                        Reading. </em>Pretty much anything that allows him to become present in the moment! 
                     </p>
                 </div>
             </div>
-
-            
-
-
-                <footer id="footer">
-                    <div id="lineSpacer"></div>
-                </footer>
-        
-        </div>
-
-        
+        </div>    
     </body>
-
-
-
 </html>
