@@ -105,3 +105,18 @@ p{
 #black{
     color:black;
 }
+
+#main-block{
+    margin:25px;
+    background: whitesmoke;
+}
+
+.portfolioObject{
+    color:black;
+    margin:25px;
+    float: left;
+}
+
+.portfolioObject-inner{
+    color:black;
+}
