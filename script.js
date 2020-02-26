@@ -118,9 +118,9 @@ function changeEngineerType(){
     }
 }
 
-{/* <li><a id="aboutLink" href="#about-me"> About</a></li>
-<li><a id="resumeLink" href="#resume">Resume</a href="#"> </li>
-<li><a id="portfolioLink" href="#portfolio">Portfolio</a href="#"></li>
-<li><a id="contactLink" href="#contact-info">Contact Me</a href="#"></li> */}
+// {/* <li><a id="aboutLink" href="#about-me"> About</a></li>
+// <li><a id="resumeLink" href="#resume">Resume</a href="#"> </li>
+// <li><a id="portfolioLink" href="#portfolio">Portfolio</a href="#"></li>
+// <li><a id="contactLink" href="#contact-info">Contact Me</a href="#"></li> */}
 
 
