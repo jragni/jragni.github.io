@@ -85,7 +85,7 @@ $(document).ready(function(){
     });
 
 
-    $('aboutLink').on('click',()=>{
+    $('#aboutLink').on('click',()=>{
         $('#bio').show();
         $('#portfolio-wrapper').hide();
         $('#resume-content').hide();
