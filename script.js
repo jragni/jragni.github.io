@@ -7,6 +7,7 @@ var _isResumeShow = false;
 var _isContactShow = false;
 // get the value of Resume detail
 var _isBrief;
+// 
 
 ///////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function(){
@@ -79,10 +80,28 @@ $(document).ready(function(){
         }
         else if(_isBrief === true){
             $(".detailed").show();
-        }
+        };
 
-    })
+    });
 
+
+    $('aboutLink').on('click',()=>{
+        $('#bio').show();
+        $('#portfolio-wrapper').hide();
+        $('#resume-content').hide();
+    });
+    
+    $('resumeLink').on('click',()=>{
+        $('#bio').hide();
+        $('#portfolio-wrapper').hide();
+        $('#resume-content').show();
+    });
+
+    $('portfolioLink').on('click',()=>{
+        $('#bio').hide();
+        $('#portfolio-wrapper').show();
+        $('#resume-content').hide();
+    });
 
 });
 
@@ -99,5 +118,9 @@ function changeEngineerType(){
     }
 }
 
+{/* <li><a id="aboutLink" href="#about-me"> About</a></li>
+<li><a id="resumeLink" href="#resume">Resume</a href="#"> </li>
+<li><a id="portfolioLink" href="#portfolio">Portfolio</a href="#"></li>
+<li><a id="contactLink" href="#contact-info">Contact Me</a href="#"></li> */}
 
 
