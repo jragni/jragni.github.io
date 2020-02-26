@@ -85,22 +85,22 @@ $(document).ready(function(){
     });
 
 
-    $('#aboutLink').on('click',(e)=>{
-        e.preventDefault();
+    $('#aboutLink').on('click',()=>{
+
         $('#bio').show();
         $('#portfolio-wrapper').hide();
         $('#resume-content').hide();
     });
     
-    $('#resumeLink').on('click',(e)=>{
-        e.preventDefault();
+    $('#resumeLink').on('click',()=>{
+
         $('#bio').hide();
         $('#portfolio-wrapper').hide();
         $('#resume-content').show();
     });
 
-    $('#portfolioLink').on('click',(e)=>{
-        e.preventDefault()
+    $('#portfolioLink').on('click',()=>{
+    
         $('#bio').hide();
         $('#portfolio-wrapper').show();
         $('#resume-content').hide();
