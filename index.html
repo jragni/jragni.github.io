@@ -1,386 +1,102 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Jhensen Ray Agni's Portfolio</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jhensen Ray Agni's Personal Website</title>
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<!-- Navigation bar-->
+	<nav class="navbar">
+		<ul class="navbar">
+			<li class="nav nav-links" id="site-name">
+				Ragglesoft
+			</li>
 
-        <!-- Materialize -->
+			<li class="nav">
+				<a class="nav-links" href="#contact-info-section">
+					Contact
+				</a>
+			</li>
+			<li class="nav">
+				<a class="nav-links" href="#about-me-section">
+					About Me
+				</a>
+			</li>
+			<li class="nav">
+				<a class="nav-links" href="#landing-page-section">
+					Home
+				</a>
+			</li>
+		</ul>
+	</nav>
 
+	<!-- Landing Page -->
+	<header class="landing-page" id="landing-page-section">
+		<div class="landing-page-wrapper" style="margin-top:5rem">
+			
+			<h1 id="greeting-h1" style="margin-top:0px; padding-top:25px">
+				Hello, I'm Jhensen Ray Agni
+			</h1>
+			
+			<h2 id="alternating">Software Engineer </h2>
+			<h3 style="padding-bottom:300px; margin-bottom:0px">Mechanical Engineering B.S.</h3>
+			
 
-        
-            <!--Import Google Icon Font-->
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            <!--Import materialize.css-->
-            <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+		</div>
+	</header>
 
-            <!-- Compiled and minified CSS -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<!-- About Me -->
+	<section class="about-me" id="about-me-section">
+		<!--Profile Image -->
+		<img id="profile-pic" src="images/37388027.jpeg" alt="profile picture">
 
-            <!-- Compiled and minified JavaScript -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-            <!--Let browser know website is optimized for mobile-->
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <!-- Bootstrap -->
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-        <!-- other -->
-            <script src="script.js"></script>
-            <link type="text/css" rel="stylesheet" href="style.css">
-            <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap" rel="stylesheet">
-
-            <script type="text/javascript" src="js/materialize.min.js"></script>
-
-    </head>
-
-    <body>
-
-        <header>
-            <div class="navbar-fixed ">
-                <nav id="navigation" class="grey darken-4 nav-wrapper nav-extended nav-content">
-                    
-                
-                    <a id="logo" class="brand-logo left">JhensenSoft</a>
-                        
-                   <!-- For PC and Large windows -->
-
-                    <ul class="right hide-on-med-and-down">
-                        <li><a id="aboutLink" href="#about-me"> About</a></li>
-                        <li><a id="resumeLink" href="#resume">Resume</a href="#"> </li>
-                        <li><a id="portfolioLink" href="#portfolio">Portfolio</a href="#"></li>
-                        <li><a id="contactLink" href="#contact-info">Contact Me</a href="#"></li>
-                    </ul>
-                    <br>
-                    
-                        <!-- For Mobile -->
-                    <ul id="nav-mobile" class="halfway-fab hide-on-med-and-up">
-                        <li><a id="aboutLink" href="#about-me"> About</a></li>
-                        <li><a id="resumeLink" href="#resume">Resume</a href="#"> </li>
-                        <li><a id="portfolioLink" href="#portfolio">Portfolio</a href="#"></li>
-                        <li><a id="contactLink" href="#contact-info">Contact Me</a href="#"></li>
-                    </ul>
-                        
-                    
-                </nav>
-               
-                
-                
-            </div>
-
-            <div id="header-image">
-                <section id="header-image-text" class="center-align">
-                
-                    <h1 class="greeting-text">Hello, I'm <em> <strong id='nombre' class='light'>Jhensen Ray Agni</em></strong> !</h1>
-                    <br>
-                    <br>
-                    <br>
-                    <p id="I-am"> I am a  <span id="engineer-type">Software Engineer</span> </p>
-                
-                </section>
+		<aside class="about-me__information">
+			<h2 class="section-titles" id="about-title">About</h2>
+			<p id="about-me-intro" class="about-me">
+				I am an aspiring software engineer based in Los Angeles, Ca with experience in JavaScript, Ruby, Matlab, and Python. I earned my degree in Mechanical Engineering and worked as a Systems Engineer for the Naval Surface Warfare Center in Corona and more recently as a Mechanical Test Engineer for Honeywell Aerospace.
+			</p>
+			<br>
+			<p id="about-me-reasons" class="about-me">
+				I am passionate about food, fitness, robotics, and engineering! I wanted to combine all my passions using software as a vehicle. Like many others pivoting into the field, I want to pave a path to show others that becoming a software engineer is possible with determination, practice, and patience. 
+			</p>
+		</aside>
 
 
-            </div>
-        
-        </header>
+	<!-- Resume -->
+	<span>
+		<h2 class="section-titles" id="resume-download">
+			<a id="resume-title" href="files/JRAgniResumeMar2021.docx.pdf" target="_blank">
+				Resume
+			</a>
+		</h2>
+	</span>
+	</section>
 
-      
-        <main>
-        
-                <!-- About Me-->
-                
-                <section id="about-me" class="row">
+	<!-- Contact Info -->
+	<section class="contact-info" id="contact-info-section">
+		<h2 class="section-titles" style="margin-top:0px; padding:25px;">
+			Contact
+		</h2>
+		
+		<!-- Links -->
+		<!-- github link -->
+		<a href="https://www.github.com/jragni" target="_blank">
+			<img class="icon-link" src="images/github.png" alt="github logo" >
+		</a>
 
-                    <div class="col m12 m7">
-                        <br>
-                        
-                        <h1 id="about-me-header" class="center"> 
-                            About Me            
+		<!-- linkedIn link -->
+		<a href="https://www.linkedin.com/in/jhensenagni" target="_blank">
+			<img src="images/linkedin.png" alt="linkedin logo" class="icon-link">
+		</a>
 
-                            <!--Toggle Button-->
-                            <i id="about-me-toggle" class="toggle-button medium right material-icons">expand_less</i></h1> 
-             
-
-                        <div id="bio">
-                            <img id="grad">
-                            <p id="textP">   Recently graduating from the <em> University of California, Riverside</em> with a <strong><em>B.S. Mechanical Engineering</em></strong>,
-                                    Jhensen Ray Agni is currently working as a Systems Engineer for the Naval Surface Warface Center in Corona. At a young age, Jhensen was exposed to the various cartoons and video games, such as Iron Man, Halo, and Zoids which has fueled his imagination and passion for
-                                    science and engineering. After completing courses in Engineering Design, Robotics and Mechatronics while attending university, he realized his childhood dreams of building robots was only limited by his imagination (and Physics!). Today, Jhensen is working towards becoming a
-                                    Software Engineer in order to continuously grow and learn every aspect that would supplement his robotics dream.
-                            </p>
-                        </div>
-                        <br>
-
-                    </div>
-
-                </section>
-                <!-- end About Me-->
-
-                <!-- Resume Section-->
-
-                <section id="resume" class="grey lighten-2">
-                    
-                    <br>
-                    <div class="col m12 m7">
-                    <h1 id="resume-header" class="center">
-                        Resume
-                        <!--Toggle Button-->
-                        <i id="resume-toggle" class="toggle-button medium right material-icons">expand_more</i></h1> 
-
-                    </h1>
-                    </div>
-
-                    <section id="resume-content" >
-                          <!-- Detailed on/off -->
-                          <div class="switch" id ='detailedSwitch'>
-                            <label>
-                              Detailed
-                              <input id='isDetailed' type="checkbox" >
-                              <span class="lever"></span>
-                              Brief
-                            </label>
-                          </div>
-                        <div class="row">
-  
-                            <div class="col m8">
-                                <section id="clearance">
-                                    <h3><u><em>Security Clearance</em></u></h3>
-                                    <h3><strong>DOD SECRET - ACTIVE</strong></h3>
-                                </section>
-
-                                <section id="education">
-                                <h4><u><strong> <em>Education </em></h4></u>
-                                    <p> <strong><em>University of California, Riverside </em></strong> | 2015-2019<br>
-                                        <em>Bachelor of Science in <strong>Mechanical Engineering</strong> with a concentration in <strong>Design and Manufacturing</strong></em><br>
-                                        <br>
-                                        <em><strong>University of California, Riverside Extension</em></strong> | 2019-2020 <br>
-                                        <em>Full Stack Software Engineering Bootcamp</em>
-                                    </p>
-                                </section>
-                            </div>
-
-                            <div class="col">
-                                <section id="skills" >
-                                    <u><h4><em>Skills </em></h4></u>
-                                    <p>
-                                        <strong><em><u>Programming:</u> </em></strong><br>
-                                        Matlab, JavaScript(ES6), CSS, HTML5, C/C++, Python, Node.js, Numpy, Express.js, SQL, MySQL, jQuery, 
-                                        Bootstrap, Materialize, HandleBars, Git, Robotic Operating System(ROS), Linux Ubuntu, Crazyflie API, Rviz
-                                    </p>
-
-                                    <p>
-                                        <strong><em><u>Engineering:</u> </em></strong> <br>
-                                        Geometric Dimensioning and Tolerancing (GD&T), SolidWorks, Microsoft Office Suite(Excel, PowerPoint, Word), 
-                                        Soldering, Machining, Agile, Arduino Programming, Raspberry Pi, Microcontroller
-                                    </p>
-                            
-                                </section>
-                            </div>
-                        </div>
-
-                        <section id="work-engineering-experience">
-                            <u><h4><em> Engineering Work Experience</em></h4> </u>
-                            <strong><em>Naval Surface Warfare Center, Corona |</strong><i> 2019 - Present </i></em>
-                            <h6><em>Systems Engineer</em></h6>
-                            <div class="detailed">
-                                <li>Apply advanced techniques of RM&A theory to material readiness assessment for any military or
-                                commercial system
-                                </li>   
-                                <li>Combine and integrate all failure data to analyze and assess a single system, multi system, or system of
-                                systems readiness
-                                </li>
-                                <li>Develop and document a single system or system of systems reliability models and criteria for scoring
-                                system failure events
-                                </li>
-                                <li>Use readiness assessment tools and multiple databases to determine system RM&A metrics and apply
-                                continuous process improvement (CPI) techniques</li> <br>
-                            </div>
-                            <strong><em>Eotron LLC. |</strong> <i>2018-2019</i></em>
-                            <h6><em>Product Development Intern</em></h6>
-                            <div class="detailed">
-                                <li>Rapidly created parts and assemblies in SolidWorks for use in production that can be printed using 3D
-                                    printers.
-                                </li>
-                                <li>Identify patterns and relay findings back to the research and development (R&D) organization to
-                                    streamline the engineering design process
-                                </li>
-                                <li>Successfully designed and programmed a UVC LED Sanitation Robot prototype that will be implemented
-                                    in the medical, food service, and private industries.</li>
-                            </div>
-                        </section>
-                        <br>
-                        
-                        <section id="leadership">
-                            <u><h4><em> Leadership Experience</em></h4></u>
-                            <p><strong><em>Marine Corps Officer Candidate</em></strong></p>
-                            <div class="detailed">
-
-                                <li>Acting as fireteam leader, successfully led a group of Marine Corps Officer candidates through a
-                                series of land navigation and obstacle course drills during OCS Prep Weekend.
-                                </li>
-                            </div>
-                            <p><strong><em>UCR Sky Team Power and Electronics Lead</em></strong></p>
-                            <div class="detailed">
-
-                                <li> As power and electronics lead, Collaborated with a small team of colleagues integrate motors to control the actuation of the surfaces of a UAV.</li>
-                                <li> Tested the feasibility of inflight charging with the use of BLDC motors.</li>
-                                <li> Organized weekly meetings to ensure tasks were understood, supervised, and accomplished.</li>
-                            </div>
-                        </section>
-                    </br>
-                        <section id="extra-curricular">
-                            <u><h4><em> Extra Curricular Activities/Organizations</em></h4></u>
-                            <ul>
-                                <li>Real Estate Knowledge Institute (REKI)</li>
-                                <li>UCR Sky Team (Power and Electronics Team Lead) </li>
-                                <li>UCR Vietnamese Student Organization (Member)</li>
-                                <li>UCR Katipunan Filipino Student Organizations (Member)</li>
-                                <li>UCR Weightlifting Club (Member)</li>
-                                <li>UCR American Society of Mechanical Engineers (ASME) (Member)</li>
-                                <li>UCR IEEE (Member)</li>
-                            </ul>
-                        </section>
-
-                    </section>
-                    </div>
-                    <br>
-
-                </section>
-
-                <!-- end resume-->
-
-
-                <!-- Portfolio Section-->
-
-                <section id="portfolio">
-                  <div class="col m12 m7">
-                    <h1 id="portfolio-header" class="center"> 
-                        Portfolio
-                        <!--Toggle Button-->
-                        <i id="portfolio-toggle" class="toggle-button medium right material-icons">expand_more</i></h1> 
-                    </h1>
-                  </div>
-                    <div id="portfolio-wrapper" class="container">
-                        <!-- Pregame -->
-                        <h3>Github:<a href="https://www.github.com/jragni"> https://www.github.com/jragni</h3></a>
-                        <div class="row">
-                            <div class="col s12 m7">
-                              <div class="card">
-                                <div class="card-image">
-                                  <img src="images/pregame_logo.png">
-                                  <span class="card-title"></span>
-                                </div>
-                                <div class="card-content">
-                                    <h5><em><u>PreGame Web Application</u></em></h5>
-                                  <p> This app helps users search their venue or even search an area using Seat Geek to plan an outing and give them restaurant choices.</p>
-                                </div>
-                                <div class="card-action">
-                                  <a href="https://shwangbo80.github.io/group_project_1/">Click to view</a>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Password Generator-->
-                            <div class="col s12 m7">
-                                <div class="card">
-                                  <div class="card-image">
-                                    <img src="images/marine.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                    <h5><em><u>Password Generator</u></em></h5>
-                                    <p>An Application that allows the user to generate a random password.</p>
-                                  </div>
-                                  <div class="card-action">
-                                    <a href="https://jragni.github.io/password-generator/">This is a link</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <!--Work Day Scheduler-->
-                              <div class="col s12 m7">
-                                <div class="card">
-                                  <div class="card-image">
-                                    <img src="images/workdaySched.jpg">
-                                  </div>
-                                  <div class="card-content">
-                                    <h5><em><u>Work Planner</u></em></h5>
-                                    <p>A simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.</p>
-                                  </div>
-                                  <div class="card-action">
-                                    <a href="https://jragni.github.io/workDayScheduler/">This is a link</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Coding Quiz -->
-                              <div class="col s12 m7">
-                                <div class="card">
-                                  <div class="card-image">
-                                    <img src="images/Codingquiz.JPG">
-                                  </div>
-                                  <div class="card-content">
-                                    <h5><em><u>Coding Quiz</u></em></h5>
-
-                                    <p>A simple coding quiz for those new to JavaScript. Saves the user's score for each quiz attempted.</p>
-                                  </div>
-                                  <div class="card-action">
-                                    <a href="https://jragni.github.io/codingQuiz/">Click here to see more.</a>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-                          <!-- Crazyflie ALgorithm-->
-                          <div class="col s5 m5">
-                            <div class="card">
-                              <div class="card-image">
-                                <img src="images/crazyflie.gif"id="cfGif" >
-                              </div>
-                              <div class="card-content">
-                                <h5><em><u>Crazyflie Autonomous Flight</u></em></h5>
-
-                                <p>Used Crazyflie API to create proximity PID controller for autonomous flight.</p>
-                              </div>
-                              <div class="card-action">
-                                <a href="https://github.com/jragni/crazyflie-drone-projects">Click here to see more.</a>
-                              </div>
-                            </div>
-                          </div>
-                          
-                    </div>
-                                    
-                        
-
-
-
-                
-                </section>
-
-                <!-- end Portfolio -->
-
-                <!--- Contact Me Section-->
-
-                <section id="contact-info">
-                  <div class="col m12 m7">
-                    <h1 id="contact-header" class="center"> Contact Me
-                    <!--Toggle Button-->
-                    <i id="contact-toggle" class="toggle-button medium right material-icons">expand_more</i></h1>  </h1>
-                  </div>
-                    <div>
-                        <h1>Email: jagni001@ucr.edu</h1>
-                        <h1>Phone: 818-943-3694</h1>
-                        
-                    </div>
-                </section>
-
-                <!-- End Contact Me-->
-        </main>
-    
-        <footer> 
-            <a href="#header-image">Back to top
-                <i class="small material-icons">arrow_upward</i>
-            </a>
-        </footer>
-    </body>
-
+		<!-- email icon -->
+		
+		<h3>jagni001@ucr.edu</h3>
+		<!-- global icon -->
+		<h3>Los Angeles</h3>
+	</section>
+</body>
 </html>
