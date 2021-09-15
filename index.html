@@ -1,102 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Jhensen Ray Agni's Personal Website</title>
-	<link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-	<!-- Navigation bar-->
-	<nav class="navbar">
-		<ul class="navbar">
-			<li class="nav nav-links" id="site-name">
-				Ragglesoft
-			</li>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jhensen's Personal Website</title>
+    <link rel="stylesheet" href="style/bootstrap.css">
+  </head>
+  <body>
+    <header>
 
-			<li class="nav">
-				<a class="nav-links" href="#contact-info-section">
-					Contact
-				</a>
-			</li>
-			<li class="nav">
-				<a class="nav-links" href="#about-me-section">
-					About Me
-				</a>
-			</li>
-			<li class="nav">
-				<a class="nav-links" href="#landing-page-section">
-					Home
-				</a>
-			</li>
-		</ul>
-	</nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
 
-	<!-- Landing Page -->
-	<header class="landing-page" id="landing-page-section">
-		<div class="landing-page-wrapper" style="margin-top:5rem">
-			
-			<h1 id="greeting-h1" style="margin-top:0px; padding-top:25px">
-				Hello, I'm Jhensen Ray Agni
-			</h1>
-			
-			<h2 id="alternating">Software Engineer </h2>
-			<h3 style="padding-bottom:300px; margin-bottom:0px">Mechanical Engineering B.S.</h3>
-			
+          <!--logo -->
+          <a class="navbar-brand" href="#">RaggleSoft</a>
+          <button 
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-		</div>
-	</header>
-
-	<!-- About Me -->
-	<section class="about-me" id="about-me-section">
-		<!--Profile Image -->
-		<img id="profile-pic" src="images/37388027.jpeg" alt="profile picture">
-
-		<aside class="about-me__information">
-			<h2 class="section-titles" id="about-title">About</h2>
-			<p id="about-me-intro" class="about-me">
-				I am an aspiring software engineer based in Los Angeles, Ca with experience in JavaScript, Ruby, Matlab, and Python. I earned my degree in Mechanical Engineering and worked as a Systems Engineer for the Naval Surface Warfare Center in Corona and more recently as a Mechanical Test Engineer for Honeywell Aerospace.
-			</p>
-			<br>
-			<p id="about-me-reasons" class="about-me">
-				I am passionate about food, fitness, robotics, and engineering! I wanted to combine all my passions using software as a vehicle. Like many others pivoting into the field, I want to pave a path to show others that becoming a software engineer is possible with determination, practice, and patience. 
-			</p>
-		</aside>
-
-
-	<!-- Resume -->
-	<span>
-		<h2 class="section-titles" id="resume-download">
-			<a id="resume-title" href="files/JRAgniResumeMar2021.docx.pdf" target="_blank">
-				Resume
-			</a>
-		</h2>
-	</span>
-	</section>
-
-	<!-- Contact Info -->
-	<section class="contact-info" id="contact-info-section">
-		<h2 class="section-titles" style="margin-top:0px; padding:25px;">
-			Contact
-		</h2>
-		
-		<!-- Links -->
-		<!-- github link -->
-		<a href="https://www.github.com/jragni" target="_blank">
-			<img class="icon-link" src="images/github.png" alt="github logo" >
-		</a>
-
-		<!-- linkedIn link -->
-		<a href="https://www.linkedin.com/in/jhensenagni" target="_blank">
-			<img src="images/linkedin.png" alt="linkedin logo" class="icon-link">
-		</a>
-
-		<!-- email icon -->
-		
-		<h3>jagni001@ucr.edu</h3>
-		<!-- global icon -->
-		<h3>Los Angeles</h3>
-	</section>
-</body>
-</html>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-sm-2" type="text" placeholder="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <nav>
+      </nav>
+    </header>
+    <main>
+      <!-- Jumbotron with Hero Image -->
+      <!-- About Me -->
+      <!-- Portfolio -->
+      <!-- Contact -->
+      <!-- Stories -->
+    </main>
+    <footer></footer>
+  </body>
+</html
