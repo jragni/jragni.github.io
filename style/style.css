@@ -1,8 +1,11 @@
 * {
  list-style-type: none; 
- font-family: sans-serif;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+main {
+ background-color: black;  
+}
 .parallax-image-header {
   background-image:  linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/BGphoto.jpg');
 }
@@ -15,4 +18,3 @@
   
 }
 
-white
