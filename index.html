@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
-    <header>
+    <header class="parallax-image-header parallax">
       <!-- Name: topleft corner-->
       <!-- Nav middle: changing titles of who I am -->
       <!-- Nav: topright corner -->
 
-      <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="fixed-top navbar navbar-expand-lg px-5">
         <!--  Show this only on mobile to medium screens  -->
         <a class="navbar-brand d-lg-none" href="#">Navbar</a>
 
@@ -38,28 +38,44 @@
           id="navbarToggle"
         >
           <div class="navbar-nav">
-            <a class="nav-link active" href="#"> <h3>_Ragglesoft</h3></a>
+            <a class="nav-link active align-items-center" href="#">
+              <h3 class="text-light">Jhensen</h3>
+              <h4 class="text-light">Ray</h4>
+              <h5 class="text-light">Agni</h5>
+            </a>
           </div>
 
           <!--   Show this only lg screens and up   -->
           <a class="navbar-brand d-none d-lg-block" href="#">
-            <h3 id="occupational-identity">Software Engineer</h3>
+            <h1 id="occupational-identity" class="text-light">
+              Software Engineer
+            </h3>
           </a>
 
-          <ul class="nav flex-column justify-content-end">
-            <li class="nav-item"><a href="">About</a></li>
-            <li class="nav-item"><a href="">Work</a></li>
-            <li class="nav-item"><a href="">Portfolio</a></li>
-            <li class="nav-item"><a href="">Contact</a></li>
-            <li class="nav-item"><a href="">Story</a></li>
+          <ul class="navbar-nav flex-column py-5 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="">Story</a>
+            </li>
           </ul>
         </div>
       </nav>
     </header>
 
     <main>
-      <section>
-        <!-- About -->
+      <section class="parallax">
+        <!-- About Me-->
         <h1>About Me</h1>
         <p>Something About Me</p>
       </section>
@@ -72,18 +88,40 @@
 
       <section>
         <!-- Portfolio -->
+        <h1>My Porfolio</h1>
       </section>
 
       <section>
         <!-- Contact  -->
+        <h1>Contact</h1>
       </section>
     </main>
-    <footer class="footer">
+
+    <footer class="px-3 fixed-bottom">
       <!-- Links to Contacts and Resume on bottom left -->
       <ul>
-        <li><a href="">LinkedIn</a></li>
-        <li><a href="">GitHub</a></li>
-        <li><a href="">Resume</a></li>
+        <li>
+          <a
+            class="text-light nav-link"
+            href="https://www.linkedin.com/in/jhensenagni"
+          >
+            <h3 class="text-light">LinkedIn</h3>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link text-light" href="http://www.github.com/jragni">
+            <h3 class="text-light">github</h3>
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-light nav-link"
+            target="_blank"
+            href="/files/JRAgniResumeMar2021.docx.pdf"
+          >
+            <h3 class="text-light">Resume</h3>
+          </a>
+        </li>
       </ul>
     </footer>
   </body>
