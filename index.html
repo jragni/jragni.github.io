@@ -16,7 +16,7 @@
       <!-- Nav middle: changing titles of who I am -->
       <!-- Nav: topright corner -->
 
-      <nav class="fixed-top navbar navbar-expand-lg px-5">
+      <nav class="fixed-top navbar navbar-expand-lg px-2">
         <!--  Show this only on mobile to medium screens  -->
         <a class="navbar-brand d-lg-none" href="#">Navbar</a>
 
@@ -37,7 +37,7 @@
           class="collapse navbar-collapse justify-content-between"
           id="navbarToggle"
         >
-          <div class="navbar-nav">
+          <div class="navbar-nav nav-brand">
             <a class="nav-link active align-items-center" href="#">
               <h3 class="text-light">Jhensen</h3>
               <h4 class="text-light">Ray</h4>
@@ -74,46 +74,73 @@
     </header>
 
     <main>
-      <section class="parallax" id='about' >
+      <section id='about'>
         <!-- About Me-->
-        <h1>About Me</h1>
-        <p>Something About Me</p>
+        <h1 class='sticky-top'>About Me</h1>
+        <p class='paragraphs'>
+        <strong> Hi, I am Jhensen Ray Agni</strong>
+        </p>
+        <p class= "paragraphs">
+          🎓Soon to be graduate of
+          <a href='https://www.rithmschool.com' target='_blank'>
+            Rithm School
+          </a> Full Stack Software Engineering Bootcamp.
+          (Oct 2021) Graduated with a B.S. in ⚙️Mechanical Engineering @ UC 
+          Riverside (2019)
+        <p class='paragraphs'>
+          🌇 Los Angeles native, with a passion for leading highly effective 
+          engineering teams and changing the world one line of code at a time.
+        </p>
+        <p class='paragraphs'>
+          📚 I previously worked as a Test Engineer for Honeywell Aero and as 
+          a Systems Engineer for the Naval Surface Warfare Center, 
+          Corona Division.  Through both experiences, I learned that effective 
+          communication , data driven decisions, and total 
+          ownership/accountability has allowed me to lead successful teams, 
+          regardless of the milestone, mission or technical skill level.
+        </p>
+        <p class='paragraphs'>
+          💻 As for my future, I hope to work as a full stack software engineer 
+          for a diverse and inclusive company that specializes in robotics.
+        </p>
+🏋️‍♂️In my free time you can find me Powerliftingat the gym or building robots 🤖 in my backyard.
+        </p>
       </section>
 
-      <section id='work'>
+      <section id='work' class='parallax'>
         <!-- Work -->
-        <h1>My Work</h1>
+        <h1 class='sticky-top'>My Work</h1>
         <!-- List of Places I worked with links to their websites -->
         TODO: Add links to company websites
-        <ul>
+        <ul class="mx-4 container">
           <li>
-            <h3>Rithm School</h3>
+            <h2>Rithm School</h2>
           </li>
           <li>
-            <h3>Honeywell Aerospace</h3>
+            <h2>Honeywell Aerospace</h2>
           </li>
           <li>
-            <h3>BH Property Ventures LLC.</h3>
+            <h2>BH Property Ventures LLC.</h2>
           </li>
           <li>
-            <h3>Naval Surface Warfare Center, Corona Division</h3>
+            <h2>Naval Surface Warfare Center, Corona Division</h2>
           </li>
           <li>
-            <h3>Eotron LLC.</h3>
+            <h2>Eotron LLC.</h2>
           </li>
           <li>
-            <h3>University of California, Riverside SRC</h3>
+            <h2>University of California, Riverside SRC</h2>
           </li>
           <li>
-            <h3>Los Angeles City Wide Aquatics</h3>
+            <h2>Los Angeles City Wide Aquatics</h2>
           </li>
           <li>
-            <h3>West Valley YMCA</h3>
+            <h2>West Valley YMCA</h2>
           </li>
         </ul>
       </section>
 
-      <section id="portfolio">
+      <section id="portfolio parallax">
         <!-- Portfolio -->
         <h1>My Porfolio</h1>
       </section>
@@ -121,10 +148,31 @@
       <section id="contact">
         <!-- Contact  -->
         <h1>Contact</h1>
+        <h2 >
+			Contact
+		</h2>
+		
+		<!-- Links -->
+		<!-- github link -->
+		<a href="https://www.github.com/jragni" target="_blank">
+			<img src="images/github.png" alt="github logo" >
+		</a>
+
+		<!-- linkedIn link -->
+		<a href="https://www.linkedin.com/in/jhensenagni" target="_blank">
+			<img src="images/linkedin.png" alt="linkedin logo" class="icon-link">
+		</a>
+
+		<!-- email icon -->
+		
+		<h3>jagni001@ucr.edu</h3>
+		<!-- global icon -->
+		<h3>Los Angeles</h3>
       </section>
     </main>
 
-    <footer class="px-3 fixed-bottom">
+    <!-- Footer Start -->
+    <footer class="px-2 fixed-bottom">
       <!-- Links to Contacts and Resume on bottom left -->
           <ul class="navbar-nav flex-column py-5 justify-content-end">
             <li class="nav-item">
@@ -133,12 +181,17 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="https://www.github.com/jragni">
+              <a class="nav-link text-light" 
+                href="https://www.github.com/jragni"
+              >
               <h3> Github</h3> 
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" target='_blank' href="/files/JRAgniResumeMar2021.docx.pdf">
+              <a class="nav-link text-light" 
+                target='_blank' 
+                href="/files/JRAgniResumeMar2021.docx.pdf"
+              >
                 <h3>Resume</h3>
               </a>
             </li>

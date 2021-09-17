@@ -5,6 +5,12 @@
 
 main {
  background-color: black;  
+ color:white;
+}
+.paragraphs {
+  font-size: 3rem;
+  margin: 0 3rem;
+  padding: 3rem;
 }
 .parallax-image-header {
   background-image:  linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/BGphoto.jpg');
