@@ -1,8 +1,12 @@
 * {
  list-style-type: none; 
- font-family: Verdana, Geneva, Tahoma, sans-serif;
+ /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+ font-family: 'Press Start 2P';
 }
 
+html {
+  scroll-behavior: smooth;
+}
 main {
  background-color: black;  
  color:white;
@@ -12,7 +16,7 @@ main {
   margin: 0 3rem;
   padding: 3rem;
 }
-.parallax-image-header {
+.image-header{
   background-image:  linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/BGphoto.jpg');
 }
 .parallax {
@@ -21,6 +25,5 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
 }
 
