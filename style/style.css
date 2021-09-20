@@ -1,7 +1,9 @@
 * {
  list-style-type: none; 
  /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
- font-family: 'Press Start 2P';
+ /*font-family: 'Press Start 2P';*/
+ /*font-family: 'Orbitron';*/
+ font-family: 'Monoton';
 }
 
 html {
@@ -35,10 +37,14 @@ section {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vh;
 }
 
 .icon-link {
   height: 10rem;
   width: 10rem;
+}
+
+#github-link {
+  background-image: url('../images/js.png');
 }
