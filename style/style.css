@@ -43,9 +43,14 @@ main {
     padding: 5rem;
     font-size: 3.5rem;
 }
+
 .side-nav-right, .side-nav-left {
     padding: 2rem;
     z-index: 1000;
+}
+
+.nav-icons {
+    margin: 2rem 0;
 }
 
 .sticky-top {
@@ -54,4 +59,9 @@ main {
 
 .chapter {
     height: 100vh;
+}
+
+.icon {
+   height: 2rem;
+   width: 2rem;
 }

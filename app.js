@@ -33,7 +33,7 @@ function occupationChange() {
   document.getElementById('occupations').innerText = nextJob;   
 }
 
-setInterval(occupationChange, 300);
+setInterval(occupationChange, 500);
 
 window.addEventListener("scroll", function () {
   occupationSizeChanger();
