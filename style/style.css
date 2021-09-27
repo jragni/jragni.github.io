@@ -28,6 +28,9 @@ main {
     background-color: white;
 }
 
+#brand-name {
+    font-size: 5vh;
+}
 #hero-image {
     height: 100vh;
     width: 100%;
@@ -40,7 +43,7 @@ main {
     overflow:hidden;
 }
 
-#occupations {
+#occ {
     padding: 4rem;
     font-size: 7.5vh;
 }
@@ -65,7 +68,48 @@ main {
 }
 
 .icon {
-    height: 10vh;
-    width: 10vh;
-    background-color: gray;
+    height: 8vh;
+    width: 8vh;
+    background-color: grey;
+    margin:1vh;
+    border-radius: 50px;
+    border: 1px solid grey;
 }
+
+@keyframes falling {
+    0% { 
+      transform: translateY(-1vh) scalex(1);
+      animation-timing-function: cubic-bezier(.66,.0,1,.72);
+    }
+    45% { 
+      transform: translateY(1.2vh) scalex(1);
+    }
+    50% { 
+      transform: translateY(1.3vh) scalex(1.03);
+    }
+    70% {
+      transform: translateY(.8vh) scalex(1);
+    }
+    80% { 
+      transform: translateY(1.2vh) scalex(1);
+    }
+    85% { 
+      transform: translateY(1.3vh) scalex(1.02);
+    }
+    93% { 
+      transform: translateY(1.0vh) scalex(1);
+    }
+    100% { 
+      transform: translateY(1.2vh) scalex(1);
+    }
+  }
+  
+
+  .drop{
+    animation-delay: 1s;
+    animation-duration: 2s;
+    animation-fill-mode: both; 
+    animation-name: falling;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+  }

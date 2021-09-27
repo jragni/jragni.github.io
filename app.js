@@ -1,11 +1,12 @@
 /* Sets the font size of the  career on the hero image on scroll */
 function occupationSizeChanger() {
-  let occ = document.getElementById("occupations");
+  let maxSize = 7.5;
+  let occ = document.getElementById("occ");
   let top = occ.getClientRects()[0].top;
-  let newSize = (-2 * scrollY) / occ.getClientRects()[0].height + 7.5;
-  newSize = newSize > 7.5 ? 7.5 : newSize;
+  let newSize = (-2 * scrollY) / occ.getClientRects()[0].height + maxSize;
+  newSize = newSize > maxSize ? maxSize : newSize;
   console.log("pre newSize: ", newSize);
-  document.getElementById("occupations").style.fontSize = newSize + "vh";
+  document.getElementById("occ").style.fontSize = newSize + "vh";
 }
 
 /* Changes the career heading at a set interval on hero image */
@@ -21,7 +22,7 @@ function occupationChange() {
     "Life-Long Learner",
   ];
   
-  let prev = document.getElementById('occupations').innerText;
+  let prev = document.getElementById('occ').innerText;
 
   /* Checks if next job is the same as old job
      and selects a new one if it is the same */
@@ -34,7 +35,7 @@ function occupationChange() {
   }
   let nextJob = _nextJobGenerator(prev)
 
-  document.getElementById('occupations').innerText = nextJob;   
+  document.getElementById('occ').innerText = nextJob;   
 }
 
 const occupationInterval = 750;
@@ -52,7 +53,7 @@ function heroImageResize() {
 
 function fontColorChange() {
   let heroSection= document.querySelector('.hero-section');
-  let pointOfSwitch = 6*heroSection.getClientRects()[0].height/8;
+  let pointOfSwitch = 5*heroSection.getClientRects()[0].height/8;
   console.log('pos: ', pointOfSwitch, 'scroll: ',window.scrollY)
   if (window.scrollY > pointOfSwitch) {
       document.querySelectorAll('*').forEach( e => {
@@ -66,7 +67,7 @@ function fontColorChange() {
   }
 }
 window.addEventListener("scroll", function () {
-  occupationSizeChanger();
+  occupationSizeChanger()
   heroImageResize();
   fontColorChange();
   let heroImage = document.getElementById('hero-image');
