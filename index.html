@@ -1,102 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Jhensen Ray Agni's Personal Website</title>
-	<link rel="stylesheet" href="style/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+  <title>Jhensen's Homepage</title>
 </head>
+
 <body>
-	<!-- Navigation bar-->
-	<nav class="navbar">
-		<ul class="navbar">
-			<li class="nav nav-links" id="site-name">
-				Ragglesoft
-			</li>
+  <header>
+    <!-- <section id='hero-image'> -->
+    <section class='hero-section'>
+      <img src="/images/BGphoto.jpg" id='hero-image' alt="background image of me">
+      <h2 class='position-absolute top-50 start-50 translate-middle' id='occ'>
+        Software Engineer
+      </h2>
+    </section>
+  </header>
 
-			<li class="nav">
-				<a class="nav-links" href="#contact-info-section">
-					Contact
-				</a>
-			</li>
-			<li class="nav">
-				<a class="nav-links" href="#about-me-section">
-					About Me
-				</a>
-			</li>
-			<li class="nav">
-				<a class="nav-links" href="#landing-page-section">
-					Home
-				</a>
-			</li>
-		</ul>
-	</nav>
+  <main class='container-fluid'>
+    <!-- Left Navigation -->
+    <nav class='side-nav-left'>
+      <!-- Brand Name -->
+      <a href='#'>
+        <h2 
+          class='position-fixed top-0 start-0 side-nav-left'
+          id='brand-name'
+        >
+          Jhensen
+          <br>
+          Ray
+          <br>
+          Agni
+        </h2>
+      </a>
+      <!-- Social Media -->
+      <ul class="position-fixed bottom-0 start-0 ">
+        <li class='nav-icons'>
+          <a target='_blank' href="https://www.linkedin.com/in/jhensenagni">
+            <img src="./images/linkedin.png" class='icon' alt="linkedin link">
+          </a>
+        </li>
+ 
+        <li class='nav-icons'>
+          <a target='_blank' href="https://www.github.com/jragni">
+            <img src="./images/github.png" class='icon' alt="github link">
+          </a>
+        </li>
 
-	<!-- Landing Page -->
-	<header class="landing-page" id="landing-page-section">
-		<div class="landing-page-wrapper" style="margin-top:5rem">
-			
-			<h1 id="greeting-h1" style="margin-top:0px; padding-top:25px">
-				Hello, I'm Jhensen Ray Agni
-			</h1>
-			
-			<h2 id="alternating">Software Engineer </h2>
-			<h3 style="padding-bottom:300px; margin-bottom:0px">Mechanical Engineering B.S.</h3>
-			
+      </ul>
+    </nav>
 
-		</div>
-	</header>
+    <!-- Right Navigation Bar-->
+    <nav class='position-fixed top-0 end-0 side-nav-right'>
+      <ul>
+        <li>
+          <a href="./files/Jhensen Agni Resume September - Full Stack.pdf" target='_blank'>
+            <h3 class='nav-right-item'>resume</h3>
+          </a>
+        </li>
 
-	<!-- About Me -->
-	<section class="about-me" id="about-me-section">
-		<!--Profile Image -->
-		<img id="profile-pic" src="images/37388027.jpeg" alt="profile picture">
+        <li>
+          <a href="#about">
+            <h3 class='nav-right-item'>about</h3>
+          </a>
+        </li>
 
-		<aside class="about-me__information">
-			<h2 class="section-titles" id="about-title">About</h2>
-			<p id="about-me-intro" class="about-me">
-				I am an aspiring software engineer based in Los Angeles, Ca with experience in JavaScript, Ruby, Matlab, and Python. I earned my degree in Mechanical Engineering and worked as a Systems Engineer for the Naval Surface Warfare Center in Corona and more recently as a Mechanical Test Engineer for Honeywell Aerospace.
-			</p>
-			<br>
-			<p id="about-me-reasons" class="about-me">
-				I am passionate about food, fitness, robotics, and engineering! I wanted to combine all my passions using software as a vehicle. Like many others pivoting into the field, I want to pave a path to show others that becoming a software engineer is possible with determination, practice, and patience. 
-			</p>
-		</aside>
+        <li>
+          <a href="#portfolio">
+            <h3 class='nav-right-item'>portfolio</h3>
+          </a>
+        </li>
 
+        <li>
+          <a href="#contact">
+            <h3 class='nav-right-item'>contact</h3>
+          </a>
+        </li>
 
-	<!-- Resume -->
-	<span>
-		<h2 class="section-titles" id="resume-download">
-			<a id="resume-title" href="files/JRAgniResumeMar2021.docx.pdf" target="_blank">
-				Resume
-			</a>
-		</h2>
-	</span>
-	</section>
+        <li>
+          <a href="#story">
+            <h3 class='nav-right-item'>story time</h3>
+          </a>
+        </li>
 
-	<!-- Contact Info -->
-	<section class="contact-info" id="contact-info-section">
-		<h2 class="section-titles" style="margin-top:0px; padding:25px;">
-			Contact
-		</h2>
-		
-		<!-- Links -->
-		<!-- github link -->
-		<a href="https://www.github.com/jragni" target="_blank">
-			<img class="icon-link" src="images/github.png" alt="github logo" >
-		</a>
+      </ul>
+    </nav>
 
-		<!-- linkedIn link -->
-		<a href="https://www.linkedin.com/in/jhensenagni" target="_blank">
-			<img src="images/linkedin.png" alt="linkedin logo" class="icon-link">
-		</a>
+    <div class='text-center'>
+      <section class='chapter' id='about'>
+        <h2 class='sticky-top'>About Me</h2>
+      </section>
 
-		<!-- email icon -->
-		
-		<h3>jagni001@ucr.edu</h3>
-		<!-- global icon -->
-		<h3>Los Angeles</h3>
-	</section>
+      <section class='chapter' id='portfolio'>
+        <h2 class='sticky-top'>Portfolio</h1>
+      </section>
+
+      <section class='chapter' id='contact'>
+        <h2 class='sticky-top'>Contact</h1>
+      </section>
+
+      <section class='chapter' id='story'>
+        <h2 class='sticky-top'>Why I Became A <br> Software Engineer</h1>
+      </section>
+    </div>
+  </main>
+  <script src="./app.js"></script>
 </body>
+
 </html>
