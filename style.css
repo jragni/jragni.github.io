@@ -1,5 +1,5 @@
 * {
-    font-family: "Monoton";
+    font-family: "Orbitron";
     color: white;
 }
 
@@ -44,11 +44,14 @@ main {
 }
 
 #occ {
-    padding: 4rem;
     font-size: 7.5vh;
+    font-family: "Monoton";
+    float:left;
 }
 
-
+.section__title {
+  font-family: "Monoton"
+}
 
 .nav-right-item {
     font-family: 'Orbitron'; 
@@ -73,34 +76,34 @@ main {
     background-color: grey;
     margin:1vh;
     border-radius: 50px;
-    border: 1px solid grey;
+    border: 1px solid ;
 }
 
 @keyframes falling {
     0% { 
-      transform: translateY(-1vh) scalex(1);
+      transform: translateY(-5vh) scalex(1);
       animation-timing-function: cubic-bezier(.66,.0,1,.72);
     }
     45% { 
-      transform: translateY(1.2vh) scalex(1);
+      transform: translateY(3.2vh) scalex(1);
     }
     50% { 
-      transform: translateY(1.3vh) scalex(1.03);
+      transform: translateY(1.7vh) scalex(1.3);
     }
     70% {
-      transform: translateY(.8vh) scalex(1);
+      transform: translateY(1vh) scalex(1);
     }
     80% { 
-      transform: translateY(1.2vh) scalex(1);
+      transform: translateY(1.5vh) scalex(1);
     }
     85% { 
-      transform: translateY(1.3vh) scalex(1.02);
+      transform: translateY(1.2vh) scalex(1.2);
     }
     93% { 
-      transform: translateY(1.0vh) scalex(1);
+      transform: translateY(1.0vh) scalex(1.1);
     }
     100% { 
-      transform: translateY(1.2vh) scalex(1);
+     transform: translateY(1.0vh) scalex(1);
     }
   }
   
