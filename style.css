@@ -20,18 +20,9 @@
   color:rgb(228, 107, 102) !important;
 }
 
-/* Commented out for dev */
-/* ul:hover { */
-  /* color: red; */
-/* } */
-
-/* li:hover { */
-  /* color: red; */
-/* } */
-
-/* p  */
-/* color: #ccd6f6 !important; */
-/* } */
+.secondary {
+  color: #495670 !important;
+}
 
 a {
   text-decoration: none;
@@ -49,12 +40,6 @@ h2 {
 h3 {
   font-size: 4vh;
 }
-
-/* Commented out for DEV */
-/* main { */
-  /* kground-color: white; */
-  /* background-color: #0a192f; */
-/* } */
 
 #brand-name {
   font-size: 5vh;
@@ -74,13 +59,13 @@ h3 {
 }
 
 #hero-sm__text {
-  margin: 1rem;
-  padding: 1.25rem;
+  margin: auto 1rem;
+  padding: auto;
 }
-#occ {
+
+.occ {
   /* font-size: 7.5vh; */
   font-family: "Monoton";
-  float: left;
 }
 
 #occ-sm {
@@ -93,8 +78,9 @@ h3 {
   /* color: #64ffda!important; */
 /* } */
 
-/* .nav-right-item {  */
-
+.nav-right-item:hover {
+  color: rgb(228, 107, 102) !important;
+}
 /* font-family: 'Orbitron'; */
 
 /* } */
@@ -114,7 +100,7 @@ h3 {
 
 .chapter {
   min-height: 100vh;
-  margin: 5vh 12vw;
+  margin: 0 12vw;
 }
 
 .icon {
@@ -133,6 +119,7 @@ h3 {
   animation-name: resizing;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  background-color: rgb(228, 107, 102);
 }
 
 @keyframes resizing {

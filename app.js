@@ -1,3 +1,5 @@
+/* functions that handle dynamic changes to DOM */
+
 /* Sets the font size of the  career on the hero image on scroll */
 function occupationSizeChanger() {
   const maxSize = 7.5;
@@ -14,7 +16,7 @@ function occupationSizeChanger() {
   heroText.forEach(node => {node.style.fontSize = newSize + "vh";});
 }
 
-/* Changes the career heading at a set interval on hero image */
+/* Function that hanges the career heading at a set interval on hero image */
 function occupationChanger() {
   const careers = [
     "Full-Stack\nWeb Developer",
@@ -27,14 +29,14 @@ function occupationChanger() {
     "Systems \nEngineer",
     "Robotics \nEngineer",
     "Roboticist",
-    "Product \nDevelopment \nEngineer",
+    "Product \nDevelopment\nEngineer",
     "10x \nEngineer",
     "Powerlifter",
     "Life-Long \nLearner",
     "Better \n Every \n Day",
   ];
 
-  let prev = document.getElementById("occ").innerText;
+  let prev = document.querySelectorAll(".occ")[0].innerText;
 
   /* Checks if next job is the same as old job
      and selects a new one if it is the same */
@@ -44,8 +46,10 @@ function occupationChanger() {
     return nextJob === prev ? _nextJobGenerator(prev) : careers[idx];
   }
   let nextJob = _nextJobGenerator(prev);
+  document.querySelectorAll(".occ").forEach( ele => {
 
-  document.getElementById("occ").innerText = nextJob;
+    ele.innerText = nextJob;
+  })
 }
 
 const occupationInterval = 750;
@@ -85,7 +89,7 @@ function navUnderlineOnSection() {
   sections.forEach((section) => {
     let eleBounds = document.getElementById(section).getClientRects()[0];
     if (eleBounds.top === 0 
-      || (Math.abs(eleBounds.top) < eleBounds.height && eleBounds.top < 0 )
+      || (Math.abs(eleBounds.top) <= eleBounds.height && eleBounds.top < 0 )
     ) {
       document.getElementById(section + "-tag").style.textDecoration =
         "underline red";
