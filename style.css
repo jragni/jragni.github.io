@@ -1,147 +1,189 @@
 * {
-    font-family: "Orbitron";
-    color: white;
+  /* font-family: "Orbitron"; */
+  color:white;
+  font-family: 'Montserrat';
+  list-style-type: none;
+  /* Change on theme change */
+  -webkit-transition-property: all;
+  -webkit-transition-duration: .2s;
+  -moz-transition-timing-function: cubic-bezier(100, 50, 21, 6);
+  -moz-transition-property: all;
+  -moz-transition-timing-function: cubic-bezier(100, 50, 21, 6)  /* color: #64ffda; */
 }
 
-ul {
-    list-style-type: none;
+#hero__name {
+  color:rgb(228, 107, 102) !important;
 }
+/* ul:hover { */
+  /* color: red; */
+/* } */
+
+/* li:hover { */
+  /* color: red; */
+/* } */
+
+
+/* p  */
+
+/* color: #ccd6f6 !important; */
+
+/* } */
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 h1 {
-    font-size: 8vh;
+  font-size: 8vh;
 }
 
 h2 {
-    font-size:  6vh;
+  font-size: 6vh;
 }
 
 h3 {
-    font-size: 4vh;
+  font-size: 4vh;
 }
 
 main {
-    background-color: white;
+  /* kground-color: white; */
+  /* background-color: #0a192f; */
 }
 
 #brand-name {
-    font-size: 5vh;
+  font-size: 5vh;
 }
 
 #hero-image {
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.75;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.75;
 }
 
 .hero-section {
-    background-color: black;
-    overflow:hidden;
+  background-color: black;
+  overflow: hidden;
 }
 
 #occ {
-    font-size: 7.5vh;
-    font-family: "Monoton";
-    float:left;
+  font-size: 7.5vh;
+  font-family: "Monoton";
+  float: left;
 }
 
-.section__title {
-  font-family: "Monoton"
-}
+/* .section__title { */
+  /* Change on theme */
+  /* Change on theme */
+  /* color: #64ffda!important; */
+/* } */
 
-.nav-right-item {
-    font-family: 'Orbitron'; 
-}
+/* .nav-right-item {  */
 
-.nav-right-link {
+/* font-family: 'Orbitron'; */
+
+/* } */
+
+/* .nav-right-link {
   color: red;
-}
+} */
 
 .side-nav-right, .side-nav-left {
-    padding: 2rem;
-    z-index: 1000;
+  padding: 2rem;
+  z-index: 1000;
 }
 
 .sticky-top {
-    z-index: 100;
+  z-index: 100;
 }
 
 .chapter {
-    height: 100vh;
+  min-height: 100vh;
+  margin: 5vh 12vw;
 }
 
 .icon {
-    height: 8vh;
-    width: 8vh;
-    background-color: grey;
-    margin:1vh;
-    border-radius: 50px;
-    border: 1px solid ;
+  height: 8vh;
+  width: 8vh;
+  /* change on theme change */
+  background-color: #495670;
+  margin: 1vh;
+  border-radius: 50px;
+  border: 1px solid;
 }
 
 .icon:hover {
-    animation-duration: 1.5s;
-    animation-fill-mode: both; 
-    animation-name: resizing;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-name: resizing;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 @keyframes resizing {
-
   25% {
-    transform:scalex(1.5) scaley(1.50);
+    transform: scalex(1.5) scaley(1.50);
   }
-
   50% {
-    transform:scalex(1.25) scaley(1.25)
+    transform: scalex(1.25) scaley(1.25)
   }
-  
   25% {
-    transform:scalex(1.5) scaley(1.50);
+    transform: scalex(1.5) scaley(1.50);
   }
-
 }
-@keyframes falling {
-    0% { 
-      transform: translateY(-5vh) scalex(1);
-      animation-timing-function: cubic-bezier(.66,.0,1,.72);
-    }
-    45% { 
-      transform: translateY(3.2vh) scalex(1);
-    }
-    50% { 
-      transform: translateY(1.7vh) scalex(1.3);
-    }
-    70% {
-      transform: translateY(1vh) scalex(1);
-    }
-    80% { 
-      transform: translateY(1.5vh) scalex(1);
-    }
-    85% { 
-      transform: translateY(1.2vh) scalex(1.2);
-    }
-    93% { 
-      transform: translateY(1.0vh) scalex(1.1);
-    }
-    100% { 
-     transform: translateY(1.0vh) scalex(1);
-    }
-  }
-  
 
-  .drop{
-    animation-delay: 1s;
-    animation-duration: 2s;
-    animation-fill-mode: both; 
-    animation-name: falling;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
+@keyframes falling {
+  0% {
+    transform: translateY(-5vh) scalex(1);
+    animation-timing-function: cubic-bezier(.66, .0, 1, .72);
   }
+  45% {
+    transform: translateY(3.2vh) scalex(1);
+  }
+  50% {
+    transform: translateY(1.7vh) scalex(1.3);
+  }
+  70% {
+    transform: translateY(1vh) scalex(1);
+  }
+  80% {
+    transform: translateY(1.5vh) scalex(1);
+  }
+  85% {
+    transform: translateY(1.2vh) scalex(1.2);
+  }
+  93% {
+    transform: translateY(1.0vh) scalex(1.1);
+  }
+  100% {
+    transform: translateY(1.0vh) scalex(1);
+  }
+}
+
+.drop {
+  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: falling;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+.project__card {
+  margin: 20vh 5vw;
+  max-height: 75vh;
+}
+
+#profile-photo {
+  max-width: 20vw;
+  object-position: center;
+  border-radius: 25vw;
+}
+
+#card__about {
+  /* Here fore dev */
+  border: 4px solid grey;
+  margin: 10vh 0;
+}

@@ -6,7 +6,7 @@ function occupationSizeChanger() {
   let heroImageBottom = heroImage.getClientRects()[0].bottom;
   let ratio = (heroImageHeight - heroImageBottom )/heroImageHeight;
 
-  console.log('ratio: ', ratio);
+  // console.log('ratio: ', ratio);
   
   let newSize = maxSize - maxSize * ratio;
   newSize = newSize > maxSize ? maxSize : newSize;
@@ -17,13 +17,16 @@ function occupationSizeChanger() {
 /* Changes the career heading at a set interval on hero image */
 function occupationChanger() {
   const careers = [
-    "Software \nEngineer",
+    "Full-Stack\nWeb Developer",
+    "Full-Stack\nWeb Developer",
+    "Full-Stack\nWeb Developer",
     "Software \nEngineer",
     "Software \nEngineer",
     "Software \nEngineer",
     "Mechanical \nEngineer",
     "Systems \nEngineer",
     "Robotics \nEngineer",
+    "Roboticist",
     "Product \nDevelopment \nEngineer",
     "10x \nEngineer",
     "Powerlifter",
@@ -52,7 +55,7 @@ function heroImageResize() {
   let heroImage = document.getElementById("hero-image");
   let height = heroImage.getClientRects()[0].height;
   let bottom = heroImage.getClientRects()[0].bottom;
-  console.log("bottom: ", bottom, "height: ", height);
+  // console.log("bottom: ", bottom, "height: ", height);
   document.getElementById("hero-image").style.transform = `scale(${
     1 + 3/2*(height - bottom) / height
   })`;
@@ -67,7 +70,8 @@ function fontColorChange() {
   // console.log("pos: ", pointOfSwitch, "scroll: ", window.scrollY);
   if (window.scrollY > pointOfSwitch) {
     document.querySelectorAll("*").forEach((e) => {
-      e.style.color = "gray";
+        // e.style.color = "#64ffda"
+        e.style.color = '#0a192f';
     });
   } else {
     document.querySelectorAll("*").forEach((e) => {
@@ -98,5 +102,5 @@ window.addEventListener("scroll", function () {
   navUnderlineOnSection();
   let heroImage = document.getElementById("hero-image");
 
-  console.log("windowY: ", window.scrollY);
+  // console.log("windowY: ", window.scrollY);
 });
