@@ -21,13 +21,25 @@
     <!-- <section id='hero-image'> -->
     <section class='hero-section'>
       <img src="/images/BGphoto.jpg" id='hero-image' alt="background image of me">
-      <h2 class='position-absolute top-50 start-50 hero-text'>
+
+      <!-- Laptop and bigger -->
+      <h2 class='position-absolute top-50 start-50 hero-text d-none d-md-block'>
         Hi,
         <br>
-        I'm <span id='hero__name'>Jhensen.</span>
+        I'm <span class='primary'>Jhensen </span>
         <br>
         <span id='occ' class='hero-text'> Software <br>Engineer</span>
       </h2>
+
+      <!-- Medium and smaller-->
+      <h4 id='hero-sm__text' class='position-absolute bottom-50 d-md-none'>
+        Hi,
+        <br>
+        I'm <span class='primary'>Jhensen </span>
+        <br>
+        <span id='occ' class='hero-text'> Software <br>Engineer</span>
+      </h4>
+
     </section>
   </header>
 
@@ -36,7 +48,7 @@
     <nav class='side-nav-left'>
       <!-- Brand Name -->
       <a href='#'>
-        <h2 class='position-fixed top-0 start-0 side-nav-left' id='brand-name'>
+        <h2 class='position-fixed top-0 start-0 side-nav-left d-none d-md-block' id='brand-name'>
           RaggleSoft
         </h2>
       </a>
@@ -58,7 +70,12 @@
     </nav>
 
     <!-- Right Navigation Bar-->
+    <!-- TODO: add an open and close menu for medium only-->
+    <!-- TODO: add a feature for mobile -->
     <nav class='position-fixed top-0 end-0 side-nav-right d-none d-md-block'>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <ul>
         <li>
           <a href="./files/Jhensen Agni Resume September - Full Stack.pdf" target='_blank' class='nav-right-link'>
@@ -102,12 +119,12 @@
         <!-- Story and Profile Pic -->
         <div class="container" id='card__about'>
           <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-3">
               <img src="images/37388027.jpeg" alt="profile-photo" id='profile-photo' ;>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-8">
               <div class="card-body">
-                <h4>I'm Ray, Mechanical Engineer turned Software Engineer.</h4>
+                <h4>I'm <span class="primary">Jhensen Ray Agni</span> Mechanical Engineer turned Software Engineer.</h4>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis laudantium voluptatum corrupti in
                   distinctio cumque sint dicta odio minima eum consectetur deleniti est omnis totam culpa aliquam, atque
                   ratione dignissimos?</p>
