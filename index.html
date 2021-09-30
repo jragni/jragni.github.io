@@ -5,15 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
+  <!-- bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href='//fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800'
     rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
+  <!-- css -->
   <link rel="stylesheet" href="style.css">
-  <title>Jhensen's Homepage</title>
+  <title>Jhensen's Portfolio</title>
 </head>
 
 <body>
@@ -32,13 +38,11 @@
       </h2>
 
       <!-- Medium and smaller-->
-      <h4 id='hero-sm__text' class='position-absolute bottom-50 d-md-none'>
-        Hi,
-        <br>
-        I'm <span class='primary'>Jhensen </span>
-        <br>
-        <span class='occ hero-text'> Software <br>Engineer</span>
-      </h4>
+      <div id='hero-sm__text' class='position-absolute bottom-50 d-md-none'>
+        <h2>Hi,</h2>
+        <h2>I'm <span class='primary'>Jhensen </span></h2>
+        <h3 class='occ hero-text'> Software <br>Engineer</h3>
+      </div>
 
     </section>
   </header>
@@ -56,13 +60,13 @@
       <ul class="drop position-fixed bottom-0 start-0 ">
         <li class='nav-icons'>
           <a target='_blank' href="https://www.linkedin.com/in/jhensenagni">
-            <img src="./images/linkedin.png" class='icon' alt="linkedin link">
+            <img src="./images/linkedin.png" class='nav__icon' alt="linkedin link">
           </a>
         </li>
 
         <li class='nav-icons'>
           <a target='_blank' href="https://www.github.com/jragni">
-            <img src="./images/github.png" class='icon' alt="github link">
+            <img src="./images/github.png" class='nav__icon' alt="github link">
           </a>
         </li>
 
@@ -72,11 +76,10 @@
     <!-- Right Navigation Bar-->
     <!-- TODO: add an open and close menu for medium only-->
     <!-- TODO: add a feature for mobile -->
+
+    <!-- Medium view and larger-->
     <nav class='position-fixed top-0 end-0 side-nav-right d-none d-md-block'>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
       <ul>
         <li>
           <a href="./files/Jhensen Agni Resume September - Full Stack.pdf" target='_blank' class='nav-right-link'>
@@ -120,10 +123,10 @@
         <!-- Story and Profile Pic -->
         <div class="container" id='card__about'>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-4">
               <img src="images/37388027.jpeg" alt="profile-photo" id='profile-photo' ;>
             </div>
-            <div class="col-sm-8">
+            <div class="col-md-8">
               <div class="card-body">
                 <h4>I'm <span class="primary">Jhensen Ray Agni</span> Mechanical Engineer turned Software Engineer.</h4>
                 <p class='text-top'>
@@ -138,25 +141,30 @@
                   <!-- scalable, and impactful products and/or platforms. -->
 
 
+                  Los Angeles native, with a passion for leading highly effective engineering teams and changing the
+                  world one line of code at a time.
+
                   I am currently building and testing front end features to create an intuitive staff and customer
                   experience at Rithm School.
 
-                  I am a recent graduate of 
+                  I am a recent graduate of
                   <a class='primary' href="https://www.rithmschool.com/" target='_blank'>
                     Rithm School
                   </a>
                   Full Stack Software Engineering Bootcamp.
-
-                  Los Angeles native, with a passion for leading highly effective engineering teams and changing the
-                  world one line of code at a time.
-
-                  I previously worked as a Test Engineer for Honeywell Aero and as a Systems Engineer for the 
-                <a class='primary' href="https://www.navsea.navy.mil/Home/Warfare-Centers/">
-                  Naval Surface Warfare Center, Corona Division.
-                </a>
-               Through both experiences, I learned that effective
-                  communication , data driven decisions, and total ownership/accountability has allowed me to lead
-                  successful teams, regardless of the milestone, mission or technical skill level.
+                  I previously worked as a Test Engineer for
+                  <a target='_blank' class='primary' href='https://aerospace.honeywell.com/'>
+                    Honeywell Aero
+                  </a>
+                  and as a Systems Engineer for the
+                  <a class='primary' target='_blank' href="https://www.navsea.navy.mil/Home/Warfare-Centers/">
+                    Naval Surface Warfare Center, Corona Division.
+                  </a>
+                  Through both experiences, I learned that <strong><em>effective
+                      communication</em></strong> , <strong><em>data driven decisions</em></strong>, and
+                  <strong><em>total ownership/accountability</em></strong>
+                  has allowed me to lead
+                  successful teams, regardless of the milestone, mission or technical skill level required.
 
                   As for my future, I hope to work as a full stack software engineer for a diverse and inclusive
                   company that specializes in robotics.
@@ -171,23 +179,59 @@
         <!-- Programming Languages  -->
         <h3>Programming Languages</h3>
         <ul>
-          <li>JavaScript</li>
-          <li>Python</li>
-          <li>Matlab</li>
-          <li>TypeScript</li>
-          <li>C/C++</li>
-          <li>Ruby</li>
+          <li>
+            JavaScript
+            <img class='icon'
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+          </li>
+          <li>
+            Python
+            <img class='icon'
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" />
+            <!-- <i class="devicon-python-plain-wordmark colored"></i> -->
+          </li>
+          <li>
+            Matlab
+            <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" />
+          </li>
+          <li>
+            TypeScript
+            <img class='icon'
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+          </li>
+          <li>
+            C/C++
+            <img class='icon'
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" />
+
+          </li>
+          <li>
+            Ruby
+            <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" />
+
+          </li>
+
         </ul>
 
         <!-- Backend Technologies -->
         <h3>Libraries & Frameworks</h3>
         <ul>
-          <li>ROS</li>
-          <li>Django</li>
-          <li>Node</li>
-          <li>Flask</li>
-          <li>Express</li>
-          <li>React</li>
+          <li>ROS <img class='icon' src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Ros_logo.svg" alt=""></li>
+          <li>Django <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" />
+          </li>
+          <li>Node <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" />
+          </li>
+          <li>Flask<img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original-wordmark.svg" />
+          </li>
+          <li>SQLAlchemy <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original-wordmark.svg" />
+          </li>
+          <li>Express
+            <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" />
+          </li>
+          <li>React <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" />
+          </li>
+          <li>PostgresQL <img class='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" />
+          </li>
         </ul>
 
         <!-- Previous Jobs -->
@@ -248,7 +292,13 @@
       </section>
     </div>
   </main>
+
+  <footer>
+    <h5 id='page-percentage' class='position-fixed bottom-0 end-0'></h5>
+  </footer>
+
 </body>
+
 <script src="./app.js"></script>
 
 </html>
