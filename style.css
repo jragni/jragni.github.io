@@ -12,6 +12,10 @@
   /* color: #64ffda; */
 }
 
+body {
+  font-size: 1.125rem;
+
+}
 #hero__name {
   color:rgb(228, 107, 102) !important;
 }
@@ -75,6 +79,10 @@ h3 {
   font-family: "Monoton";
 }
 
+.section__title {
+  font-size: 3.25rem;
+  padding: 1rem;
+}
 /* .section__title { */
   /* Change on theme */
   /* Change on theme */
@@ -201,4 +209,7 @@ h3 {
 .icon {
   height:5rem;
   width:5rem;
+  margin: 2rem;
 }
+
+
