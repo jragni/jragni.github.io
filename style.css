@@ -184,8 +184,11 @@ h3 {
 }
 
 .project__card {
-  margin: 20vh 5vw;
-  max-height: 95vh;
+  margin:auto;
+}
+
+.card-img__project{
+  width: 20rem; 
 }
 
 #profile-photo {
