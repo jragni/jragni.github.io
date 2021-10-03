@@ -80,13 +80,13 @@
 
     <!-- Medium view and larger-->
     <nav class='position-fixed top-0 end-0 side-nav-right d-none d-md-block'>
-
       <ul>
-        <li>
+        <!-- Commented out for dev testing -->
+        <!-- <li>
           <a href="./files/Jhensen Agni Resume September - Full Stack.pdf" target='_blank' class='nav-right-link'>
             <h3 id='resume-tag' class='nav-right-item'>Resume</h3>
           </a>
-        </li>
+        </li> -->
 
         <li>
           <a href="#about" class="nav-right-link">
@@ -296,7 +296,7 @@
       <section class='chapter' id='portfolio'>
         <h2 class='section__title sticky-top'>Portfolio</h2>
         <!-- Project Space  -->
-        <div id='project-space' class='d-flex flex-wrap container'>
+        <div id='project-space' class='conainer d-flex flex-wrap justify-content-center align-top'>
 
           <!-- Project 1-->
           <div class="project__card card">
@@ -305,25 +305,13 @@
             <img src="images/project2.png" class="card-img__project card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the
-                card's content.
+                Warbler is a mock Twitter clone that, where users can signup, follow other users, make warbles, and
+                comment on other warbles.
               </p>
             </div>
           </div>
 
           <!-- Project 2-->
-          <div class="project__card card">
-            <h3 class='card-header'> Friender </h3>
-            <h5 class="card-subtitle text-muted"> Flask | Python | PostgreSQL</h5>
-            <img src="" class="card-img__project card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's
-                content.</p>
-            </div>
-          </div>
-
-          <!-- Project 3-->
           <div class="project__card card">
             <h3 class='card-header'> Jobly </h3>
             <h5 class="card-subtitle text-muted">
@@ -332,12 +320,24 @@
             <img src="images/Jobly.jpg" class="card-img__project card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the
-                card's content.
+                A Full Stack web application for users to browse and apply to jobs by company name, job title, and more. 
+                This app was built using a React frontend, an Node/Express backend, and PostgreSQL as the database.
               </p>
             </div>
           </div>
 
+          <!-- Project 3-->
+          <div class="project__card card">
+            <h3 class='card-header'> Friendster </h3>
+            <h5 class="card-subtitle text-muted"> JavaScript | React | Flask | Python | PostgreSQL | Amazon S3</h5>
+            <img src="images/Screen Shot 2021-10-03 at 3.22.08 PM.png" class="card-img__project card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">
+                A Tinder clone that allows users to meet new friends with common interests in their area.
+                
+              </p>
+            </div>
+          </div>
 
         </div>
       </section>
