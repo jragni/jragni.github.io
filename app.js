@@ -24,14 +24,15 @@ function occupationChanger() {
     "Full-Stack\nWeb Developer",
     "Full-Stack\nWeb Developer",
     "Full-Stack\nWeb Developer",
-    "Software \nEngineer",
-    "Software \nEngineer",
-    "Software \nEngineer",
-    "Mechanical \nEngineer",
-    "Systems \nEngineer",
+    "Software\nEngineer",
+    "Software\nEngineer",
+    "Software\nEngineer",
+    "Mechanical\nEngineer",
+    "Systems\nEngineer",
+    "Mechanical\nTest\nEngineer",
     "Robotics \nEngineer",
     "Roboticist",
-    "Product \nDevelopment\nEngineer",
+    "Product\nDevelopment\nEngineer",
     "10x \nEngineer",
     "Powerlifter",
     "Life-Long \nLearner",
@@ -86,6 +87,9 @@ function fontColorChange() {
   }
 }
 
+/** Function that adds an underline when the user is on the pertaining section
+ *  of the right-side navbar list 
+ */
 function navUnderlineOnSection() {
   let sections = ["about", "portfolio", "contact", "story"];
   sections.forEach((section) => {
@@ -102,6 +106,7 @@ function navUnderlineOnSection() {
   });
 }
 
+/* Function that shows the percentage of how far the user is down the page */
 function pageScrollPercentage() {
   let scroll = window.scrollY;
   let pageRect = document.querySelector("main").getBoundingClientRect();
@@ -131,7 +136,6 @@ window.addEventListener("scroll", function () {
   fontColorChange();
   navUnderlineOnSection();
   pageScrollPercentage();
-  let heroImage = document.getElementById("hero-image");
 
   // console.log("windowY: ", window.scrollY);
 });
