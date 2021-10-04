@@ -5,7 +5,7 @@
   list-style-type: none;
   /* Change on theme change */
   -webkit-transition-property: all;
-  -webkit-transition-duration: .2s;
+  -webkit-transition-duration: .1s;
   -moz-transition-timing-function: cubic-bezier(100, 50, 21, 6);
   -moz-transition-property: all;
   -moz-transition-timing-function: cubic-bezier(100, 50, 21, 6)  
@@ -191,6 +191,8 @@ h3 {
   padding: auto;
   margin: .5rem;
   width: 25rem; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 /* .card-img__project{
@@ -201,6 +203,7 @@ h3 {
   height: auto;
   object-position: center;
   border-radius: 35vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #card__about {
