@@ -2,7 +2,7 @@
 
 /* Sets the font size of the  career on the hero image on scroll */
 function occupationSizeChanger() {
-  const maxSize = 4.5;
+  const maxSize = 4.0;
   let heroImage = document.getElementById("hero-image");
   let heroImageHeight = heroImage.getClientRects()[0].height;
   let heroImageBottom = heroImage.getClientRects()[0].bottom;
