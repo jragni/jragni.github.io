@@ -83,13 +83,13 @@ h3 {
   font-family: "Monoton";
 }
 
-.section__title, .subchapter__title {
+.section__title, .chapter__title, .subchapter__title {
   background-color: white;
 }
 
 .section__title {
   font-size: 3.25rem;
-  padding: 1rem;
+  padding: auto;
 }
 /* .section__title { */
   /* Change on theme */
@@ -118,8 +118,8 @@ h3 {
 }
 
 .chapter {
-  min-height: 100vh;
-  margin: auto;
+  min-height: 90vh;
+  margin: auto 10rem;
 }
 
 .nav__icon {
@@ -204,8 +204,10 @@ h3 {
 
 #profile-photo {
   max-width: 100%;
+  margin:auto;
   height: auto;
   object-position: center;
+  object-fit:scale-down;
   border-radius: 35vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
