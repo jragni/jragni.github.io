@@ -2,7 +2,7 @@
 
 /* Sets the font size of the  career on the hero image on scroll */
 function occupationSizeChanger() {
-  const maxSize = 5.5;
+  const maxSize = 5.0;
   let heroImage = document.getElementById("hero-image");
   let heroImageHeight = heroImage.getClientRects()[0].height;
   let heroImageBottom = heroImage.getClientRects()[0].bottom;
@@ -14,7 +14,7 @@ function occupationSizeChanger() {
   newSize = newSize > maxSize ? maxSize : newSize;
   const heroText = document.querySelectorAll(".hero-text");
   heroText.forEach((node) => {
-    node.style.fontSize = newSize + "vh";
+    node.style.fontSize = newSize + "rem";
   });
 }
 
