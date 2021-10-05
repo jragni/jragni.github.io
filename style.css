@@ -68,7 +68,7 @@ h3 {
 }
 
 #hero-sm__text {
-  /* font-size: 4vh; */
+  font-size: 4vh;
   margin: auto 1rem;
   padding: auto;
   height: 50vh;
@@ -119,8 +119,8 @@ h3 {
 }
 
 .chapter {
-  min-height: 90vh;
-  margin: auto 10rem;
+  min-height: 100vh;
+  margin:auto;
 }
 
 .nav__icon {
