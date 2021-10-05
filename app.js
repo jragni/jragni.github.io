@@ -14,7 +14,7 @@ function occupationSizeChanger() {
   newSize = newSize > maxSize ? maxSize : newSize;
   const heroText = document.querySelectorAll(".hero-text");
   heroText.forEach((node) => {
-    node.style.fontSize = newSize + "rem";
+    node.style.fontSize = newSize + "vh";
   });
 }
 
