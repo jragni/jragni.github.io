@@ -83,6 +83,10 @@ h3 {
   font-family: "Monoton";
 }
 
+.section__title, .subchapter__title {
+  background-color: white;
+}
+
 .section__title {
   font-size: 3.25rem;
   padding: 1rem;
