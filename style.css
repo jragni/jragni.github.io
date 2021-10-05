@@ -68,7 +68,7 @@ h3 {
 }
 
 #hero-sm__text {
-  font-size: 4vh;
+  /* font-size: 4vh; */
   margin: auto 1rem;
   padding: auto;
   height: 50vh;
