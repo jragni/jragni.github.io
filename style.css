@@ -112,6 +112,10 @@ h3 {
   color: red;
 } */
 
+.sidemenu {
+  z-index: 100;
+}
+
 .side-nav-right, .side-nav-left {
   padding: 2rem;
   z-index: 5000 !important;
