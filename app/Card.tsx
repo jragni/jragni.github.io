@@ -22,10 +22,10 @@ export default function ExperienceCard({
   title,
 }: ExperienceCardProps) {
   return (
-    <div className={`group ${className} hover:opacity-90 w-full`}>
+    <div className={`group ${className} opacity-90 hover:opacity-100 hover:text-lightest-slate w-full`}>
       <div className="flex items-baseline mb-2">
         <span className="text-sm text-slate w-24 flex-shrink-0">{date}</span>
-        <h3 className="text-lg text-light-slate">
+        <h3 className="text-lg text-lightest-slate">
           <a
             className="group-hover:text-teal transition-colors inline-flex items-center"
             href={href}

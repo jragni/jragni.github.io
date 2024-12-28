@@ -8,27 +8,26 @@ import { useEffect } from "react";
 export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
-      const aboutSectionElement = document.getElementById('about');
-      const experienceSectionElement = document.getElementById('experience');
-      const projectsSectionElement = document.getElementById('projects');
-      const elementList = [aboutSectionElement, experienceSectionElement, projectsSectionElement];
+      const elementItemList = [
+        { id: 'about', anchorId: 'about-anchor'},
+        { id: 'experience', anchorId: 'experience-anchor'},
+        { id: 'projects', anchorId: 'projects-anchor'},
+      ]
 
-      const aboutAnchor = document.getElementById('about-anchor');
-      const experienceAnchor = document.getElementById('experience-anchor');
-      const projectsAnchor = document.getElementById('projects-anchor');
-      const anchorList = [aboutAnchor, experienceAnchor, projectsAnchor];
-
-      elementList.forEach((element, idx) => {
+      elementItemList.forEach((elementItem) => {
+        const element = document.getElementById(elementItem.id);
+        const anchorElement = document.getElementById(elementItem.anchorId);
         if (
           element
           && element?.getBoundingClientRect().top <= 0
           && element?.getBoundingClientRect().bottom > 0
-          && anchorList[idx]
+          && anchorElement
         ) {
-          anchorList[idx].style.textDecoration = "underline #64FFDA";
+          anchorElement.style.textDecoration = "underline #64FFDA";
         } else {
-          if (anchorList[idx]) anchorList[idx].style.textDecoration = "none";
+          if (anchorElement) anchorElement.style.textDecoration = "none";
         }
+
       });
     }
 
@@ -41,7 +40,7 @@ export default function Navbar() {
       <ul>
         <li>
           <a
-            className="text-md tracking-widest text-slate hover:text-teal transition-colors duration-300"
+            className="text-md tracking-widest text-slate hover:text-teal transition-colors duration-300 underline decoration-teal"
             id="about-anchor"
             href="#about"
           >
