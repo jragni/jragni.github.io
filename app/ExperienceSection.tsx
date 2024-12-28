@@ -1,14 +1,17 @@
 /**
  * Experience Section
  */
-import Card from "./Card";
+import ExperienceCard from "./ExperienceCard";
 import { workExperienceList } from "./constants";
 
 export default function ExperienceSection() {
   return (
-    <section className="pt-4" id="experience">
+    <section className="pt-8 px-6" id="experience">
+      <h2 className="md:hidden opacity-95 text-2xl py-6 text-lightest-slate font-bold sticky top-0 bg-navy">
+        Experience
+      </h2>
       {workExperienceList.map(({companyName, date, href, jobDescription, skills, title}) => (
-        <Card
+        <ExperienceCard
           className="mb-14"
           key={`${title}-${companyName}`}
           companyName={companyName}

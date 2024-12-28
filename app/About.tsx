@@ -4,8 +4,11 @@
 
 export default function AboutSection() {
   return (
-    <section id="about" className="pt-12 md:pt-24 pb-20">
-      <p className="mb-2 text-lightest-slate font-bold">
+    <section id="about" className="pt-12 md:pt-24 pb-4 px-6">
+      <h2 className="md:hidden opacity-95 text-2xl py-6 text-lightest-slate font-bold sticky top-0 bg-navy">
+        About Me
+      </h2>
+      <p className="mb-2 text-light-slate font-bold">
         I&apos;m Jhensen Ray Agni. Mechanical Engineer turned Software Engineer.
       </p>
       <p className="mb-2">

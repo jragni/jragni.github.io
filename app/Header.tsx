@@ -14,8 +14,8 @@ export interface HeaderProps {
 
 export default function Header({ className }: HeaderProps ) {
   return (
-    <header className={`max-h-screen md:w-[48%] w-full ${className}`}>
-      <div className="md:flex md:flex-col md:py-24 md:h-screen align-center justify-between">
+    <header className={`max-h-screen md:w-[48%] md:px-auto px-6 w-full ${className}`}>
+      <div className="md:flex md:flex-col py-6 md:py-24 md:h-screen align-center justify-between">
         <div>
           <h1 className="text-4xl text-lightest-slate">Jhensen Ray Agni</h1>
           <TypeAnimation
