@@ -4,7 +4,7 @@
 
 export default function AboutSection() {
   return (
-    <section id="about" className="pt-12 md:pt-24 mb-20">
+    <section id="about" className="pt-12 md:pt-24 pb-20">
       <p className="mb-2 font-bold">I&apos;m Jhensen Ray Agni a Mechanical Engineer turned Software Engineer.</p>
       <p className="mb-2">I am currently building and testing full stack web application that provide an intuitive staff and customer experience at Dovenmuehle Mortgage Inc. Prior to Dovenmuehle, I worked as Software Engineering Intern at Rithm School , where I was also a graduate of their Full Stack Software Engineering Bootcamp.</p>
       <p className="mb-2">I received a B.S. in Mechanical Engineering with a concentration in Manufacturing and Design at the University of California, Riverside.</p>
