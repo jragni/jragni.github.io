@@ -32,7 +32,7 @@ export default function ExperienceCard({
           >
             {title} @ {companyName}
             <svg
-              className="ml-1 w-4 h-4 inline-block"
+              className="ml-1 min-w-4 min-h-4 h-4 w-4 inline-block"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
