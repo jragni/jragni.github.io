@@ -6,7 +6,7 @@ import { workExperienceList } from "./constants";
 
 export default function ExperienceSection() {
   return (
-    <section className="lg:py-24" id="experience">
+    <section className="pt-4" id="experience">
       {workExperienceList.map(({companyName, date, href, jobDescription, skills, title}) => (
         <Card
           className="mb-14"

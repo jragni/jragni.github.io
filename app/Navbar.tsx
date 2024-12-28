@@ -1,14 +1,16 @@
 /**
  * Navbar
  */
+"use client"
 
 export default function Navbar() {
+
   return (
     <nav>
       <ul>
         <li>
           <a
-            className="text-md tracking-widest text-slate hover:text-teal transition-colors"
+            className=" text-md tracking-widest text-slate hover:text-teal transition-colors duration-300"
             href="#about"
           >
             ABOUT
