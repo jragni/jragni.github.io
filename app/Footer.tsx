@@ -4,9 +4,13 @@
 import { FileUser, Github, Linkedin } from 'lucide-react'
 import Link from 'next/link';
 
-export default function Footer() {
+export interface FooterProps {
+	className?: string;
+}
+
+export default function Footer({ className }: FooterProps) {
   return (
-    <footer className="flex gap-6">
+    <footer className={`flex gap-6 ${className}`}>
       <Link
         className="hover:text-teal"
         href="https://github.com/jragni"
