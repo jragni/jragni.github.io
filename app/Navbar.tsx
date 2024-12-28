@@ -5,7 +5,11 @@
 
 import { useEffect } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+  className?: string;
+}
+
+export default function Navbar({ className }: NavbarProps) {
   useEffect(() => {
     const handleScroll = () => {
       const elementItemList = [
@@ -40,7 +44,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav>
+    <nav className={`py-8 md:py-0 ${className}`}>
       <ul>
         <li>
           <a
