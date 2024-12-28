@@ -2,7 +2,7 @@
  * Portfolio constants
  */
 
-import { ExperienceCardProps } from "./Card";
+import { ExperienceCardProps } from "./ExperienceCard";
 
 // Experience Section Constants
 
@@ -57,7 +57,8 @@ export const workExperienceList: ExperienceCardProps[] = [
     href: "https://www.eotron.com",
     jobDescription: [
       "Designed and programmed a semi autonomous robot that spot cleans surfaces using UV-C LEDs.",
-      "Built a coolant filtration system for a CNC machine.",
+      "Increased production rate of components by designing a coolant filtration system for a CNC machine.",
+      "Ensured faculty work-safety by programming a microcontroller to shut off a UVC LED array when a motion sensor is triggered."
     ],
     skills: ["C", "C++", "Robotic Operating System (ROS)", "Python", "EaglePCB", "SolidWorks"],
     title: "Product Engineering Intern",

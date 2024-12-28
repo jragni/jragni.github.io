@@ -6,6 +6,7 @@
 import AboutSection from "./About";
 import ExperienceSection from "./ExperienceSection";
 import Header from "./Header";
+import ProjectsSection from "./ProjectsSection";
 
 export default function Home() {
 
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="w-screen md:w-[52%]" >
         <AboutSection/>
         <ExperienceSection />
+        <ProjectsSection />
       </main>
     </div>
   );

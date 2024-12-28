@@ -24,8 +24,12 @@ export default function Navbar() {
           && anchorElement
         ) {
           anchorElement.style.textDecoration = "underline #64FFDA";
+          anchorElement.style.color = "#e2e7ff";
         } else {
-          if (anchorElement) anchorElement.style.textDecoration = "none";
+          if (anchorElement) {
+            anchorElement.style.textDecoration = "none";
+            anchorElement.style.color = "#8892b0";
+          }
         }
 
       });
@@ -40,7 +44,7 @@ export default function Navbar() {
       <ul>
         <li>
           <a
-            className="text-md tracking-widest text-slate hover:text-teal transition-colors duration-300 underline decoration-teal"
+            className="text-md tracking-widest text-lightest-slate hover:text-teal transition-colors duration-300 underline decoration-teal"
             id="about-anchor"
             href="#about"
           >
