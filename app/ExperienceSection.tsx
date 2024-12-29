@@ -28,7 +28,7 @@ export default function ExperienceSection() {
 
         <Link
           className="text-teal border border-teal rounded-full p-2 hover:bg-teal hover:text-navy inline-flex"
-          href="final-june-24-resume.pdf"
+          href="FINAL-june-24-resume.pdf"
           rel="noopener noreferrer"
           target="_blank"
         >
