@@ -23,7 +23,7 @@ export default function ExperienceCard({
 }: ExperienceCardProps) {
   return (
     <div className={`group ${className} opacity-90 hover:opacity-100 hover:text-lightest-slate w-full`}>
-      <div className="flex items-baseline mb-2">
+      <div className="md:flex items-baseline mb-2">
         <span className="text-sm text-slate w-24 flex-shrink-0 group-hover:text-lightest-slate">
           {date}
         </span>
@@ -50,9 +50,9 @@ export default function ExperienceCard({
           </a>
         </h3>
       </div>
-      <div className="ml-24">
+      <div className="md:ml-24">
         <ul>
-        {jobDescription.map((description) => <li className="mb-4" key={description}>{description}</li>)}
+          {jobDescription.map((description) => <li className="mb-4" key={description}>{description}</li>)}
         </ul>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill: string, idx: number) => (
