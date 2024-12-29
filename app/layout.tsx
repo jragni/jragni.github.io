@@ -25,8 +25,14 @@ export default function RootLayout({
   return (
     <html className="scroll-smooth" lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
+      <a
+        className="absolute left-0 top-0 block -translate-x-full rounded bg-gradient-to-br bg-teal px-4 py-3 text-sm font-bold uppercase tracking-widest text-slate focus-visible:translate-x-0"
+        href="#main-content"
+      >
+        Skip to main content
+      </a>
         {children}
       </body>
     </html>

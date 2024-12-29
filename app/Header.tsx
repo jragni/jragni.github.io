@@ -17,7 +17,7 @@ export default function Header({ className }: HeaderProps ) {
     <header className={`max-h-screen md:w-[48%] md:px-auto w-full ${className}`}>
       <div className="md:flex md:flex-col pt-10 pb-2 px-6 md:px-0 md:py-24 md:h-screen align-center justify-between">
         <div>
-          <h1 className="text-4xl text-lightest-slate">Jhensen Ray Agni</h1>
+          <h1 className="text-4xl text-lightest-slate font-extrabold">Jhensen Ray Agni</h1>
           <TypeAnimation
             sequence={[
               'Software Engineer',
@@ -32,7 +32,7 @@ export default function Header({ className }: HeaderProps ) {
             cursor={true}
             repeat={Infinity}
             style={{ display: 'inline-block' }}
-            className="my-6 text-2xl text-lightest-slate"
+            className="mt-3 mb-6 text-2xl text-lightest-slate"
             />
           <p className="text-slate max-w-xl md:py-0 py-8">
             Los Angeles native, with a passion for leading highly effective engineering teams and changing the world one
