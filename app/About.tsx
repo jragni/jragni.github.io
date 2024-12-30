@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader"
 
 export default function AboutSection() {
   return (
-    <section id="about" className="pt-6 md:pt-24 pb-4 px-6">
+    <section id="about" className="pt-6 md:pt-24 pb-4 px-6 md:px-0">
       <SectionHeader label="About Me"/>
       <p className="mb-2 text-light-slate font-bold">
         I&apos;m Jhensen Ray Agni. Mechanical Engineer turned Software Engineer.

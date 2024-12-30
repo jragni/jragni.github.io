@@ -3,6 +3,7 @@
  */
 
 import { ExperienceCardProps } from "./ExperienceCard";
+import { ProjectCardProps } from "./ProjectCard";
 
 // Experience Section Constants
 
@@ -28,7 +29,7 @@ export const workExperienceList: ExperienceCardProps[] = [
       "Migrated the backend caching system from local memory caching to Redis to improve scalability and performance.",
       "Maintained 100% test coverage with unit tests and integration tests for newly built features.",
     ],
-    skills: ["Python", "Django", "Redis", "HTML", "css", "Flask"],
+    skills: ["Python", "Django", "Redis", "HTML", "css", "scss", "Flask", "PostgresQL"],
     title: "Software Engineer",
   },
   {
@@ -63,4 +64,35 @@ export const workExperienceList: ExperienceCardProps[] = [
     skills: ["C", "C++", "Robotic Operating System (ROS)", "Python", "EaglePCB", "SolidWorks"],
     title: "Product Engineering Intern",
   },
-]
+];
+
+export const projectsList: ProjectCardProps[] = [
+  {
+    description: `An AI-powered IoT robot that monitors for patient's safety and well-being. The device will identify PPE worn by medical personnel to ensure compliance with patient safety protocols.`,
+    href: "https://devpost.com/software/pixie-rover",
+    skills: ["Python", "Flask", "OpenCV", "C++", "SolidWorks", "Machine Learning", "AI"],
+    src: "/pixierover.png",
+    title: "Pixie Rover, AI integrated robot",
+  },
+  {
+    description: `An application that helps users go from no experi ence to competitive, confident, and actualized software engineering bootcamp candidates.`,
+    href: "https://tempo-codestart.vercel.app",
+    skills: ["Next.js", "Typescript", "Tailwind", "Daisy UI", "Auth.js"],
+    src: "/Tempo.png",
+    title: "Tempo Codestart",
+  },
+  {
+    description: `A Full Stack web application for users to browse and apply to jobs by company name, job title, and more. username: visitor password: password`,
+    href: "https://ragglesoft-jobly.surge.sh",
+    skills: ["React", "Express", "PostgresQL", "Bootstrap"],
+    src: "/Jobly.png",
+    title: "Jobly",
+  },
+  {
+    description: `Warbler is a mock Twitter clone that allows users to signup, follow other users, make warbles, and comment on other warbles.`,
+    href: "https://warbler-ragglesoft.onrender.com/",
+    skills: ['flask', 'postgresql', 'HTML', 'css'],
+    src: "/warbler.png",
+    title: "Warbler",
+  },
+];
