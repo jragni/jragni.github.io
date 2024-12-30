@@ -10,7 +10,7 @@ import { workExperienceList } from "./constants";
 
 export default function ExperienceSection() {
   return (
-    <section className="pt-8 px-6" id="experience">
+    <section className="pt-8 md:px-0 px-6" id="experience">
       <SectionHeader label="Experience"/>
       {workExperienceList.map(({companyName, date, href, jobDescription, skills, title}) => (
         <ExperienceCard
@@ -25,7 +25,6 @@ export default function ExperienceSection() {
         />
       ))}
       <div>
-
         <Link
           className="text-teal border border-teal rounded-full p-2 hover:bg-teal hover:text-navy inline-flex"
           href="FINAL-june-24-resume.pdf"
