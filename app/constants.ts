@@ -36,7 +36,11 @@ export const workExperienceList: ExperienceCardProps[] = [
     companyName: "Honeywell",
     date: "2020 - 2021",
     href: "https://www.honeywell.com",
-    jobDescription: [],
+    jobDescription: [
+      "Coordinated a team of technicians, stress analysts, and mechanical design engineers resulting in the successful execution of Acceptance and Qualification Tests with aggressive schedules and milestones.",
+      "Facilitated Test Readiness Reviews with customers, stakeholders, and the engineering team to validate project scope and optimize project cost with testing timelines.",
+      "Decreased project cost by $15000 per test and reduced project completion time by 2 weeks by reviewing project discrepancies in costs for tests equipment, recommissioning processes, and program structure."
+    ],
     skills: ["MatLab", "LabView", "SolidWorks"],
     title: "Test Engineer",
    },
@@ -75,7 +79,7 @@ export const projectsList: ProjectCardProps[] = [
     title: "Pixie Rover, AI integrated robot",
   },
   {
-    description: `An application that helps users go from no experi ence to competitive, confident, and actualized software engineering bootcamp candidates.`,
+    description: `An application that helps users go from no experience to competitive, confident, and actualized software engineering bootcamp candidates.`,
     href: "https://tempo-codestart.vercel.app",
     skills: ["Next.js", "Typescript", "Tailwind", "Daisy UI", "Auth.js"],
     src: "/Tempo.png",
@@ -89,7 +93,7 @@ export const projectsList: ProjectCardProps[] = [
     title: "Jobly",
   },
   {
-    description: `Warbler is a mock Twitter clone that allows users to signup, follow other users, make warbles, and comment on other warbles.`,
+    description: `Warbler is a mock Twitter clone that allows users to signup, follow other users, make warbles, and comment on other warbles. username: tuckerdiane password: password`,
     href: "https://warbler-ragglesoft.onrender.com/",
     skills: ['flask', 'postgresql', 'HTML', 'css'],
     src: "/warbler.png",
