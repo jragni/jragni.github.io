@@ -41,7 +41,7 @@ export const workExperienceList: ExperienceCardProps[] = [
       "Facilitated Test Readiness Reviews with customers, stakeholders, and the engineering team to validate project scope and optimize project cost with testing timelines.",
       "Decreased project cost by $15000 per test and reduced project completion time by 2 weeks by reviewing project discrepancies in costs for tests equipment, recommissioning processes, and program structure."
     ],
-    skills: ["MatLab", "LabView", "SolidWorks"],
+    skills: ["MatLab", "LabView", "SolidWorks", "Vibration Testing"],
     title: "Test Engineer",
    },
    {
