@@ -2,6 +2,7 @@
 /**
  * ProjectCard
  */
+import { useState } from "react";
 import Image from "next/image";
 
 export interface ProjectCardProps {
@@ -22,12 +23,18 @@ export default function ProjectCard({
   title,
 }: ProjectCardProps) {
   return (
-    <div className={`group opacity-90 hover:opacity-100 hover:text-lightest-slate w-full flex md:flex-nowrap flex-wrap gap-4 ${className}`}>
-      <div className="min-w-[200px] pt-2">
-        <Image alt={`${title} project image`} height="48" src={src} width="200" />
+    <div className={`group opacity-90 hover:opacity-100 hover:text-lightest-slate w-full flex flex-col sm:flex-row md:flex-nowrap gap-4 sm:gap-6 transition-all duration-300 hover:transform hover:scale-[1.01] ${className}`}>
+      <div className="w-full sm:min-w-[200px] sm:max-w-[200px] pt-2 hover:cursor-zoom-in">
+        <Image
+          alt={`${title} project image`}
+          height="48"
+          src={src}
+          width="200"
+          className="w-full h-auto rounded-lg"
+        />
       </div>
       <div>
-        <h3 className="text-lg text-lightest-slate">
+        <h3 className="text-base sm:text-lg md:text-xl text-lightest-slate">
           <a
             className="group-hover:text-teal transition-colors inline-flex items-center"
             href={href}
@@ -49,12 +56,12 @@ export default function ProjectCard({
             </svg>
           </a>
         </h3>
-        <p>{description}</p>
-        <div className="flex flex-wrap gap-2 mt-2">
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4">{description}</p>
+        <div className="flex flex-wrap gap-2 mt-4">
           {skills.map((skill: string, idx: number) => (
             <span
               key={`${skill}-${idx}`}
-              className="text-teal text-xs px-2 py-1 rounded-full border border-teal border-opacity-20"
+              className="text-teal text-xs sm:text-sm md:text-base px-2 py-1 rounded-full border border-teal border-opacity-20"
             >
               {skill}
             </span>

@@ -72,28 +72,42 @@ export const workExperienceList: ExperienceCardProps[] = [
 
 export const projectsList: ProjectCardProps[] = [
   {
-    description: `An AI-powered IoT robot that monitors for patient's safety and well-being. The device will identify PPE worn by medical personnel to ensure compliance with patient safety protocols.`,
+    description: `A web-based dashboard that provides real-time visualization of sensor data and control of ROS2-enabled robots through web sockets.`,
+    href: "https://jragni.github.io/robot-telemetry-dashboard/",
+    skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "D3.js", "ROS2", "WebSocket"],
+    src: "/robot-telemetry-image.png",
+    title: "Robot Telemetry Dashboard",
+  },
+  {
+    description: `Developed an autonomous search and rescue system using ROS2, Nav2, OpenCV, and YOLOv11 for real time sensor processing, SLAM-based localization, and motion planning. The Robot autonomously navigates to user specified locations and identifies/tags human positions for rescue.`,
+    href: "https://github.com/jragni/search-and-rescue-robot",
+    skills: ["ROS2", "Python", "SLAM", "OpenCV", "YOLO", "AI", "Gazebo", "Raspberry Pi"],
+    src: "/transbot.jpeg",
+    title: "Autonomous Search & Rescue Robot",
+  },
+  {
+    description: `AI-powered IoT robot that monitors patient safety and PPE compliance. Achieved 92% accuracy in PPE detection using computer vision, potentially preventing healthcare safety violations.`,
     href: "https://devpost.com/software/pixie-rover",
     skills: ["Python", "Flask", "OpenCV", "C++", "SolidWorks", "Machine Learning", "AI"],
     src: "/pixierover.png",
     title: "Pixie Rover, AI integrated robot",
   },
   {
-    description: `An application that helps users go from no experience to competitive, confident, and actualized software engineering bootcamp candidates.`,
+    description: `Comprehensive bootcamp preparation platform helping aspiring developers transition to tech careers. Features personalized learning paths, coding challenges, and career guidance for competitive programming interviews.`,
     href: "https://tempo-codestart.vercel.app",
     skills: ["Next.js", "Typescript", "Tailwind", "Daisy UI", "Auth.js"],
     src: "/Tempo.png",
     title: "Tempo Codestart",
   },
   {
-    description: `A Full Stack web application for users to browse and apply to jobs by company name, job title, and more. username: visitor password: password`,
+    description: `Full-stack job application platform with advanced filtering and search capabilities. Built scalable architecture handling 500+ job listings with optimized database queries and responsive design.`,
     href: "https://ragglesoft-jobly.surge.sh",
     skills: ["React", "Express", "PostgresQL", "Bootstrap"],
     src: "/Jobly.png",
     title: "Jobly",
   },
   {
-    description: `Warbler is a mock Twitter clone that allows users to signup, follow other users, make warbles, and comment on other warbles. username: tuckerdiane password: password`,
+    description: `Twitter-inspired social platform with real-time messaging and user engagement features. Implemented secure authentication, optimized database relationships, and responsive UI for seamless user experience.`,
     href: "https://warbler-ragglesoft.onrender.com/",
     skills: ['flask', 'postgresql', 'HTML', 'css'],
     src: "/warbler.png",

@@ -10,11 +10,11 @@ import { workExperienceList } from "./constants";
 
 export default function ExperienceSection() {
   return (
-    <section className="pt-8 md:px-0 px-6" id="experience">
+    <section className="pt-8 md:pt-8 pb-8 md:px-0 px-6" id="experience">
       <SectionHeader label="Experience"/>
       {workExperienceList.map(({companyName, date, href, jobDescription, skills, title}) => (
         <ExperienceCard
-          className="mb-14"
+          className="mb-12 sm:mb-14"
           key={`${title}-${companyName}`}
           companyName={companyName}
           date={date}

@@ -10,7 +10,8 @@ export interface FooterProps {
 
 export default function Footer({ className }: FooterProps) {
   return (
-    <footer className={`flex gap-6 ${className}`}>
+    <div className={`space-y-4 ${className}`}>
+      <footer className="flex gap-6">
       <Link
         className="hover:text-teal"
         href="https://github.com/jragni"
@@ -40,6 +41,7 @@ export default function Footer({ className }: FooterProps) {
         </span>
         <span className="sr-only">Resume</span>
       </Link>
-    </footer>
+      </footer>
+    </div>
   );
 }

@@ -22,12 +22,12 @@ export default function ExperienceCard({
   title,
 }: ExperienceCardProps) {
   return (
-    <div className={`group ${className} opacity-90 hover:opacity-100 hover:text-lightest-slate w-full`}>
+    <div className={`group ${className} opacity-90 hover:opacity-100 hover:text-lightest-slate w-full transition-all duration-300`}>
       <div className="md:flex items-baseline mb-2">
-        <span className="text-sm text-slate w-24 flex-shrink-0 group-hover:text-lightest-slate">
+        <span className="text-xs sm:text-sm md:text-base text-slate md:w-24 flex-shrink-0 group-hover:text-lightest-slate block md:inline">
           {date}
         </span>
-        <h3 className="text-lg text-lightest-slate">
+        <h3 className="text-base sm:text-lg md:text-xl text-lightest-slate mt-1 md:mt-0">
           <a
             className="group-hover:text-teal transition-colors inline-flex items-center"
             href={href}
@@ -50,15 +50,15 @@ export default function ExperienceCard({
           </a>
         </h3>
       </div>
-      <div className="md:ml-24">
+      <div className="md:ml-24 mt-3 md:mt-0">
         <ul>
-          {jobDescription.map((description) => <li className="mb-4" key={description}>{description}</li>)}
+          {jobDescription.map((description) => <li className="mb-4 text-sm sm:text-base md:text-lg leading-relaxed" key={description}>{description}</li>)}
         </ul>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-4">
           {skills.map((skill: string, idx: number) => (
             <span
               key={`${skill}-${idx}`}
-              className="text-teal text-xs px-2 py-1 rounded-full border border-teal border-opacity-20"
+              className="text-teal text-xs sm:text-sm md:text-base px-2 py-1 rounded-full border border-teal border-opacity-20"
             >
               {skill}
             </span>
