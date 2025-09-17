@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         navy: '#0a192f',
+        'dark-navy': '#112240',
         slate: '#8892b0',
         'light-slate': '#ccd6f6',
         'lightest-slate': '#e2e8ff',
