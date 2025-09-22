@@ -6,7 +6,7 @@
 import { useState } from "react";
 import Image from "next/image"
 import { projectsList } from "./constants";
-import ProjectCard, { ProjectCardProps } from "./ProjectCard";
+import ProjectCard, { ProjectCardDetails } from "./ProjectCard";
 import SectionHeader from "./SectionHeader";
 
 export default function ProjectsSection() {
@@ -42,7 +42,7 @@ export default function ProjectsSection() {
         skills,
         src,
         title,
-      }: ProjectCardProps) => (
+      }: ProjectCardDetails) => (
         <ProjectCard
           key={`${title}`}
           className="mb-12 sm:mb-14"

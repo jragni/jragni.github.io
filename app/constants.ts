@@ -3,7 +3,7 @@
  */
 
 import { ExperienceCardProps } from "./ExperienceCard";
-import { ProjectCardProps } from "./ProjectCard";
+import { ProjectCardDetails } from "./ProjectCard";
 
 // Experience Section Constants
 
@@ -70,7 +70,7 @@ export const workExperienceList: ExperienceCardProps[] = [
   },
 ];
 
-export const projectsList: ProjectCardProps[] = [
+export const projectsList: ProjectCardDetails[] = [
   {
     description: `A web-based dashboard that provides real-time visualization of sensor data and control of ROS2-enabled robots through web sockets.`,
     href: "https://jragni.github.io/robot-telemetry-dashboard/",
