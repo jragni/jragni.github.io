@@ -22,7 +22,6 @@ export default function CallToAction() {
         <p className="text-slate text-center mb-6 sm:mb-8 text-sm sm:text-base md:text-lg">
           Ready to discuss opportunities or collaborate on robotics projects?
         </p>
-        
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
           <button
             onClick={handleDownloadResume}
@@ -31,7 +30,6 @@ export default function CallToAction() {
             <Download size={16} className="sm:w-5 sm:h-5" />
             Download Resume
           </button>
-          
           <a
             href="mailto:jhensenrayagni@gmail.com"
             className="flex items-center gap-2 border border-teal text-teal px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-teal hover:text-navy transition-colors duration-300 text-sm sm:text-base md:text-lg w-full sm:w-auto justify-center"
@@ -40,7 +38,6 @@ export default function CallToAction() {
             Get In Touch
           </a>
         </div>
-
         <div className="flex justify-center gap-6 mt-8">
           <a
             href="https://linkedin.com/in/jhensenrayagni"

@@ -4,14 +4,16 @@
  */
 import Image from "next/image";
 
-export interface ProjectCardProps {
+export interface ProjectCardDetails {
   className?: string;
   description: string,
-  handleZoomClick: (src: string) => void;
   href?: string;
   skills: string[];
   src: string;
   title: string;
+}
+export interface ProjectCardProps extends ProjectCardDetails {
+  handleZoomClick: (src: string) => void;
 }
 
 export default function ProjectCard({

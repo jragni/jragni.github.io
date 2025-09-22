@@ -1,8 +1,8 @@
 /**
  * Header
- * TODO add mobile responsiveness
  */
 "use client"
+import Image from "next/image";
 import { TypeAnimation } from 'react-type-animation';
 
 import Footer from "./Footer"
@@ -18,6 +18,17 @@ export default function Header({ className }: HeaderProps ) {
       <div className="md:flex md:flex-col pt-12 pb-8 px-6 md:px-0 md:py-24 md:h-screen align-center justify-between">
         <div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-lightest-slate font-extrabold">Jhensen Ray Agni</h1>
+        <div className="my-8 flex justify-center">
+          <div className="w-[200px] h-[200px] md:h-[200px] sm:w-[200px] rounded-full overflow-hidden">
+            <Image
+              alt="jhensen's headshot"
+              className="w-full h-full object-cover"
+              height={150}
+              src="/surf.png"
+              width={150}
+            />
+          </div>
+        </div>
           <TypeAnimation
             sequence={[
               'Software Engineer',
@@ -26,7 +37,6 @@ export default function Header({ className }: HeaderProps ) {
               3000,
               'Mechanical Engineer',
               4000,
-
             ]}
             wrapper="h2"
             cursor={true}
