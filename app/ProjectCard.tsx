@@ -7,6 +7,7 @@ import Image from "next/image";
 export interface ProjectCardProps {
   className?: string;
   description: string,
+  handleZoomClick: (src: string) => void;
   href?: string;
   skills: string[];
   src: string;
@@ -16,6 +17,7 @@ export interface ProjectCardProps {
 export default function ProjectCard({
   className = "",
   description,
+  handleZoomClick,
   href,
   skills,
   src,
@@ -23,7 +25,10 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className={`group opacity-90 hover:opacity-100 hover:text-lightest-slate w-full flex flex-col sm:flex-row md:flex-nowrap gap-4 sm:gap-6 transition-all duration-300 hover:transform hover:scale-[1.01] ${className}`}>
-      <div className="w-full sm:min-w-[200px] sm:max-w-[200px] pt-2 hover:cursor-zoom-in">
+      <div
+        className="w-full sm:min-w-[200px] sm:max-w-[200px] pt-2 hover:cursor-zoom-in"
+        onClick={() => handleZoomClick(src)}
+      >
         <Image
           alt={`${title} project image`}
           height="48"
