@@ -67,6 +67,11 @@
     @apply border-border;
   }
 
+  html {
+    /* Scroll padding to account for fixed navbar (h-16 = 64px) + extra spacing */
+    scroll-padding-top: 5rem; /* 80px total */
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
