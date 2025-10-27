@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cyberpunk Drone HUD Color Palette - Original Theme */
+
+    /* Dark Backgrounds - Navy/Dark Blue */
+    --background: 219 67 11; /* #0a192f - Dark navy blue */
+    --foreground: 219 60 88; /* #ccd6f6 - Light slate text */
+
+    /* Cards and UI surfaces */
+    --card: 217 59 16; /* #112240 - Lighter navy */
+    --card-foreground: 219 60 88;
+
+    --popover: 217 59 16;
+    --popover-foreground: 219 60 88;
+
+    /* Primary - Neon Teal accent */
+    --primary: 167 100 70; /* #64FFDA - Neon teal/cyan */
+    --primary-foreground: 217 80 6; /* Dark navy for text on teal */
+
+    /* Secondary - Dark navy variation */
+    --secondary: 217 59 16; /* #112240 */
+    --secondary-foreground: 219 60 88;
+
+    /* Muted - Subdued elements */
+    --muted: 217 59 16; /* #112240 */
+    --muted-foreground: 219 20 61; /* #8892b0 - Muted slate */
+
+    /* Accent - Neon Teal for highlights */
+    --accent: 167 100 70; /* #64FFDA - Neon teal */
+    --accent-foreground: 217 80 6;
+
+    /* Destructive - Alert red */
+    --destructive: 0 70 50; /* Red for errors */
+    --destructive-foreground: 0 0 98;
+
+    /* Border colors */
+    --border: 167 100 70; /* #64FFDA - Neon teal borders */
+    --input: 217 59 16;
+    --ring: 167 100 70;
+
+    /* Special - Warning/Amber for alerts */
+    --warning: 45 93 58; /* Amber */
+    --warning-foreground: 217 80 6;
+
+    /* HUD Grid lines */
+    --grid-lines: 167 100 70; /* #64FFDA teal */
+
+    /* Scanline effect */
+    --scanline: 167 100 70;
+
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    /* Dark mode uses same palette (this IS the dark theme) */
+    --background: 219 67 11;
+    --foreground: 219 60 88;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Military monospace font for technical elements */
+  .font-mono-military {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
+  }
+}
+
+/* Custom military HUD utilities */
+@layer utilities {
+  /* Scanline effect */
+  .scanlines {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(100, 255, 218, 0.03) 0px,
+      rgba(100, 255, 218, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Grid overlay */
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Tactical glow */
+  .tactical-glow {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3),
+                0 0 20px rgba(100, 255, 218, 0.1);
+  }
+
+  /* Targeting reticle animation */
+  @keyframes pulse-reticle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  .pulse-reticle {
+    animation: pulse-reticle 2s ease-in-out infinite;
+  }
+
+  /* Corner brackets (HUD framing) */
+  .hud-corners {
+    position: relative;
+  }
+
+  .hud-corners::before,
+  .hud-corners::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(100 255 218);
+  }
+
+  .hud-corners::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .hud-corners::after {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+  }
+
+  /* Vignette effect */
+  .vignette {
+    position: relative;
+  }
+
+  .vignette::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 25, 47, 0.6) 100%);
+    pointer-events: none;
+  }
+}
