@@ -101,8 +101,9 @@ export function ExperienceSection() {
                 Want to see more details about my experience?
               </p>
               <a
-                href="#"
-                download
+                href="https://docs.google.com/document/d/1FHvri0eEL3-H8Sbb__7zwEXrtZoWXgaXoLcrwwaP2LI/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-colors"
               >
                 Download Full Resume

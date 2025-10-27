@@ -86,7 +86,7 @@ export function HeroSection() {
               className="font-mono text-muted-foreground hover:text-foreground hover:bg-secondary/50 w-full sm:w-auto"
               asChild
             >
-              <a href="#" download>
+              <a href="https://docs.google.com/document/d/1FHvri0eEL3-H8Sbb__7zwEXrtZoWXgaXoLcrwwaP2LI/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2 w-4 h-4" />
                 Resume
               </a>
