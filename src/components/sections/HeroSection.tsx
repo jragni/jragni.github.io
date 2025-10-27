@@ -1,6 +1,5 @@
 import { TypeAnimation } from 'react-type-animation'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { ArrowRight, Download } from 'lucide-react'
 
 export function HeroSection() {
@@ -61,28 +60,6 @@ export function HeroSection() {
               <span className="text-foreground font-semibold">AI systems</span>.
               Building innovative solutions at the intersection of software and hardware.
             </p>
-          </div>
-
-          {/* Tech Stack Badges */}
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="outline" className="font-mono text-xs border-primary/50 text-primary/80">
-              TypeScript
-            </Badge>
-            <Badge variant="outline" className="font-mono text-xs border-primary/50 text-primary/80">
-              React
-            </Badge>
-            <Badge variant="outline" className="font-mono text-xs border-primary/50 text-primary/80">
-              Node.js
-            </Badge>
-            <Badge variant="outline" className="font-mono text-xs border-primary/50 text-primary/80">
-              Python
-            </Badge>
-            <Badge variant="outline" className="font-mono text-xs border-primary/50 text-primary/80">
-              ROS2
-            </Badge>
-            <Badge variant="outline" className="font-mono text-xs border-primary/50 text-primary/80">
-              AI/ML
-            </Badge>
           </div>
 
           {/* CTA Buttons */}

@@ -50,7 +50,7 @@ export function NavigationBar() {
           {/* Left: Callsign/Logo */}
           <div className="flex items-center gap-3">
             <div className="font-mono text-primary font-bold text-lg tracking-wider">
-              [CALLSIGN: PORTFOLIO]
+              [CALLSIGN: JRAGNI PORTFOLIO]
             </div>
             <Badge variant="outline" className="hidden sm:flex font-mono text-xs border-primary/50 text-primary">
               v2.0
