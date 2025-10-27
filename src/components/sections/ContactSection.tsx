@@ -13,13 +13,13 @@ export function ContactSection() {
     {
       name: 'LinkedIn',
       icon: <Linkedin className="w-5 h-5" />,
-      href: 'https://linkedin.com/in/justinragni',
+      href: 'https://www.linkedin.com/in/jhensenagni',
       description: 'Connect with me professionally',
     },
     {
       name: 'Email',
       icon: <Mail className="w-5 h-5" />,
-      href: 'mailto:justin.ragni@example.com',
+      href: 'mailto:jhensenrayagni@gmail.com',
       description: 'Send me a message',
     },
   ]
@@ -54,7 +54,7 @@ export function ContactSection() {
               className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20"
               asChild
             >
-              <a href="mailto:justin.ragni@example.com">
+              <a href="mailto:jhensenrayagni@gmail.com">
                 <Mail className="w-5 h-5 mr-2" />
                 Send Me an Email
               </a>
