@@ -84,8 +84,10 @@ export function AboutSection() {
 
                   <div>
                     <div className="font-mono text-xs text-muted-foreground mb-1">EDUCATION</div>
-                    <div className="text-xs sm:text-sm text-foreground">Mechanical Engineering</div>
-                    <div className="text-xs text-muted-foreground mt-1">Rithm School - Software Engineering</div>
+                    <div className="text-xs sm:text-sm text-foreground">B.S. Mechanical Engineering</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">Manufacturing & Design</div>
+                    <div className="text-xs text-muted-foreground">UC Riverside</div>
+                    <div className="text-xs text-muted-foreground mt-2">Rithm School - Software Engineering</div>
                   </div>
                 </div>
               </CardContent>
