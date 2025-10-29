@@ -48,17 +48,14 @@ export function NavigationBar() {
       <div className="relative container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Left: Callsign/Logo */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center">
             <div className="font-mono text-primary font-bold text-lg tracking-wider">
               [CALLSIGN: JRAGNI PORTFOLIO]
             </div>
-            <Badge variant="outline" className="hidden sm:flex font-mono text-xs border-primary/50 text-primary">
-              v2.0
-            </Badge>
           </div>
 
           {/* Center/Right: Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navigationItems.map((item) => (
               <Button
                 key={item.id}
@@ -83,9 +80,15 @@ export function NavigationBar() {
           {/* Right: System Status & Mobile Menu */}
           <div className="flex items-center gap-4">
             {/* System Status Indicators (hidden on mobile) */}
-            <div className="hidden md:flex items-center gap-3 font-mono text-xs text-primary/70">
-              <span>[SYS: ONLINE]</span>
-              <span className="hidden xl:inline">[CONN: SECURE]</span>
+            <div className="hidden lg:flex items-center gap-3 font-mono text-xs text-primary/70 whitespace-nowrap">
+              <div className="flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span>SYS: ONLINE</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary"></span>
+                <span>CONN: SECURE</span>
+              </div>
             </div>
 
             {/* Mobile Menu Toggle */}

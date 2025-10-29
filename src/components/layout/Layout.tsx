@@ -26,7 +26,7 @@ export function Layout({ children }: LayoutProps) {
       <NavigationBar />
 
       {/* Main Content Area */}
-      <main className="relative z-10 pt-16">
+      <main className="relative z-10 pt-24">
         {children}
       </main>
 
