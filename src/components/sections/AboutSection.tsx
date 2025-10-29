@@ -28,10 +28,10 @@ export function AboutSection() {
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
                   Currently, I work at <span className="text-primary">Dovenmuehle Mortgage</span>, where I develop
                   and maintain web and mobile applications that serve thousands of mortgage customers. I specialize
-                  in building scalable, user-centric applications using modern technologies like{' '}
+                  in architecting full-stack solutions with{' '}
                   <span className="text-foreground font-semibold">TypeScript</span>,{' '}
                   <span className="text-foreground font-semibold">React</span>, and{' '}
-                  <span className="text-foreground font-semibold">Node.js</span>.
+                  <span className="text-foreground font-semibold">Node.js</span>, focusing on scalability, performance optimization, and intuitive user experiences.
                 </p>
 
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
@@ -59,7 +59,7 @@ export function AboutSection() {
                 <div className="space-y-3">
                   <div>
                     <div className="font-mono text-xs text-muted-foreground mb-1">LOCATION</div>
-                    <div className="text-xs sm:text-sm text-foreground">Based in USA</div>
+                    <div className="text-xs sm:text-sm text-foreground">Los Angeles, CA</div>
                   </div>
 
                   <div className="h-px bg-primary/20" />
