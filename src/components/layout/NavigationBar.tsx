@@ -18,7 +18,6 @@ interface NavItem {
 }
 
 const navigationItems: NavItem[] = [
-  { id: 'home', label: 'HOME', icon: <Home className="w-4 h-4" />, href: '#home' },
   { id: 'about', label: 'ABOUT', icon: <User className="w-4 h-4" />, href: '#about' },
   { id: 'skills', label: 'SKILLS', icon: <Code2 className="w-4 h-4" />, href: '#skills' },
   { id: 'experience', label: 'EXPERIENCE', icon: <Briefcase className="w-4 h-4" />, href: '#experience' },
@@ -45,14 +44,18 @@ export function NavigationBar() {
       {/* Scanline effect on navbar */}
       <div className="absolute inset-0 scanlines opacity-30 pointer-events-none" />
 
-      <div className="relative container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="relative w-full pr-4">
+        <div className="flex items-center justify-between h-16 max-w-screen-2xl mx-auto">
           {/* Left: Callsign/Logo */}
-          <div className="flex items-center">
-            <div className="font-mono text-primary font-bold text-lg tracking-wider">
-              [CALLSIGN: JRAGNI PORTFOLIO]
+          <button
+            onClick={() => handleNavClick('home', '#home')}
+            className="flex items-center min-w-0 flex-shrink-0 hover:opacity-80 transition-opacity pl-4"
+          >
+            <div className="font-mono text-primary font-bold text-base md:text-lg tracking-wider whitespace-nowrap">
+              <span className="hidden sm:inline">[CALLSIGN: JRAGNI PORTFOLIO]</span>
+              <span className="sm:hidden">[JRAGNI]</span>
             </div>
-          </div>
+          </button>
 
           {/* Center/Right: Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
@@ -80,14 +83,10 @@ export function NavigationBar() {
           {/* Right: System Status & Mobile Menu */}
           <div className="flex items-center gap-4">
             {/* System Status Indicators (hidden on mobile) */}
-            <div className="hidden lg:flex items-center gap-3 font-mono text-xs text-primary/70 whitespace-nowrap">
+            <div className="hidden lg:flex items-center font-mono text-xs text-primary/70 whitespace-nowrap">
               <div className="flex items-center gap-2">
                 <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 <span>SYS: ONLINE</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-primary"></span>
-                <span>CONN: SECURE</span>
               </div>
             </div>
 

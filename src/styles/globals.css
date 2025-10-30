@@ -68,8 +68,8 @@
   }
 
   html {
-    /* Scroll padding to account for fixed navbar (h-16 = 64px) + extra spacing */
-    scroll-padding-top: 5rem; /* 80px total */
+    /* Scroll padding matches navbar height exactly - no extra space needed */
+    scroll-padding-top: 4rem; /* 64px - navbar is h-16 */
   }
 
   body {
@@ -165,6 +165,29 @@
     right: 0;
     border-left: none;
     border-bottom: none;
+  }
+
+  /* Section fade-in animation - triggers on scroll */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  section.section-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* Vignette effect */
