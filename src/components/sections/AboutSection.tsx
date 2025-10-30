@@ -13,10 +13,10 @@ export function AboutSection() {
           <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-          {/* Main Bio */}
-          <div className="md:col-span-2 space-y-4 sm:space-y-6">
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left Column - Bio */}
+          <div className="flex flex-col">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 flex-1">
               <CardContent className="p-6 sm:p-8 space-y-4">
                 <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">
                   I'm a <span className="text-primary font-semibold">full-stack software engineer</span> with
@@ -42,16 +42,31 @@ export function AboutSection() {
                 </p>
 
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-                  When I'm not coding, you'll find me tinkering with robotics projects, exploring new technologies,
-                  or contributing to open-source projects. I believe in continuous learning and sharing knowledge
-                  with the developer community.
+                  When I'm not coding, you'll find me powerlifting at the gym, training in BJJ, or volunteering for beach cleanups.
+                  I also enjoy tinkering with robotics projects and contributing to open-source. I believe in continuous learning—whether
+                  it's mastering a new framework, perfecting a lift, or learning a new technique on the mat.
                 </p>
               </CardContent>
             </Card>
           </div>
 
-          {/* Quick Facts */}
-          <div className="space-y-4 sm:space-y-6">
+          {/* Right Column - Profile Image and Quick Facts */}
+          <div className="flex flex-col space-y-6 sm:space-y-8">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 overflow-hidden">
+              <div className="aspect-square relative bg-secondary/30 flex items-center justify-center">
+                <img
+                  src="/surf.png"
+                  alt="Jhensen Ray Agni"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                    e.currentTarget.parentElement!.innerHTML = '<div class="font-mono text-primary text-sm">[IMAGE]</div>'
+                  }}
+                />
+              </div>
+            </Card>
+
+            {/* Quick Facts */}
             <Card className="bg-card/50 backdrop-blur-sm border-primary/30">
               <CardContent className="p-4 sm:p-6 space-y-4">
                 <h3 className="font-mono text-primary text-xs sm:text-sm mb-4">&gt; QUICK FACTS</h3>
@@ -85,27 +100,13 @@ export function AboutSection() {
                   <div>
                     <div className="font-mono text-xs text-muted-foreground mb-1">EDUCATION</div>
                     <div className="text-xs sm:text-sm text-foreground">B.S. Mechanical Engineering</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">Manufacturing & Design</div>
+                    <div className="text-xs text-muted-foreground">Manufacturing & Design</div>
                     <div className="text-xs text-muted-foreground">UC Riverside</div>
-                    <div className="text-xs text-muted-foreground mt-2">Rithm School - Software Engineering</div>
+                    <div className="text-xs sm:text-sm text-foreground mt-2">Software Engineering</div>
+                    <div className="text-xs text-muted-foreground">Rithm School</div>
                   </div>
                 </div>
               </CardContent>
-            </Card>
-
-            {/* Profile Image */}
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 overflow-hidden">
-              <div className="aspect-square relative bg-secondary/30 flex items-center justify-center">
-                <img
-                  src="/surf.png"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                    e.currentTarget.parentElement!.innerHTML = '<div class="font-mono text-primary text-sm">[IMAGE]</div>'
-                  }}
-                />
-              </div>
             </Card>
           </div>
         </div>
