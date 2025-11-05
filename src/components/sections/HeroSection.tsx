@@ -14,14 +14,6 @@ export function HeroSection() {
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="container max-w-6xl">
         <div className="space-y-6 sm:space-y-8">
-          {/* System Status */}
-          <div className="font-mono text-primary text-xs sm:text-sm flex items-center gap-2 sm:gap-4">
-            <span>&gt; SYSTEM INITIALIZED</span>
-            <div className="flex gap-2">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-xs text-muted-foreground">ONLINE</span>
-            </div>
-          </div>
 
           {/* Main Heading */}
           <div className="space-y-3 sm:space-y-4">
@@ -34,9 +26,9 @@ export function HeroSection() {
               <span className="font-mono text-primary">&gt;</span>{' '}
               <TypeAnimation
                 sequence={[
-                  'A Robotics Engineer',
-                  2000,
                   'A Software Engineer',
+                  2000,
+                  'A Robotics Engineer',
                   2000,
                   'A Mechanical Engineer',
                   2000,
@@ -45,6 +37,8 @@ export function HeroSection() {
                   'A Problem Solver',
                   2000,
                   'A Full-Stack Developer',
+                  2000,
+                  'A Frontend Engineer',
                   2000,
                 ]}
                 wrapper="span"

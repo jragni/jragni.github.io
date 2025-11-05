@@ -1,5 +1,13 @@
 import { Card, CardContent } from '@/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 import { Badge } from '@/components/ui/badge'
+import { carouselImages } from './constants'
 
 export function AboutSection() {
   return (
@@ -15,8 +23,8 @@ export function AboutSection() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column - Bio */}
-          <div className="flex flex-col">
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 flex-1">
+          <div>
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/30">
               <CardContent className="p-6 sm:p-8 space-y-4">
                 <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">
                   I'm a <span className="text-primary font-semibold">full-stack software engineer</span> with
@@ -52,19 +60,29 @@ export function AboutSection() {
 
           {/* Right Column - Profile Image and Quick Facts */}
           <div className="flex flex-col space-y-6 sm:space-y-8">
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 overflow-hidden">
-              <div className="aspect-square relative bg-secondary/30 flex items-center justify-center">
-                <img
-                  src="/surf.png"
-                  alt="Jhensen Ray Agni"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                    e.currentTarget.parentElement!.innerHTML = '<div class="font-mono text-primary text-sm">[IMAGE]</div>'
-                  }}
-                />
-              </div>
-            </Card>
+            <Carousel>
+              <CarouselContent>
+                {carouselImages.map(({ src, alt, customStyle }, index) => (
+                  <CarouselItem key={index}>
+                    <Card className="bg-card/50 backdrop-blur-sm border-primary/30 overflow-hidden">
+                      <div className="relative bg-secondary/30 flex items-center justify-center">
+                        <img
+                          src={src}
+                          alt={alt}
+                          className={`aspect-square object-cover ${customStyle}`}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none'
+                            e.currentTarget.parentElement!.innerHTML = '<div class="font-mono text-primary text-sm">[IMAGE]</div>'
+                          }}
+                        />
+                      </div>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
 
             {/* Quick Facts */}
             <Card className="bg-card/50 backdrop-blur-sm border-primary/30">
