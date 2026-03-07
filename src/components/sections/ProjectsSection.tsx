@@ -33,7 +33,8 @@ export function ProjectsSection() {
           {projectsList.map((project, index) => (
             <Card
               key={index}
-              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group overflow-hidden flex flex-col"
+              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group overflow-hidden flex flex-col hud-card-hover"
+              style={{ '--stagger-index': index } as React.CSSProperties}
             >
               {/* Project Image */}
               <div className="relative aspect-video bg-secondary/30 overflow-hidden">
@@ -142,7 +143,7 @@ export function ProjectsSection() {
 
         {/* More Projects CTA */}
         <div className="mt-12 text-center">
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/20 inline-block">
+          <Card className="bg-card/30 backdrop-blur-sm border-primary/20 inline-block hud-card-hover">
             <CardContent className="p-6">
               <p className="text-foreground/80 mb-4">
                 Interested in seeing more of my work?
