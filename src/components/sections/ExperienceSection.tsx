@@ -6,7 +6,7 @@ import { workExperienceList } from '@/data/constants'
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-20">
+    <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-20 bg-card/30 grid-overlay-alternating">
       <div className="container max-w-5xl">
         {/* Section Header */}
         <div className="mb-12">
