@@ -156,6 +156,14 @@
     background-size: 20px 20px;
   }
 
+  /* Grid overlay — alternating pattern */
+  .grid-overlay-alternating {
+    background-image:
+      linear-gradient(rgba(100, 255, 218, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 255, 218, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
   /* Tactical glow */
   .tactical-glow {
     box-shadow: 0 0 10px rgba(100, 255, 218, 0.3),
@@ -206,6 +214,88 @@
     border-bottom: none;
   }
 
+  /* HUD card hover — animated corner brackets */
+  .hud-card-hover {
+    position: relative;
+  }
+
+  .hud-card-hover::before,
+  .hud-card-hover::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(100, 255, 218, 0.4);
+    transition: border-color 200ms ease-out, top 200ms ease-out, left 200ms ease-out, right 200ms ease-out, bottom 200ms ease-out;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hud-card-hover::before {
+    top: -4px;
+    left: -4px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .hud-card-hover::after {
+    top: -4px;
+    right: -4px;
+    border-left: none;
+    border-bottom: none;
+  }
+
+  .hud-card-hover:hover::before {
+    top: 0px;
+    left: 0px;
+    border-color: rgba(100, 255, 218, 1.0);
+  }
+
+  .hud-card-hover:hover::after {
+    top: 0px;
+    right: 0px;
+    border-color: rgba(100, 255, 218, 1.0);
+  }
+
+  /* HUD section gate — decorative boundary between sections */
+  .hud-section-gate {
+    position: relative;
+    height: 60px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 -1px 0 rgba(100, 255, 218, 0.2),
+      0 1px 0 rgba(100, 255, 218, 0.2);
+  }
+
+  .hud-section-gate::before {
+    content: "// SECTOR BOUNDARY //";
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    color: rgba(100, 255, 218, 0.2);
+    text-transform: uppercase;
+  }
+
+  .hud-section-gate::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(100, 255, 218, 0.15) 20%,
+      rgba(100, 255, 218, 0.15) 80%,
+      transparent 100%
+    );
+    z-index: -1;
+  }
+
   /* ============================================================
      Section scroll-triggered animations
      ============================================================
@@ -218,7 +308,7 @@
   /* Shared base state for all animated sections */
   section {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
     transition:
       opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -236,7 +326,7 @@
   /* Variant: fade-in-left */
   section[data-animate="fade-in-left"] {
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translateX(-24px);
   }
 
   section[data-animate="fade-in-left"].section-visible {
@@ -247,7 +337,7 @@
   /* Variant: fade-in-right */
   section[data-animate="fade-in-right"] {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateX(24px);
   }
 
   section[data-animate="fade-in-right"].section-visible {
