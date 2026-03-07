@@ -24,7 +24,7 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column - Bio */}
           <div>
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hud-card-hover">
               <CardContent className="p-6 sm:p-8 space-y-4">
                 <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">
                   I'm a <span className="text-primary font-semibold">full-stack software engineer</span> with
@@ -64,7 +64,7 @@ export function AboutSection() {
               <CarouselContent>
                 {carouselImages.map(({ src, alt, customStyle }, index) => (
                   <CarouselItem key={index}>
-                    <Card className="bg-card/50 backdrop-blur-sm border-primary/30 overflow-hidden">
+                    <Card className="bg-card/50 backdrop-blur-sm border-primary/30 overflow-hidden hud-card-hover">
                       <div className="relative bg-secondary/30 flex items-center justify-center">
                         <img
                           src={src}
@@ -85,7 +85,7 @@ export function AboutSection() {
             </Carousel>
 
             {/* Quick Facts */}
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hud-card-hover">
               <CardContent className="p-4 sm:p-6 space-y-4">
                 <h3 className="font-mono text-primary text-xs sm:text-sm mb-4">&gt; QUICK FACTS</h3>
 
