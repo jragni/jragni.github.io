@@ -1,99 +1,52 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useEffect, useRef } from 'react'
+import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Code2, Database, Layers, Cpu, Wrench, GitBranch } from 'lucide-react'
 
-interface SkillCategory {
-  title: string
-  icon: React.ReactNode
+interface HudDomain {
+  domain: string
   skills: string[]
-  color: string
 }
 
-const skillCategories: SkillCategory[] = [
+const hudDomains: HudDomain[] = [
   {
-    title: 'Languages',
-    icon: <Code2 className="w-5 h-5" />,
-    color: 'text-primary',
-    skills: [
-      'TypeScript',
-      'JavaScript',
-      'Python',
-      'SQL',
-      'C/C++',
-    ],
+    domain: 'Frontend',
+    skills: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Redux', 'HTML/CSS', 'D3.js', 'Three.js', 'Tailwind CSS', 'Figma'],
   },
   {
-    title: 'Frontend & Web',
-    icon: <Layers className="w-5 h-5" />,
-    color: 'text-primary',
-    skills: [
-      'React',
-      'Next.js',
-      'Redux',
-      'HTML/CSS',
-      'D3.js',
-      'Three.js',
-      'Tailwind CSS',
-      'Figma',
-    ],
+    domain: 'Backend',
+    skills: ['Python', 'SQL', 'C/C++', 'Node.js', 'Express', 'Django', 'Flask', 'gRPC', 'REST APIs', 'PostgreSQL', 'MySQL', 'Redis', 'SQLAlchemy', 'Docker', 'AWS S3', 'Git/GitHub', 'PyTest', 'Jest', 'Jenkins', 'Travis CI', 'GitHub Actions', 'Jira', 'Postman'],
   },
   {
-    title: 'Backend & APIs',
-    icon: <Database className="w-5 h-5" />,
-    color: 'text-primary',
-    skills: [
-      'Node.js',
-      'Express',
-      'Django',
-      'Flask',
-      'gRPC',
-      'REST APIs',
-    ],
-  },
-  {
-    title: 'Databases',
-    icon: <Database className="w-5 h-5" />,
-    color: 'text-primary',
-    skills: [
-      'PostgreSQL',
-      'MySQL',
-      'Redis',
-      'SQLAlchemy',
-    ],
-  },
-  {
-    title: 'DevOps & Testing',
-    icon: <GitBranch className="w-5 h-5" />,
-    color: 'text-primary',
-    skills: [
-      'Docker',
-      'AWS S3',
-      'Git/GitHub',
-      'PyTest',
-      'Jest',
-      'Jenkins',
-      'Travis CI',
-      'GitHub Actions',
-      'Jira',
-      'Postman',
-    ],
-  },
-  {
-    title: 'Robotics & Engineering',
-    icon: <Cpu className="w-5 h-5" />,
-    color: 'text-primary',
-    skills: [
-      'ROS/ROS2',
-      'OpenCV',
-      'YOLOv8',
-      'Computer Vision',
-      'MATLAB',
-      'SolidWorks',
-    ],
+    domain: 'Robotics',
+    skills: ['ROS/ROS2', 'OpenCV', 'YOLOv8', 'Computer Vision', 'MATLAB', 'SolidWorks'],
   },
 ]
 
 export function SkillsSection() {
+  const panelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const rows = panelRef.current?.querySelectorAll('[data-skill-row]')
+    if (!rows) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const row = entry.target as HTMLElement
+            const index = Number(row.dataset.skillRow ?? 0)
+            setTimeout(() => {
+              row.classList.remove('opacity-0', 'translate-y-4')
+              row.classList.add('opacity-100', 'translate-y-0')
+            }, index * 120)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+    rows.forEach((row) => observer.observe(row))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="skills" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 bg-background">
       <div className="container max-w-6xl">
@@ -108,38 +61,38 @@ export function SkillsSection() {
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {skillCategories.map((category, index) => (
-            <Card
-              key={index}
-              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group"
-            >
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-3">
-                  <div className={`${category.color} group-hover:scale-110 transition-transform`}>
-                    {category.icon}
-                  </div>
-                  <span className="text-base sm:text-lg font-semibold text-foreground">
-                    {category.title}
-                  </span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge
-                      key={skillIndex}
-                      variant="secondary"
-                      className="text-xs bg-secondary/50 hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-colors cursor-default"
-                    >
+        {/* HUD Skills Panel */}
+        <div ref={panelRef} className="bg-card/50 backdrop-blur-sm border border-primary/30 rounded-sm">
+          <div className="px-4 py-2 border-b border-primary/20 flex items-center gap-3">
+            <span className="font-mono text-primary text-xs">SYS.SKILLS_MAP v2.1</span>
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          </div>
+          <div className="p-4 sm:p-6 space-y-6">
+            {hudDomains.map((domain, domainIndex) => (
+              <div
+                key={domainIndex}
+                className="opacity-0 translate-y-4 transition-all duration-500"
+                style={{
+                  transitionDelay: `${domainIndex * 120}ms`,
+                  transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+                data-skill-row={domainIndex}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-0.5 h-5 bg-primary flex-shrink-0" />
+                  <span className="font-mono text-primary text-xs uppercase tracking-widest">{domain.domain}</span>
+                </div>
+                <div className="flex flex-wrap gap-2 pl-3.5">
+                  {domain.skills.map((skill, skillIndex) => (
+                    <Badge key={skillIndex} variant="secondary" className="text-xs bg-secondary/50 hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-colors cursor-default font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mr-1.5 inline-block flex-shrink-0" />
                       {skill}
                     </Badge>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Additional Info */}
