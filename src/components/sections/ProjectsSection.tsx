@@ -15,7 +15,7 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20">
+    <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20 bg-background">
       <div className="container max-w-6xl">
         {/* Section Header */}
         <div className="mb-12">
