@@ -40,7 +40,7 @@ export function ContactSection() {
         </div>
 
         {/* Main Contact Card */}
-        <Card className="bg-card/50 backdrop-blur-sm border-primary/30 mb-8">
+        <Card className="bg-card/50 backdrop-blur-sm border-primary/30 mb-8 hud-card-hover">
           <CardContent className="p-8 md:p-12 text-center space-y-8">
             <div className="space-y-4">
               <div className="font-mono text-primary text-sm">&gt; READY TO CONNECT?</div>
@@ -67,7 +67,8 @@ export function ContactSection() {
           {socialLinks.map((link, index) => (
             <Card
               key={index}
-              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group"
+              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group hud-card-hover"
+              style={{ '--stagger-index': index } as React.CSSProperties}
             >
               <CardContent className="p-6">
                 <a
@@ -98,7 +99,7 @@ export function ContactSection() {
 
         {/* Footer Note */}
         <div className="mt-12 text-center">
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/20">
+          <Card className="bg-card/30 backdrop-blur-sm border-primary/20 hud-card-hover">
             <CardContent className="p-6">
               <p className="text-foreground/60 text-sm font-mono">
                 &gt; Built with React, TypeScript, Vite, and shadcn/ui
