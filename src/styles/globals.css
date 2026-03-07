@@ -81,6 +81,37 @@
   .font-mono-military {
     font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
   }
+
+  /* Typography scale — leverages Inter's optical sizing */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h1 { font-size: 2.25rem; } /* 36px */
+  h2 { font-size: 1.875rem; } /* 30px */
+  h3 { font-size: 1.5rem; } /* 24px */
+  h4 { font-size: 1.25rem; } /* 20px */
+
+  @media (min-width: 768px) {
+    h1 { font-size: 3rem; } /* 48px */
+    h2 { font-size: 2.25rem; } /* 36px */
+    h3 { font-size: 1.875rem; } /* 30px */
+    h4 { font-size: 1.5rem; } /* 24px */
+  }
+
+  /* Monospace elements use JetBrains Mono */
+  code, kbd, samp, pre {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 0.875em;
+  }
+
+  /* Prose body text defaults */
+  p, li {
+    line-height: 1.7;
+  }
 }
 
 /* Custom military HUD utilities */
@@ -109,11 +140,19 @@
     z-index: 10;
   }
 
-  /* Grid overlay */
+  /* Grid overlay — original (kept for backwards compat) */
   .grid-overlay {
     background-image:
       linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Grid overlay — reduced opacity variant */
+  .grid-overlay-subtle {
+    background-image:
+      linear-gradient(rgba(100, 255, 218, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 255, 218, 0.02) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
@@ -167,30 +206,83 @@
     border-bottom: none;
   }
 
-  /* Section fade-in animation - triggers on scroll */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  /* ============================================================
+     Section scroll-triggered animations
+     ============================================================
+     Default: fade-in-up. Add data-animate="fade-in-left" etc.
+     on a <section> for directional variants. Use CSS custom
+     property --stagger-index (set via JS or inline style) to
+     stagger siblings.
+     ============================================================ */
 
+  /* Shared base state for all animated sections */
   section {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(30px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Stagger support: each section can set --stagger-index
+       (0, 1, 2 ...) to delay its entrance */
+    transition-delay: calc(var(--stagger-index, 0) * 120ms);
   }
 
+  /* Visible state — default fade-in-up */
   section.section-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateX(0) scale(1);
   }
 
-  /* Vignette effect */
+  /* Variant: fade-in-left */
+  section[data-animate="fade-in-left"] {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  section[data-animate="fade-in-left"].section-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Variant: fade-in-right */
+  section[data-animate="fade-in-right"] {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  section[data-animate="fade-in-right"].section-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Variant: scale-in */
+  section[data-animate="scale-in"] {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  section[data-animate="scale-in"].section-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Variant timing refinements — slightly different durations */
+  section[data-animate="fade-in-left"],
+  section[data-animate="fade-in-right"] {
+    transition:
+      opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--stagger-index, 0) * 120ms);
+  }
+
+  section[data-animate="scale-in"] {
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--stagger-index, 0) * 120ms);
+  }
+
+  /* Vignette effect — original (heavy) */
   .vignette {
     position: relative;
   }
@@ -203,6 +295,22 @@
     right: 0;
     bottom: 0;
     background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 25, 47, 0.6) 100%);
+    pointer-events: none;
+  }
+
+  /* Vignette effect — lightened variant */
+  .vignette-light {
+    position: relative;
+  }
+
+  .vignette-light::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(10, 25, 47, 0.3) 100%);
     pointer-events: none;
   }
 }
