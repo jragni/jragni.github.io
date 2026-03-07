@@ -11,7 +11,7 @@ import { carouselImages } from './constants'
 
 export function AboutSection() {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 bg-card/30 grid-overlay-alternating">
+    <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 bg-background">
       <div className="container max-w-5xl">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">

@@ -25,7 +25,7 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20 bg-card/30 grid-overlay-alternating">
+    <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20 bg-background">
       <div className="container max-w-4xl">
         {/* Section Header */}
         <div className="mb-12 text-center">
