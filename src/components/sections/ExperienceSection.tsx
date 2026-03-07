@@ -22,16 +22,16 @@ export function ExperienceSection() {
         {/* Timeline */}
         <div className="relative space-y-8">
           {/* Vertical Line */}
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-primary/30 hidden md:block" />
+          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-primary/30 hidden md:block" style={{ boxShadow: '0 0 6px rgba(100, 255, 218, 0.3)' }} />
 
           {workExperienceList.map((experience, index) => (
             <div key={index} className="relative">
               {/* Timeline Dot */}
-              <div className="hidden md:block absolute left-8 top-8 w-4 h-4 -ml-[0.4375rem] rounded-full bg-primary ring-4 ring-background" />
+              <div className="hidden md:block absolute left-8 top-8 w-3 h-3 -ml-[0.375rem] rotate-45 bg-primary ring-2 ring-background" />
 
               {/* Content */}
               <div className="md:ml-20">
-                <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group">
+                <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group hud-card-hover">
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="flex-1">
@@ -50,7 +50,7 @@ export function ExperienceSection() {
                       </div>
                       <Badge
                         variant="outline"
-                        className="font-mono text-xs border-primary/50 text-primary self-start"
+                        className="font-mono text-xs border-primary/20 text-muted-foreground/30 self-start"
                       >
                         {experience.date}
                       </Badge>
