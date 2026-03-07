@@ -22,7 +22,7 @@ export function HeroSection() {
               <span className="block text-primary">Jhensen Ray Agni</span>
             </h1>
 
-            <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-muted-foreground min-h-[3rem] sm:min-h-[4rem]">
+            <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary/90 min-h-[3rem] sm:min-h-[4rem]">
               <span className="font-mono text-primary">&gt;</span>{' '}
               <TypeAnimation
                 sequence={[
@@ -47,7 +47,7 @@ export function HeroSection() {
               />
             </div>
 
-            <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed pt-4">
+            <p className="text-base sm:text-xl md:text-2xl text-muted-foreground/70 max-w-3xl leading-relaxed pt-4">
               <span className="font-mono text-primary">&gt;</span> Full-stack software engineer specializing in{' '}
               <span className="text-foreground font-semibold">web development</span>,{' '}
               <span className="text-foreground font-semibold">robotics</span>, and{' '}
