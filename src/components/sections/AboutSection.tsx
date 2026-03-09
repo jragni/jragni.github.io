@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
@@ -5,11 +6,27 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel'
 import { Badge } from '@/components/ui/badge'
 import { carouselImages } from './constants'
 
 export function AboutSection() {
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>()
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const onSelect = useCallback(() => {
+    if (!carouselApi) return
+    setSelectedIndex(carouselApi.selectedScrollSnap())
+  }, [carouselApi])
+
+  useEffect(() => {
+    if (!carouselApi) return
+    onSelect()
+    carouselApi.on('select', onSelect)
+    return () => { carouselApi.off('select', onSelect) }
+  }, [carouselApi, onSelect])
+
   return (
     <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="container max-w-5xl">
@@ -60,7 +77,7 @@ export function AboutSection() {
 
           {/* Right Column - Profile Image and Quick Facts */}
           <div className="flex flex-col space-y-6 sm:space-y-8">
-            <Carousel>
+            <Carousel setApi={setCarouselApi}>
               <CarouselContent>
                 {carouselImages.map(({ src, alt, customStyle }, index) => (
                   <CarouselItem key={index}>
@@ -82,6 +99,23 @@ export function AboutSection() {
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
+              {/* Dot Indicators */}
+              <div className="flex justify-center gap-1 mt-3">
+                {carouselImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => carouselApi?.scrollTo(index)}
+                    className={`min-w-[44px] min-h-[44px] flex items-center justify-center`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  >
+                    <span
+                      className={`block w-2 h-2 rounded-full transition-colors ${
+                        selectedIndex === index ? 'bg-primary' : 'bg-primary/30'
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
             </Carousel>
 
             {/* Quick Facts */}

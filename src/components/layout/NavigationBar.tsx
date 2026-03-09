@@ -58,7 +58,7 @@ export function NavigationBar() {
           </button>
 
           {/* Center/Right: Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <div className="hidden md:flex items-center gap-1 xl:gap-2">
             {navigationItems.map((item) => (
               <Button
                 key={item.id}
@@ -83,7 +83,7 @@ export function NavigationBar() {
           {/* Right: System Status & Mobile Menu */}
           <div className="flex items-center gap-4">
             {/* System Status Indicators (hidden on mobile) */}
-            <div className="hidden lg:flex items-center font-mono text-xs text-primary/70 whitespace-nowrap">
+            <div className="hidden md:flex items-center font-mono text-xs text-primary/70 whitespace-nowrap">
               <div className="flex items-center gap-2">
                 <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 <span>SYS: ONLINE</span>
@@ -96,7 +96,7 @@ export function NavigationBar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden text-primary hover:bg-primary/10"
+                  className="md:hidden min-w-[44px] min-h-[44px] text-primary hover:bg-primary/10"
                 >
                   {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </Button>

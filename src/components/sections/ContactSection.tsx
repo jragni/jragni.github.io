@@ -74,7 +74,7 @@ export function ContactSection() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block space-y-3"
+                  className="block space-y-3 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-lg"
                 >
                   <div className="flex items-center justify-between">
                     <div className="text-primary group-hover:scale-110 transition-transform">
