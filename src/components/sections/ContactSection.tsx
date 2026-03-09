@@ -25,11 +25,11 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20">
+    <section id="contact" className="min-h-[50vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="container max-w-4xl">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             <span className="text-primary font-mono">[05]</span> GET IN TOUCH
           </h2>
           <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent max-w-md mx-auto" />
@@ -41,7 +41,7 @@ export function ContactSection() {
 
         {/* Main Contact Card */}
         <Card className="bg-card/50 backdrop-blur-sm border-primary/30 mb-8">
-          <CardContent className="p-8 md:p-12 text-center space-y-8">
+          <CardContent className="p-5 sm:p-8 md:p-12 text-center space-y-8">
             <div className="space-y-4">
               <div className="font-mono text-primary text-sm">&gt; READY TO CONNECT?</div>
               <p className="text-xl text-foreground/90">
@@ -103,7 +103,7 @@ export function ContactSection() {
               <p className="text-foreground/60 text-sm font-mono">
                 &gt; Built with React, TypeScript, Vite, and shadcn/ui
                 <br />
-                <span className="text-primary">© 2025 Jhensen Ray Agni</span> — Designed &amp; Developed with ❤️
+                <span className="text-primary">© {new Date().getFullYear()} Jhensen Ray Agni</span> — Designed &amp; Developed with ❤️
               </p>
             </CardContent>
           </Card>
