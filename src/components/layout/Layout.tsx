@@ -15,18 +15,18 @@ export function Layout({ children }: LayoutProps) {
       <div className="vignette fixed inset-0 pointer-events-none z-40" />
 
       {/* HUD Corner Brackets (Top corners) */}
-      <div className="fixed top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary/30 pointer-events-none z-40" />
-      <div className="fixed top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-primary/30 pointer-events-none z-40" />
+      <div className="fixed top-0 left-0 w-8 h-8 sm:w-16 sm:h-16 border-l-2 border-t-2 border-primary/30 pointer-events-none z-40" />
+      <div className="fixed top-0 right-0 w-8 h-8 sm:w-16 sm:h-16 border-r-2 border-t-2 border-primary/30 pointer-events-none z-40" />
 
       {/* HUD Corner Brackets (Bottom corners) */}
-      <div className="fixed bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-primary/30 pointer-events-none z-40" />
-      <div className="fixed bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-primary/30 pointer-events-none z-40" />
+      <div className="fixed bottom-0 left-0 w-8 h-8 sm:w-16 sm:h-16 border-l-2 border-b-2 border-primary/30 pointer-events-none z-40" />
+      <div className="fixed bottom-0 right-0 w-8 h-8 sm:w-16 sm:h-16 border-r-2 border-b-2 border-primary/30 pointer-events-none z-40" />
 
       {/* Navigation Bar */}
       <NavigationBar />
 
       {/* Main Content Area */}
-      <main className="relative z-10 pt-16">
+      <main className="relative z-10 pt-16 pb-8">
         {children}
       </main>
 

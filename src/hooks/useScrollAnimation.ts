@@ -13,8 +13,7 @@ export function useScrollAnimation() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('section-visible')
-        } else {
-          entry.target.classList.remove('section-visible')
+          observer.unobserve(entry.target)
         }
       })
     }
