@@ -25,27 +25,27 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20 bg-background">
+    <section id="contact" className="min-h-[50vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="container max-w-4xl">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             <span className="text-primary font-mono">[05]</span> GET IN TOUCH
           </h2>
           <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent max-w-md mx-auto" />
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always open to new opportunities, collaborations, and interesting conversations.
-            Whether you have a question or just want to say hi, feel free to reach out!
+            Whether it's a project idea, a question, or just good conversation — I'm always down to connect.
+            Don't be a stranger.
           </p>
         </div>
 
         {/* Main Contact Card */}
         <Card className="bg-card/50 backdrop-blur-sm border-primary/30 mb-8 hud-card-hover">
-          <CardContent className="p-8 md:p-12 text-center space-y-8">
+          <CardContent className="p-5 sm:p-8 md:p-12 text-center space-y-8">
             <div className="space-y-4">
               <div className="font-mono text-primary text-sm">&gt; READY TO CONNECT?</div>
               <p className="text-xl text-foreground/90">
-                Let's build something amazing together
+                Let's talk.
               </p>
             </div>
 
@@ -75,7 +75,7 @@ export function ContactSection() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block space-y-3"
+                  className="block space-y-3 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-lg"
                 >
                   <div className="flex items-center justify-between">
                     <div className="text-primary group-hover:scale-110 transition-transform">
@@ -104,7 +104,7 @@ export function ContactSection() {
               <p className="text-foreground/60 text-sm font-mono">
                 &gt; Built with React, TypeScript, Vite, and shadcn/ui
                 <br />
-                <span className="text-primary">© 2025 Jhensen Ray Agni</span> — Designed &amp; Developed with ❤️
+                <span className="text-primary">© {new Date().getFullYear()} Jhensen Ray Agni</span> — Designed &amp; Developed with ❤️
               </p>
             </CardContent>
           </Card>

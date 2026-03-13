@@ -6,11 +6,11 @@ import { workExperienceList } from '@/data/constants'
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-20 bg-background">
+    <section id="experience" className="min-h-[50vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="container max-w-5xl">
         {/* Section Header */}
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             <span className="text-primary font-mono">[03]</span> EXPERIENCE
           </h2>
           <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
@@ -35,7 +35,7 @@ export function ExperienceSection() {
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="flex-1">
-                        <CardTitle className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        <CardTitle className="text-lg sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                           {experience.title}
                         </CardTitle>
                         <a

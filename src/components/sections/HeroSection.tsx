@@ -11,7 +11,7 @@ export function HeroSection() {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-background">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="container max-w-6xl">
         <div className="space-y-6 sm:space-y-8">
 
@@ -22,23 +22,15 @@ export function HeroSection() {
               <span className="block text-primary">Jhensen Ray Agni</span>
             </h1>
 
-            <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary/90 min-h-[3rem] sm:min-h-[4rem]">
+            <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground min-h-[3rem] sm:min-h-[4rem]">
               <span className="font-mono text-primary">&gt;</span>{' '}
               <TypeAnimation
                 sequence={[
-                  'A Software Engineer',
+                  'A Full-Stack Engineer',
                   2000,
                   'A Robotics Engineer',
                   2000,
-                  'A Mechanical Engineer',
-                  2000,
-                  'A Systems Engineer',
-                  2000,
-                  'A Problem Solver',
-                  2000,
-                  'A Full-Stack Developer',
-                  2000,
-                  'A Frontend Engineer',
+                  'A Systems Thinker',
                   2000,
                 ]}
                 wrapper="span"
@@ -48,11 +40,10 @@ export function HeroSection() {
             </div>
 
             <p className="text-base sm:text-xl md:text-2xl text-muted-foreground/70 max-w-3xl leading-relaxed pt-4">
-              <span className="font-mono text-primary">&gt;</span> Full-stack software engineer specializing in{' '}
-              <span className="text-foreground font-semibold">web development</span>,{' '}
-              <span className="text-foreground font-semibold">robotics</span>, and{' '}
-              <span className="text-foreground font-semibold">AI systems</span>.
-              Building innovative solutions at the intersection of software and hardware.
+              <span className="font-mono text-primary">&gt;</span> Full-stack engineer shipping production apps at scale — from{' '}
+              <span className="text-foreground font-semibold">mortgage platforms</span> serving thousands of customers to{' '}
+              <span className="text-foreground font-semibold">autonomous robots</span> running ROS2 and{' '}
+              <span className="text-foreground font-semibold">computer vision</span>.
             </p>
           </div>
 

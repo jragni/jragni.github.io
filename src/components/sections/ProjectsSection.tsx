@@ -15,16 +15,16 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20 bg-background">
+    <section id="projects" className="min-h-[50vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="container max-w-6xl">
         {/* Section Header */}
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             <span className="text-primary font-mono">[04]</span> FEATURED PROJECTS
           </h2>
           <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-            A showcase of my work in web development, robotics, and AI systems
+            Side projects and proof-of-concepts — the stuff I build because I want to
           </p>
         </div>
 
@@ -82,7 +82,7 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                   {getGithubLink(project.href) ? (
                     <>
                       <Button

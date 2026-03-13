@@ -4,32 +4,38 @@ export const carouselImages = [
   {
     src: '/surf.png',
     alt: 'jhensen ray agni',
-    customStyle: '',
+    caption: 'Catching waves',
+  },
+  {
+    src: '/la-marathon.jpg',
+    alt: 'LA Marathon finish',
+    caption: 'LA Marathon',
   },
   {
     src: '/ray-jocko.jpeg',
     alt: 'ray meets jocko willink',
-    customStyle: '',
+    caption: 'Meeting Jocko Willink',
+    objectPosition: 'center 35%',
   },
   {
     src: '/princessprogramstem.jpeg',
-    alt: 'vollunteering for nonprofit',
-    customStyle: '',
+    alt: 'volunteering for nonprofit',
+    caption: 'Volunteering with PrincessProgramSTEM',
   },
   {
     src: '/podium.jpeg',
     alt: 'won second place at tournament',
-    customStyle: '',
+    caption: '2nd place tournament finish',
   },
   {
     src: '/ocsprepweekend.jpg',
     alt: 'ocs prep weekend',
-    customStyle: 'aspect-auto',
+    caption: 'OCS prep weekend',
   },
   {
     src: '/ailahackathon.jpeg',
     alt: 'AI LA Hackathon group photo',
-    customStyle: '',
+    caption: 'AI LA Hackathon',
   },
 ];
 

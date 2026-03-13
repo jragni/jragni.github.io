@@ -14,7 +14,7 @@ const hudDomains: HudDomain[] = [
   },
   {
     domain: 'Backend',
-    skills: ['Python', 'SQL', 'C/C++', 'Node.js', 'Express', 'Django', 'Flask', 'gRPC', 'REST APIs', 'PostgreSQL', 'MySQL', 'Redis', 'SQLAlchemy', 'Docker', 'AWS S3', 'Git/GitHub', 'PyTest', 'Jest', 'Jenkins', 'Travis CI', 'GitHub Actions', 'Jira', 'Postman'],
+    skills: ['Python', 'Go', 'SQL', 'C/C++', 'Node.js', 'Express', 'Django', 'Flask', 'gRPC', 'REST APIs', 'PostgreSQL', 'MySQL', 'Redis', 'SQLAlchemy', 'Docker', 'AWS S3', 'Git/GitHub', 'PyTest', 'Jest', 'Jenkins', 'Travis CI', 'GitHub Actions', 'Jira', 'Postman'],
   },
   {
     domain: 'Robotics',
@@ -48,7 +48,7 @@ export function SkillsSection() {
   }, [])
 
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 bg-background">
+    <section id="skills" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="container max-w-6xl">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
@@ -57,15 +57,14 @@ export function SkillsSection() {
           </h2>
           <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
           <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl">
-            A diverse skill set spanning full-stack development, robotics, and systems engineering
+            What I ship with — from TypeScript and React in production to ROS2 and computer vision in the lab
           </p>
         </div>
 
         {/* HUD Skills Panel */}
         <div ref={panelRef} className="bg-card/50 backdrop-blur-sm border border-primary/30 rounded-sm">
           <div className="px-4 py-2 border-b border-primary/20 flex items-center gap-3">
-            <span className="font-mono text-primary text-xs">SYS.SKILLS_MAP v2.1</span>
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="font-mono text-primary text-xs">SKILLS</span>
           </div>
           <div className="p-4 sm:p-6 space-y-6">
             {hudDomains.map((domain, domainIndex) => (

@@ -96,7 +96,7 @@ export function NavigationBar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden text-primary hover:bg-primary/10"
+                  className="lg:hidden min-w-[44px] min-h-[44px] text-primary hover:bg-primary/10"
                 >
                   {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </Button>

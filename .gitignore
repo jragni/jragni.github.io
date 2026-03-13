@@ -40,3 +40,4 @@ yarn-error.log*
 # AI assist
 .claude
 CLAUDE.md
+.planning/
