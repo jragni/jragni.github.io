@@ -1,24 +1,121 @@
 import { useEffect, useRef } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { type IconType } from 'react-icons'
+import {
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiJavascript,
+  SiRedux,
+  SiTailwindcss,
+  SiHtml5,
+  SiD3,
+  SiThreedotjs,
+  SiPython,
+  SiNodedotjs,
+  SiExpress,
+  SiDjango,
+  SiFlask,
+  SiCplusplus,
+  SiPostgresql,
+  SiRedis,
+  SiDocker,
+  SiMysql,
+  SiSqlalchemy,
+  SiGithubactions,
+  SiJest,
+  SiPytest,
+  SiJenkins,
+  SiTravisci,
+  SiRos,
+  SiOpencv,
+  SiGnubash,
+  SiVite,
+} from 'react-icons/si'
+import { FaAws } from 'react-icons/fa'
+import { TbApi, TbBrowserCheck, TbCube } from 'react-icons/tb'
+import { BsCpu } from 'react-icons/bs'
+import { VscEye } from 'react-icons/vsc'
+
+interface Skill {
+  name: string
+  icon: IconType
+  primary?: boolean
+}
 
 interface HudDomain {
   domain: string
-  skills: string[]
+  skills: Skill[]
 }
 
 const hudDomains: HudDomain[] = [
   {
+    domain: 'Languages',
+    skills: [
+      { name: 'TypeScript', icon: SiTypescript, primary: true },
+      { name: 'JavaScript', icon: SiJavascript, primary: true },
+      { name: 'Python', icon: SiPython, primary: true },
+      { name: 'C/C++', icon: SiCplusplus },
+      { name: 'SQL', icon: SiGnubash },
+      { name: 'PostgreSQL', icon: SiPostgresql },
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'HTML/CSS', icon: SiHtml5 },
+    ],
+  },
+  {
     domain: 'Frontend',
-    skills: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Redux', 'HTML/CSS', 'D3.js', 'Three.js', 'Tailwind CSS', 'Figma'],
+    skills: [
+      { name: 'React', icon: SiReact, primary: true },
+      { name: 'Next.js', icon: SiNextdotjs, primary: true },
+      { name: 'Vite', icon: SiVite, primary: true },
+      { name: 'Redux', icon: SiRedux },
+      { name: 'Tailwind CSS', icon: SiTailwindcss },
+      { name: 'D3.js', icon: SiD3 },
+      { name: 'Three.js', icon: SiThreedotjs },
+    ],
   },
   {
-    domain: 'Backend',
-    skills: ['Python', 'Go', 'SQL', 'C/C++', 'Node.js', 'Express', 'Django', 'Flask', 'gRPC', 'REST APIs', 'PostgreSQL', 'MySQL', 'Redis', 'SQLAlchemy', 'Docker', 'AWS S3', 'Git/GitHub', 'PyTest', 'Jest', 'Jenkins', 'Travis CI', 'GitHub Actions', 'Jira', 'Postman'],
+    domain: 'Backend & APIs',
+    skills: [
+      { name: 'Node.js', icon: SiNodedotjs, primary: true },
+      { name: 'Express', icon: SiExpress, primary: true },
+      { name: 'Django', icon: SiDjango },
+      { name: 'Flask', icon: SiFlask },
+      { name: 'tRPC', icon: TbApi },
+      { name: 'REST APIs', icon: TbApi },
+    ],
   },
   {
-    domain: 'Robotics',
-    skills: ['ROS/ROS2', 'OpenCV', 'YOLOv8', 'Computer Vision', 'MATLAB', 'SolidWorks'],
+    domain: 'Data & Infrastructure',
+    skills: [
+      { name: 'PostgreSQL', icon: SiPostgresql, primary: true },
+      { name: 'Redis', icon: SiRedis, primary: true },
+      { name: 'Docker', icon: SiDocker, primary: true },
+      { name: 'AWS S3', icon: FaAws },
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'SQLAlchemy', icon: SiSqlalchemy },
+    ],
+  },
+  {
+    domain: 'DevOps & Testing',
+    skills: [
+      { name: 'GitHub Actions', icon: SiGithubactions, primary: true },
+      { name: 'Jest', icon: SiJest, primary: true },
+      { name: 'PyTest', icon: SiPytest },
+      { name: 'Playwright', icon: TbBrowserCheck },
+      { name: 'Jenkins', icon: SiJenkins },
+      { name: 'Travis CI', icon: SiTravisci },
+    ],
+  },
+  {
+    domain: 'Robotics & Vision',
+    skills: [
+      { name: 'ROS/ROS2', icon: SiRos, primary: true },
+      { name: 'OpenCV', icon: SiOpencv, primary: true },
+      { name: 'YOLOv8', icon: VscEye, primary: true },
+      { name: 'Computer Vision', icon: BsCpu },
+      { name: 'MATLAB', icon: SiGnubash },
+      { name: 'SolidWorks', icon: TbCube },
+    ],
   },
 ]
 
@@ -26,24 +123,24 @@ export function SkillsSection() {
   const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const rows = panelRef.current?.querySelectorAll('[data-skill-row]')
-    if (!rows) return
+    const cards = panelRef.current?.querySelectorAll('[data-skill-card]')
+    if (!cards) return
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const row = entry.target as HTMLElement
-            const index = Number(row.dataset.skillRow ?? 0)
+            const card = entry.target as HTMLElement
+            const index = Number(card.dataset.skillCard ?? 0)
             setTimeout(() => {
-              row.classList.remove('opacity-0', 'translate-y-4')
-              row.classList.add('opacity-100', 'translate-y-0')
+              card.classList.remove('opacity-0', 'translate-y-4')
+              card.classList.add('opacity-100', 'translate-y-0')
             }, index * 120)
           }
         })
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     )
-    rows.forEach((row) => observer.observe(row))
+    cards.forEach((card) => observer.observe(card))
     return () => observer.disconnect()
   }, [])
 
@@ -61,50 +158,48 @@ export function SkillsSection() {
           </p>
         </div>
 
-        {/* HUD Skills Panel */}
-        <div ref={panelRef} className="bg-card/50 backdrop-blur-sm border border-primary/30 rounded-sm">
-          <div className="px-4 py-2 border-b border-primary/20 flex items-center gap-3">
-            <span className="font-mono text-primary text-xs">SKILLS</span>
-          </div>
-          <div className="p-4 sm:p-6 space-y-6">
-            {hudDomains.map((domain, domainIndex) => (
-              <div
-                key={domainIndex}
-                className="opacity-0 translate-y-4 transition-all duration-500"
-                style={{
-                  transitionDelay: `${domainIndex * 120}ms`,
-                  transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                }}
-                data-skill-row={domainIndex}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-0.5 h-5 bg-primary flex-shrink-0" />
-                  <span className="font-mono text-primary text-xs uppercase tracking-widest">{domain.domain}</span>
+        {/* Skills Grid */}
+        <div ref={panelRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {hudDomains.map((domain, domainIndex) => (
+            <div
+              key={domainIndex}
+              className={`
+                opacity-0 translate-y-4 transition-all duration-500
+                ${domainIndex === hudDomains.length - 1 && hudDomains.length % 2 !== 0 ? 'md:col-span-2 md:max-w-[calc(50%-0.5rem)]' : ''}
+              `}
+              style={{
+                transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              }}
+              data-skill-card={domainIndex}
+            >
+              <div className="bg-card/50 backdrop-blur-sm border border-primary/30 rounded-sm h-full">
+                {/* Domain Header */}
+                <div className="px-4 py-2.5 border-b border-primary/20">
+                  <span className="font-mono text-primary text-xs tracking-widest uppercase">{domain.domain}</span>
                 </div>
-                <div className="flex flex-wrap gap-2 pl-3.5">
-                  {domain.skills.map((skill, skillIndex) => (
-                    <Badge key={skillIndex} variant="secondary" className="text-xs bg-secondary/50 hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-colors cursor-default font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mr-1.5 inline-block flex-shrink-0" />
-                      {skill}
-                    </Badge>
-                  ))}
+
+                {/* Skills */}
+                <div className="p-4 flex flex-wrap gap-2">
+                  {domain.skills.map((skill, skillIndex) => {
+                    const Icon = skill.icon
+                    return (
+                      <div
+                        key={skillIndex}
+                        className={`
+                          inline-flex items-center gap-2 px-3 py-1.5 rounded-sm text-xs font-mono
+                          transition-all duration-200 cursor-default border
+                          bg-primary/10 text-primary border-primary/30 hover:bg-primary/20 hover:shadow-[0_0_10px_rgba(100,255,218,0.3)]
+                        `}
+                      >
+                        <Icon className="w-3.5 h-3.5 flex-shrink-0 text-primary" />
+                        {skill.name}
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Additional Info */}
-        <div className="mt-8 sm:mt-12">
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/20">
-            <CardContent className="p-4 sm:p-6">
-              <div className="font-mono text-primary text-xs sm:text-sm mb-3">&gt; LEARNING & GROWTH</div>
-              <p className="text-sm sm:text-base text-foreground/80">
-                Continuously expanding my skill set through hands-on projects, online courses, and contributions
-                to open-source. Currently exploring advanced topics in AI/ML, cloud architecture, and real-time systems.
-              </p>
-            </CardContent>
-          </Card>
+            </div>
+          ))}
         </div>
       </div>
     </section>

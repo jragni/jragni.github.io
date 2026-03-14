@@ -431,7 +431,8 @@
   .pulse-reticle {
     animation: none;
   }
-  [data-skill-row] {
+  [data-skill-row],
+  [data-skill-card] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

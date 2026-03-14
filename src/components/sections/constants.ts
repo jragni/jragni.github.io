@@ -26,11 +26,13 @@ export const carouselImages = [
     src: '/podium.jpeg',
     alt: 'won second place at tournament',
     caption: '2nd place tournament finish',
+    objectPosition: 'center 30%',
   },
   {
     src: '/ocsprepweekend.jpg',
     alt: 'ocs prep weekend',
     caption: 'OCS prep weekend',
+    objectPosition: 'center 25%',
   },
   {
     src: '/ailahackathon.jpeg',

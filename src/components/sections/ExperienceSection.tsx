@@ -50,7 +50,7 @@ export function ExperienceSection() {
                       </div>
                       <Badge
                         variant="outline"
-                        className="font-mono text-xs border-primary/20 text-muted-foreground/30 self-start"
+                        className="font-mono text-xs border-primary/40 text-foreground/80 self-start"
                       >
                         {experience.date}
                       </Badge>

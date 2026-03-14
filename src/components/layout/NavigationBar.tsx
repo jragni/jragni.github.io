@@ -52,7 +52,7 @@ export function NavigationBar() {
             className="flex items-center min-w-0 flex-shrink-0 hover:opacity-80 transition-opacity pl-4"
           >
             <div className="font-mono text-primary font-bold text-base md:text-lg tracking-wider whitespace-nowrap">
-              <span className="hidden sm:inline">[CALLSIGN: JRAGNI PORTFOLIO]</span>
+              <span className="hidden sm:inline">[JRAGNI PORTFOLIO]</span>
               <span className="sm:hidden">[JRAGNI]</span>
             </div>
           </button>

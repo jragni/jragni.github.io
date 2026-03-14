@@ -22,7 +22,7 @@ function CarouselSlide({ src, alt, caption, objectPosition }: SlideProps) {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <div className="relative h-64 sm:h-80">
+    <div className="relative aspect-[4/3]">
       {imgError ? (
         <div className="flex items-center justify-center h-full font-mono text-primary text-sm">
           [IMAGE]
@@ -95,30 +95,40 @@ export function AboutSection() {
                 <div className="font-mono text-primary text-xs mb-4">&gt; PROFILE</div>
 
                 <p className="text-lg text-foreground/90 leading-relaxed">
-                  I'm a <span className="text-primary font-semibold">full-stack engineer</span> with a background
-                  in mechanical engineering, defense, and aerospace. I didn't take the traditional CS path into
-                  software, but that's what makes how I think about problems a little different.{' '}
-                  <i className="text-primary font-semibold">One mind, any framework</i>.
+                  I'm a <span className="text-primary font-semibold">full-stack engineer</span> at{' '}
+                  <span className="text-primary">Dovenmuehle Mortgage</span> where I own the development
+                  of YourMortgageOnline across web, mobile-web, and native. I build, test, and ship
+                  features end-to-end with a focus on creating an intuitive customer experience.
                 </p>
 
                 <p className="text-base text-foreground/75 leading-relaxed">
-                  Right now I work at <span className="text-primary">Dovenmuehle Mortgage</span> where
-                  I own the full-stack development of YourMortgageOnline across web, mobile-web, and native.
-                  I've shipped the private-label migration for{' '}
-                  <span className="text-foreground font-semibold">72+ credit unions and banks</span> and helped push the
-                  mobile app to a <span className="text-foreground font-semibold">4.9-star rating</span> on the App Store.
+                  I graduated from <span className="text-foreground font-semibold">UC Riverside</span> with
+                  a B.S. in Mechanical Engineering, then modeled fleet readiness as a systems engineer
+                  for the <span className="text-foreground font-semibold">Naval Surface Warfare Center</span> and
+                  led aerospace component testing at{' '}
+                  <span className="text-foreground font-semibold">Honeywell Aerospace</span>.
+                  From there I went through Rithm School's full-stack program and stayed on as an
+                  engineering resident. Through all
+                  of it I learned that effective communication, data-driven decisions, and total ownership
+                  are what make teams succeed regardless of the mission or the tech stack. That
+                  background shaped how I approach software. I think in systems, not just syntax.{' '}
+                  <i className="text-primary font-semibold">One mind, any framework</i>.
                 </p>
 
                 <p className="text-base text-foreground/65 leading-relaxed">
-                  Outside of work I build <span className="text-primary">robots</span>. Lately I've been working on
-                  an autonomous search-and-rescue system using ROS2, SLAM, and YOLOv11 for real-time human detection.
-                  I also built a telemetry dashboard that streams live sensor data from ROS2 robots over WebSockets.
+                  I'm an <span className="text-primary">AI-forward</span> engineer who believes the best
+                  software will be built alongside intelligent systems, not replaced by them. Outside of work
+                  I develop <span className="text-primary">robots</span> and integrate AI into real-world
+                  problems. Right now that's an autonomous search-and-rescue system running ROS2, SLAM, and
+                  YOLOv11 for real-time human detection, and a telemetry dashboard that allows live sensor
+                  data streaming and robot control over WebSockets. Long term I want to be somewhere the
+                  engineering actually matters and the team reflects the world it's building for.
                 </p>
 
                 <p className="text-sm text-foreground/55 leading-relaxed">
-                  When I'm not coding or building robots, you'll find me training BJJ, powerlifting, running marathons, or volunteering
-                  with PrincessProgramSTEM, AI LA, and local beach cleanups. I believe in continuous learning, whether
-                  it's mastering a new framework, perfecting a lift, or learning a new technique on the mat.
+                  When I'm not coding or building robots, you'll find me powerlifting at the gym, training
+                  Brazilian Jiu Jitsu, running marathons, or volunteering with PrincessProgramSTEM, AI LA,
+                  and local beach cleanups. Los Angeles born and raised. I don't really have an off switch.
                 </p>
               </CardContent>
             </Card>

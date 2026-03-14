@@ -40,10 +40,11 @@ export function HeroSection() {
             </div>
 
             <p className="text-base sm:text-xl md:text-2xl text-muted-foreground/70 max-w-3xl leading-relaxed pt-4">
-              <span className="font-mono text-primary">&gt;</span> Full-stack engineer shipping production apps at scale — from{' '}
-              <span className="text-foreground font-semibold">mortgage platforms</span> serving thousands of customers to{' '}
-              <span className="text-foreground font-semibold">autonomous robots</span> running ROS2 and{' '}
-              <span className="text-foreground font-semibold">computer vision</span>.
+              <span className="font-mono text-primary">&gt;</span> Full-stack software engineer specializing in{' '}
+              <span className="text-foreground font-semibold">web development</span>,{' '}
+              <span className="text-foreground font-semibold">robotics</span>, and{' '}
+              <span className="text-foreground font-semibold">AI systems</span>.
+              Building innovative solutions at the intersection of software and hardware.
             </p>
           </div>
 
