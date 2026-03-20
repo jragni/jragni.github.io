@@ -18,6 +18,12 @@ interface SkillTabsProps {
   className?: string
 }
 
+const reducedMotionVariants: Variants = {
+  enter: { opacity: 0 },
+  center: { opacity: 1, transition: { duration: 0.15 } },
+  exit: { opacity: 0, transition: { duration: 0.1 } },
+}
+
 const badgeVariants: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 48 : -48,
@@ -107,7 +113,7 @@ export function SkillTabs({ domains, className = '' }: SkillTabsProps) {
           <motion.div
             key={activeDomain.id}
             custom={direction}
-            variants={prefersReducedMotion ? undefined : badgeVariants}
+            variants={prefersReducedMotion ? reducedMotionVariants : badgeVariants}
             initial="enter"
             animate="center"
             exit="exit"

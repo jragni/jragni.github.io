@@ -10,11 +10,8 @@ interface AnimatedSectionProps {
   threshold?: number
 }
 
-const sectionVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
+const buildVariants = (delay: number): Variants => ({
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
@@ -22,9 +19,10 @@ const sectionVariants: Variants = {
       duration: 0.6,
       ease: [0.16, 1, 0.3, 1],
       staggerChildren: 0.1,
+      delayChildren: delay,
     },
   },
-}
+})
 
 const reducedVariants: Variants = {
   hidden: { opacity: 0 },
@@ -46,7 +44,7 @@ export function AnimatedSection({
     amount: threshold,
   })
 
-  const variants = prefersReducedMotion ? reducedVariants : sectionVariants
+  const variants = prefersReducedMotion ? reducedVariants : buildVariants(delay)
 
   return (
     <motion.div
@@ -56,7 +54,6 @@ export function AnimatedSection({
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       variants={variants}
-      transition={delay ? { delay } : undefined}
     >
       {children}
     </motion.div>

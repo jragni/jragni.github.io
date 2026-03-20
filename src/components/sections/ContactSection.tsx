@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import {
   motion,
   AnimatePresence,
@@ -95,6 +95,9 @@ export function ContactSection() {
   const isInView = useInView(ref, { once: true, margin: '-10% 0px' })
   const prefersReducedMotion = useReducedMotion()
 
+  // Fix 6: stable callback reference so TerminalTyping effect doesn't re-fire
+  const handleTerminalComplete = useCallback(() => setTerminalDone(true), [])
+
   return (
     <section
       id="contact"
@@ -123,57 +126,53 @@ export function ContactSection() {
           </motion.p>
         </StaggerChildren>
 
-        {/* Terminal interface */}
-        <AnimatePresence>
-          {isInView && (
-            <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <TerminalWindow title="COMMS TERMINAL — OPEN CHANNEL">
-                {/* Terminal output */}
-                <TerminalTyping onComplete={() => setTerminalDone(true)} />
+        {/* Terminal interface — Fix 15: remove AnimatePresence, use animate directly */}
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <TerminalWindow title="COMMS TERMINAL — OPEN CHANNEL">
+            {/* Terminal output */}
+            {isInView && <TerminalTyping onComplete={handleTerminalComplete} />}
 
-                {/* Availability indicator */}
-                <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary status-dot" aria-hidden="true" />
-                  OPEN TO OPPORTUNITIES
-                </div>
+            {/* Availability indicator */}
+            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary status-dot" aria-hidden="true" />
+              OPEN TO OPPORTUNITIES
+            </div>
 
-                {/* Email button — reveals after terminal finishes */}
-                <AnimatePresence>
-                  {terminalDone && (
-                    <motion.div
-                      initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ type: 'spring', stiffness: 120, damping: 16, delay: 0.2 }}
-                      className="mt-6"
-                    >
-                      <motion.a
-                        href="mailto:jhensenrayagni@gmail.com"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded-sm hover:bg-primary/90 transition-colors"
-                        whileHover={prefersReducedMotion ? undefined : {
-                          scale: 1.03,
-                          boxShadow: '0 0 20px rgba(100,255,218,0.3)',
-                        }}
-                        whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
-                        aria-label="Send email to jhensenrayagni@gmail.com"
-                      >
-                        <Mail className="w-4 h-4" />
-                        Send Me an Email
-                      </motion.a>
-                      <div className="mt-2 text-xs text-muted-foreground font-mono">
-                        &gt; jhensenrayagni@gmail.com
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </TerminalWindow>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            {/* Email button — reveals after terminal finishes */}
+            <AnimatePresence>
+              {terminalDone && (
+                <motion.div
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 120, damping: 16, delay: 0.2 }}
+                  className="mt-6"
+                >
+                  <motion.a
+                    href="mailto:jhensenrayagni@gmail.com"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded-sm hover:bg-primary/90 transition-colors"
+                    whileHover={prefersReducedMotion ? undefined : {
+                      scale: 1.03,
+                      boxShadow: '0 0 20px rgba(100,255,218,0.3)',
+                    }}
+                    whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
+                    aria-label="Send email to jhensenrayagni@gmail.com"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Send Me an Email
+                  </motion.a>
+                  <div className="mt-2 text-xs text-muted-foreground font-mono">
+                    &gt; jhensenrayagni@gmail.com
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </TerminalWindow>
+        </motion.div>
 
         {/* Social links */}
         <StaggerChildren

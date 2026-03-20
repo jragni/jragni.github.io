@@ -40,6 +40,17 @@ export function useActiveSection(options: UseActiveSectionOptions = {}): Section
     }
   }, [handleIntersect, threshold, rootMargin])
 
+  // Fix 14: fallback scroll listener — when user scrolls back to very top,
+  // no section may be "intersecting" so we explicitly set active to 'home'.
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('home')
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return activeSection
 }
-

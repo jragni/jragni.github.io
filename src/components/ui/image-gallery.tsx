@@ -25,7 +25,6 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
         <AnimatePresence mode="wait">
           <motion.img
             key={activeIndex}
-            layoutId={`gallery-img-${activeIndex}`}
             src={active.src}
             alt={active.alt}
             className={`w-full h-full object-cover ${active.customStyle ?? ''}`}

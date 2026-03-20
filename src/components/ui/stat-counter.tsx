@@ -11,16 +11,14 @@ interface StatCounterProps {
 
 function AnimatedNumber({ value, suffix = '', prefix = '' }: { value: number; suffix?: string; prefix?: string }) {
   const prefersReducedMotion = useReducedMotion()
-  const spring = useSpring(0, { stiffness: 60, damping: 20 })
+  const spring = useSpring(0, prefersReducedMotion
+    ? { stiffness: 1000, damping: 100, restDelta: 0.5 }
+    : { stiffness: 60, damping: 20 })
   const display = useTransform(spring, (v) => `${prefix}${Math.round(v)}${suffix}`)
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      spring.set(value)
-    } else {
-      spring.set(value)
-    }
-  }, [value, spring, prefersReducedMotion])
+    spring.set(value)
+  }, [value, spring])
 
   return <motion.span>{display}</motion.span>
 }

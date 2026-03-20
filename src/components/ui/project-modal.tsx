@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { X, ExternalLink, Github } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
@@ -8,14 +8,46 @@ interface ProjectModalProps {
   project: ProjectCardDetails | null
   layoutId: string
   onClose: () => void
+  onExitComplete?: () => void
 }
 
-export function ProjectModal({ project, layoutId, onClose }: ProjectModalProps) {
+const FOCUSABLE_SELECTORS =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+
+export function ProjectModal({ project, layoutId, onClose, onExitComplete }: ProjectModalProps) {
   const prefersReducedMotion = useReducedMotion()
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS),
+        ).filter((el) => !el.closest('[aria-hidden="true"]'))
+
+        if (focusable.length === 0) return
+
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        }
+      }
     },
     [onClose],
   )
@@ -24,6 +56,12 @@ export function ProjectModal({ project, layoutId, onClose }: ProjectModalProps) 
     if (!project) return
     document.addEventListener('keydown', handleKey)
     document.body.style.overflow = 'hidden'
+
+    // Move initial focus to close button
+    requestAnimationFrame(() => {
+      closeButtonRef.current?.focus()
+    })
+
     return () => {
       document.removeEventListener('keydown', handleKey)
       document.body.style.overflow = ''
@@ -33,7 +71,7 @@ export function ProjectModal({ project, layoutId, onClose }: ProjectModalProps) 
   const isGithub = project ? project.href.includes('github.com') : false
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onExitComplete}>
       {project && (
         <>
           {/* Backdrop */}
@@ -48,16 +86,21 @@ export function ProjectModal({ project, layoutId, onClose }: ProjectModalProps) 
 
           {/* Modal */}
           <motion.div
+            ref={dialogRef}
             layoutId={prefersReducedMotion ? undefined : layoutId}
             className="fixed inset-4 sm:inset-8 lg:inset-16 z-[71] overflow-y-auto"
             initial={prefersReducedMotion ? { opacity: 0, scale: 0.95 } : undefined}
             animate={prefersReducedMotion ? { opacity: 1, scale: 1 } : undefined}
             exit={prefersReducedMotion ? { opacity: 0, scale: 0.95 } : undefined}
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={project.title}
           >
             <div className="bg-[#112240] border border-primary/40 rounded-sm overflow-hidden min-h-full">
               {/* Close button */}
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
                 className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center border border-primary/30 text-primary hover:bg-primary/10 transition-colors rounded-sm"
                 aria-label="Close project modal"

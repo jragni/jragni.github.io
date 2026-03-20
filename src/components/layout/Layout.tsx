@@ -1,9 +1,8 @@
-import { ReactNode } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { ReactNode, useState, useEffect } from 'react'
+import { motion, useReducedMotion, useScroll } from 'framer-motion'
 import { NavigationBar } from './NavigationBar'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { useActiveSection } from '@/hooks/useActiveSection'
-import { useScrollProgress } from '@/hooks/useScrollProgress'
 
 interface LayoutProps {
   children: ReactNode
@@ -18,24 +17,35 @@ const SECTION_LABELS: Record<string, string> = {
   contact: 'CONTACT',
 }
 
+// Fix 8: define corners as a data array — eliminates duplicated type-unsafe spreads
+const corners = [
+  { className: 'top-0 left-0 border-l-2 border-t-2', origin: 'top left', delay: 0.2 },
+  { className: 'top-0 right-0 border-r-2 border-t-2', origin: 'top right', delay: 0.3 },
+  { className: 'bottom-8 left-0 border-l-2 border-b-2', origin: 'bottom left', delay: 0.4 },
+  { className: 'bottom-8 right-0 border-r-2 border-b-2', origin: 'bottom right', delay: 0.5 },
+] as const
+
+const cornerBase = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+  },
+} as const
+
 export function Layout({ children }: LayoutProps) {
   const prefersReducedMotion = useReducedMotion()
   const activeSection = useActiveSection()
-  const scrollPct = useScrollProgress()
 
-  const cornerVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 120,
-        damping: 20,
-        delay: 0.2,
-      },
-    },
-  }
+  // Fix 16: derive scroll percentage from Framer Motion's scrollYProgress so we
+  // don't maintain a duplicate vanilla-JS scroll listener alongside ScrollProgress.
+  const { scrollYProgress } = useScroll()
+  const [pct, setPct] = useState(0)
+  useEffect(() => {
+    return scrollYProgress.on('change', (v) => {
+      setPct(Math.round(v * 100))
+    })
+  }, [scrollYProgress])
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
@@ -68,35 +78,28 @@ export function Layout({ children }: LayoutProps) {
         }}
       />
 
-      {/* HUD Corner Brackets — animated in on load */}
-      <motion.div
-        className="fixed top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary/40 pointer-events-none z-40"
-        initial={prefersReducedMotion ? 'visible' : 'hidden'}
-        animate="visible"
-        variants={cornerVariants}
-        style={{ transformOrigin: 'top left' }}
-      />
-      <motion.div
-        className="fixed top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-primary/40 pointer-events-none z-40"
-        initial={prefersReducedMotion ? 'visible' : 'hidden'}
-        animate="visible"
-        variants={{ ...cornerVariants, visible: { ...cornerVariants.visible, transition: { ...cornerVariants.visible.transition as object, delay: 0.3 } } }}
-        style={{ transformOrigin: 'top right' }}
-      />
-      <motion.div
-        className="fixed bottom-8 left-0 w-16 h-16 border-l-2 border-b-2 border-primary/40 pointer-events-none z-40"
-        initial={prefersReducedMotion ? 'visible' : 'hidden'}
-        animate="visible"
-        variants={{ ...cornerVariants, visible: { ...cornerVariants.visible, transition: { ...cornerVariants.visible.transition as object, delay: 0.4 } } }}
-        style={{ transformOrigin: 'bottom left' }}
-      />
-      <motion.div
-        className="fixed bottom-8 right-0 w-16 h-16 border-r-2 border-b-2 border-primary/40 pointer-events-none z-40"
-        initial={prefersReducedMotion ? 'visible' : 'hidden'}
-        animate="visible"
-        variants={{ ...cornerVariants, visible: { ...cornerVariants.visible, transition: { ...cornerVariants.visible.transition as object, delay: 0.5 } } }}
-        style={{ transformOrigin: 'bottom right' }}
-      />
+      {/* HUD Corner Brackets — animated in on load, driven by data array */}
+      {corners.map((corner, i) => (
+        <motion.div
+          key={i}
+          className={`fixed w-16 h-16 border-primary/40 pointer-events-none z-40 ${corner.className}`}
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          animate="visible"
+          variants={{
+            hidden: cornerBase.hidden,
+            visible: {
+              ...cornerBase.visible,
+              transition: {
+                type: 'spring',
+                stiffness: 120,
+                damping: 20,
+                delay: corner.delay,
+              },
+            },
+          }}
+          style={{ transformOrigin: corner.origin }}
+        />
+      ))}
 
       {/* Ambient teal particles */}
       {!prefersReducedMotion && (
@@ -147,7 +150,7 @@ export function Layout({ children }: LayoutProps) {
             SECTION: {SECTION_LABELS[activeSection] ?? activeSection.toUpperCase()}
           </motion.span>
           <span className="text-primary/60">
-            <span className="text-primary">{scrollPct}</span>%
+            <span className="text-primary">{pct}</span>%
           </span>
         </div>
       </div>

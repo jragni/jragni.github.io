@@ -212,7 +212,7 @@ function ExperienceCard({ experience, index }: ExpCardProps) {
 
 // ── Section ───────────────────────────────────────────────────────────────────
 export function ExperienceSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start center', 'end center'],
@@ -222,6 +222,7 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
+      ref={sectionRef}
       className="min-h-screen flex items-center justify-center px-4 py-12 sm:py-20"
     >
       <div className="container max-w-5xl">
@@ -246,7 +247,7 @@ export function ExperienceSection() {
         </StaggerChildren>
 
         {/* Timeline */}
-        <div ref={sectionRef} className="relative space-y-8 pl-0 md:pl-4">
+        <div className="relative space-y-8 pl-0 md:pl-4">
           <TimelineSVG progress={pathProgress} />
 
           {workExperienceList.map((experience, index) => (

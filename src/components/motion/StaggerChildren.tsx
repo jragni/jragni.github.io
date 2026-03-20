@@ -10,6 +10,17 @@ interface StaggerChildrenProps {
   once?: boolean
 }
 
+const buildStaggerContainer = (staggerDelay: number, delayChildren: number): Variants => ({
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: staggerDelay,
+      delayChildren,
+    },
+  },
+})
+
+// Keep the exported constant for external consumers that don't need delay config
 export const staggerContainer: Variants = {
   hidden: {},
   visible: (staggerDelay: number = 0.08) => ({
@@ -82,9 +93,7 @@ export function StaggerChildren({
       className={className}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      variants={staggerContainer}
-      custom={staggerDelay}
-      transition={{ delayChildren }}
+      variants={buildStaggerContainer(staggerDelay, delayChildren)}
     >
       {children}
     </motion.div>

@@ -74,17 +74,18 @@ function useTypewriter(strings: string[], speed = 50, pause = 1800) {
   const [roleIndex, setRoleIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const current = strings[roleIndex]
-    const timeout = setTimeout(
+    timerRef.current = setTimeout(
       () => {
         if (!isDeleting) {
           if (charIndex < current.length) {
             setDisplayText(current.slice(0, charIndex + 1))
             setCharIndex((c) => c + 1)
           } else {
-            setTimeout(() => setIsDeleting(true), pause)
+            timerRef.current = setTimeout(() => setIsDeleting(true), pause)
           }
         } else {
           if (charIndex > 0) {
@@ -98,7 +99,9 @@ function useTypewriter(strings: string[], speed = 50, pause = 1800) {
       },
       isDeleting ? speed / 2 : speed,
     )
-    return () => clearTimeout(timeout)
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
   }, [charIndex, isDeleting, roleIndex, strings, speed, pause])
 
   return displayText

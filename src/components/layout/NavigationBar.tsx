@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion, LayoutGroup } from 'framer-motion'
 import { Menu, X, User, Code2, Briefcase, FolderGit2, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useActiveSection } from '@/hooks/useActiveSection'
@@ -58,6 +58,7 @@ export function NavigationBar() {
           <div className="w-px h-4 bg-primary/20 mr-2" />
 
           {/* Nav items */}
+          <LayoutGroup>
           {navigationItems.map((item) => {
             const isActive = activeSection === item.id
             return (
@@ -106,6 +107,7 @@ export function NavigationBar() {
               </div>
             )
           })}
+          </LayoutGroup>
 
           <div className="w-px h-4 bg-primary/20 ml-2" />
 

@@ -255,6 +255,7 @@ export function ProjectsSection() {
         project={activeProject}
         layoutId={activeLayoutId}
         onClose={() => setActiveProject(null)}
+        onExitComplete={() => setActiveLayoutId('')}
       />
     </section>
   )
