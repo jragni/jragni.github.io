@@ -1,159 +1,135 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Code2, Database, Layers, Cpu, Wrench, GitBranch } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { SkillTabs } from '@/components/ui/skill-tabs'
+import type { SkillDomain } from '@/components/ui/skill-tabs'
+import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
 
-interface SkillCategory {
-  title: string
-  icon: React.ReactNode
-  skills: string[]
-  color: string
-}
-
-const skillCategories: SkillCategory[] = [
+const hudDomains: SkillDomain[] = [
   {
-    title: 'Languages',
-    icon: <Code2 className="w-5 h-5" />,
-    color: 'text-primary',
+    id: 'languages',
+    label: 'LANGUAGES',
     skills: [
-      'TypeScript',
-      'JavaScript',
-      'Python',
-      'SQL',
-      'C/C++',
+      { name: 'TypeScript', primary: true },
+      { name: 'JavaScript', primary: true },
+      { name: 'Python', primary: true },
+      { name: 'SQL', primary: false },
+      { name: 'C/C++', primary: false },
     ],
   },
   {
-    title: 'Frontend & Web',
-    icon: <Layers className="w-5 h-5" />,
-    color: 'text-primary',
+    id: 'frontend',
+    label: 'FRONTEND & WEB',
     skills: [
-      'React',
-      'Next.js',
-      'Redux',
-      'HTML/CSS',
-      'D3.js',
-      'Three.js',
-      'Tailwind CSS',
-      'Figma',
+      { name: 'React', primary: true },
+      { name: 'Next.js', primary: true },
+      { name: 'Redux', primary: true },
+      { name: 'HTML/CSS', primary: true },
+      { name: 'D3.js', primary: false },
+      { name: 'Three.js', primary: false },
+      { name: 'Tailwind CSS', primary: true },
+      { name: 'Figma', primary: false },
     ],
   },
   {
-    title: 'Backend & APIs',
-    icon: <Database className="w-5 h-5" />,
-    color: 'text-primary',
+    id: 'backend',
+    label: 'BACKEND & APIs',
     skills: [
-      'Node.js',
-      'Express',
-      'Django',
-      'Flask',
-      'gRPC',
-      'REST APIs',
+      { name: 'Node.js', primary: true },
+      { name: 'Express', primary: true },
+      { name: 'Django', primary: true },
+      { name: 'Flask', primary: false },
+      { name: 'gRPC', primary: false },
+      { name: 'REST APIs', primary: true },
     ],
   },
   {
-    title: 'Databases',
-    icon: <Database className="w-5 h-5" />,
-    color: 'text-primary',
+    id: 'databases',
+    label: 'DATABASES',
     skills: [
-      'PostgreSQL',
-      'MySQL',
-      'Redis',
-      'SQLAlchemy',
+      { name: 'PostgreSQL', primary: true },
+      { name: 'MySQL', primary: true },
+      { name: 'Redis', primary: false },
+      { name: 'SQLAlchemy', primary: false },
     ],
   },
   {
-    title: 'DevOps & Testing',
-    icon: <GitBranch className="w-5 h-5" />,
-    color: 'text-primary',
+    id: 'devops',
+    label: 'DEVOPS & TESTING',
     skills: [
-      'Docker',
-      'AWS S3',
-      'Git/GitHub',
-      'PyTest',
-      'Jest',
-      'Jenkins',
-      'Travis CI',
-      'GitHub Actions',
-      'Jira',
-      'Postman',
+      { name: 'Docker', primary: true },
+      { name: 'AWS S3', primary: false },
+      { name: 'Git/GitHub', primary: true },
+      { name: 'PyTest', primary: false },
+      { name: 'Jest', primary: false },
+      { name: 'Jenkins', primary: false },
+      { name: 'Travis CI', primary: false },
+      { name: 'GitHub Actions', primary: true },
+      { name: 'Jira', primary: false },
+      { name: 'Postman', primary: false },
     ],
   },
   {
-    title: 'Robotics & Engineering',
-    icon: <Cpu className="w-5 h-5" />,
-    color: 'text-primary',
+    id: 'robotics',
+    label: 'ROBOTICS & ENG',
     skills: [
-      'ROS/ROS2',
-      'OpenCV',
-      'YOLOv8',
-      'Computer Vision',
-      'MATLAB',
-      'SolidWorks',
+      { name: 'ROS/ROS2', primary: true },
+      { name: 'OpenCV', primary: true },
+      { name: 'YOLOv8', primary: true },
+      { name: 'Computer Vision', primary: true },
+      { name: 'MATLAB', primary: false },
+      { name: 'SolidWorks', primary: false },
     ],
   },
 ]
 
 export function SkillsSection() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+    <section
+      id="skills"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20"
+    >
       <div className="container max-w-6xl">
         {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-            <span className="text-primary font-mono">[02]</span> SKILLS & EXPERTISE
-          </h2>
-          <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl">
+        <StaggerChildren className="mb-8 sm:mb-12">
+          <motion.h2
+            variants={fadeUpChild}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
+          >
+            <span className="text-primary font-mono">[02]</span> SKILLS &amp; EXPERTISE
+          </motion.h2>
+          <motion.div
+            variants={fadeUpChild}
+            className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md"
+          />
+          <motion.p
+            variants={fadeUpChild}
+            className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl"
+          >
             A diverse skill set spanning full-stack development, robotics, and systems engineering
+          </motion.p>
+        </StaggerChildren>
+
+        {/* Tabbed skill visualization */}
+        <div className="border border-primary/20 bg-card/30 backdrop-blur-sm rounded-sm p-6 sm:p-8">
+          <div className="font-mono text-xs text-primary/60 mb-6 tracking-widest">&gt; SKILL.DOMAINS</div>
+          <SkillTabs domains={hudDomains} />
+        </div>
+
+        {/* Learning note */}
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-10% 0px' }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-6 border border-primary/15 bg-card/20 backdrop-blur-sm rounded-sm p-4 sm:p-6"
+        >
+          <div className="font-mono text-primary text-xs sm:text-sm mb-2">&gt; LEARNING &amp; GROWTH</div>
+          <p className="text-sm sm:text-base text-foreground/80">
+            Continuously expanding my skill set through hands-on projects, online courses, and contributions
+            to open-source. Currently exploring advanced topics in AI/ML, cloud architecture, and real-time systems.
           </p>
-        </div>
-
-        {/* Skills Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {skillCategories.map((category, index) => (
-            <Card
-              key={index}
-              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group"
-            >
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-3">
-                  <div className={`${category.color} group-hover:scale-110 transition-transform`}>
-                    {category.icon}
-                  </div>
-                  <span className="text-base sm:text-lg font-semibold text-foreground">
-                    {category.title}
-                  </span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge
-                      key={skillIndex}
-                      variant="secondary"
-                      className="text-xs bg-secondary/50 hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-colors cursor-default"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Additional Info */}
-        <div className="mt-8 sm:mt-12">
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/20">
-            <CardContent className="p-4 sm:p-6">
-              <div className="font-mono text-primary text-xs sm:text-sm mb-3">&gt; LEARNING & GROWTH</div>
-              <p className="text-sm sm:text-base text-foreground/80">
-                Continuously expanding my skill set through hands-on projects, online courses, and contributions
-                to open-source. Currently exploring advanced topics in AI/ML, cloud architecture, and real-time systems.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

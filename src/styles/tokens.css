@@ -1,0 +1,163 @@
+/* Design tokens for Track C redesign */
+
+:root {
+  /* --- Spacing Scale --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* --- Typography Scale --- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+
+  /* --- Animation Timing --- */
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-slow: 600ms;
+  --dur-slower: 900ms;
+  --dur-slowest: 1200ms;
+
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-linear: linear;
+
+  /* --- Framer Motion spring configs (used as data attrs / css vars reference) --- */
+  --spring-stiffness-soft: 60;
+  --spring-stiffness-medium: 120;
+  --spring-stiffness-stiff: 300;
+  --spring-damping: 20;
+
+  /* --- Stagger delays --- */
+  --stagger-base: 0.08s;
+  --stagger-slow: 0.12s;
+
+  /* --- Shadows --- */
+  --shadow-teal-sm: 0 0 8px rgba(100, 255, 218, 0.2);
+  --shadow-teal-md: 0 0 16px rgba(100, 255, 218, 0.3);
+  --shadow-teal-lg: 0 0 32px rgba(100, 255, 218, 0.25), 0 0 64px rgba(100, 255, 218, 0.1);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(100, 255, 218, 0.15);
+
+  /* --- Z-index layers --- */
+  --z-base: 0;
+  --z-above: 10;
+  --z-nav: 50;
+  --z-overlay: 60;
+  --z-modal: 70;
+  --z-toast: 80;
+
+  /* --- Color references (aliases) --- */
+  --color-bg: #0a192f;
+  --color-primary: #64FFDA;
+  --color-card: #112240;
+  --color-text: #ccd6f6;
+  --color-muted: #8892b0;
+}
+
+/* --- Ambient particle animation --- */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-12px) translateX(4px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-6px) translateX(-6px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-18px) translateX(2px);
+    opacity: 0.6;
+  }
+}
+
+/* --- Grid drift animation --- */
+@keyframes grid-drift {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+/* --- Status bar text --- */
+@keyframes status-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* --- Timeline pulse --- */
+@keyframes timeline-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(100, 255, 218, 0);
+  }
+}
+
+/* --- Skill bar fill --- */
+@keyframes skill-fill {
+  from { width: 0%; }
+}
+
+/* --- Typing cursor blink --- */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* --- Teal ambient glow pulse --- */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: var(--shadow-teal-sm);
+  }
+  50% {
+    box-shadow: var(--shadow-teal-lg);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* --- Status dot --- */
+@keyframes status-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+.status-dot {
+  animation: status-dot-pulse 2s ease-in-out infinite;
+}
