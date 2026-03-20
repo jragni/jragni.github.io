@@ -121,11 +121,10 @@ export function NavigationBar({ activeSection, scrollProgress }: NavigationBarPr
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
-                  size="icon"
-                  className="lg:hidden text-primary hover:bg-primary/10 hud-focus"
+                  className="lg:hidden min-w-[44px] min-h-[44px] h-11 w-11 text-primary border border-primary/40 hover:bg-primary/10 hover:border-primary/70 hud-focus"
                   aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                 >
-                  {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                  {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </Button>
               </SheetTrigger>
               <SheetContent
