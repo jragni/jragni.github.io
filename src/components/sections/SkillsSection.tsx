@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import type { ReactNode } from 'react'
 import { Code2, Database, Layers, Cpu, GitBranch, Server, ChevronDown } from 'lucide-react'
 
 interface SkillCategory {
   title: string
-  icon: React.ReactNode
+  icon: ReactNode
   primarySkills: string[]
   secondarySkills: string[]
   description: string
@@ -64,7 +65,7 @@ function SkillPanel({ category, index }: { category: SkillCategory; index: numbe
       className="border border-primary/20 hover:border-primary/40 bg-card/40 backdrop-blur-sm rounded-sm
                  transition-all duration-300 group overflow-hidden"
       style={{
-        animationDelay: `${index * 0.05}s`,
+        transitionDelay: `${index * 0.05}s`,
       }}
     >
       {/* Panel Header */}

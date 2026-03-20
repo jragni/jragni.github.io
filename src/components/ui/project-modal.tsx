@@ -39,12 +39,45 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
 export function ProjectModal({ project, projectNumber, onClose }: ProjectModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     closeRef.current?.focus()
 
+    const FOCUSABLE_SELECTORS =
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS)
+        ).filter((el) => el.offsetParent !== null)
+
+        if (focusable.length === 0) {
+          e.preventDefault()
+          return
+        }
+
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        }
+      }
     }
 
     document.addEventListener('keydown', handleKeyDown)
@@ -74,7 +107,7 @@ export function ProjectModal({ project, projectNumber, onClose }: ProjectModalPr
       {/* Scanlines on backdrop */}
       <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
 
-      <div className="relative w-full max-w-2xl bg-card border border-primary/40 rounded-sm shadow-2xl shadow-primary/10 overflow-hidden max-h-[90vh] flex flex-col">
+      <div ref={dialogRef} className="relative w-full max-w-2xl bg-card border border-primary/40 rounded-sm shadow-2xl shadow-primary/10 overflow-hidden max-h-[90vh] flex flex-col">
         {/* HUD corner brackets */}
         <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/70 z-10 pointer-events-none" aria-hidden="true" />
         <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/70 z-10 pointer-events-none" aria-hidden="true" />
@@ -136,36 +169,20 @@ export function ProjectModal({ project, projectNumber, onClose }: ProjectModalPr
         {/* Footer actions */}
         <div className="px-6 py-4 border-t border-primary/20 flex gap-3">
           {isGithub ? (
-            <>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  btn-scan-hover hud-focus inline-flex items-center gap-2
-                  flex-1 justify-center px-4 py-2.5 font-mono text-xs
-                  border border-primary/40 text-primary hover:bg-primary/10
-                  transition-all duration-200 rounded-sm focus-visible:outline-none
-                "
-              >
-                <Github className="w-4 h-4" />
-                View Code
-              </a>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  btn-scan-hover hud-focus inline-flex items-center gap-2
-                  flex-1 justify-center px-4 py-2.5 font-mono text-xs
-                  bg-primary text-primary-foreground hover:bg-primary/90
-                  transition-all duration-200 rounded-sm focus-visible:outline-none
-                "
-              >
-                <ExternalLink className="w-4 h-4" />
-                Live Demo
-              </a>
-            </>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                btn-scan-hover hud-focus inline-flex items-center gap-2
+                flex-1 justify-center px-4 py-2.5 font-mono text-xs
+                border border-primary/40 text-primary hover:bg-primary/10
+                transition-all duration-200 rounded-sm focus-visible:outline-none
+              "
+            >
+              <Github className="w-4 h-4" />
+              View Code
+            </a>
           ) : (
             <a
               href={project.href}

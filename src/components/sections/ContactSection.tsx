@@ -1,9 +1,10 @@
+import type { ReactNode } from 'react'
 import { Mail, Github, Linkedin, ExternalLink } from 'lucide-react'
 
 interface SocialLink {
   name: string
   handle: string
-  icon: React.ReactNode
+  icon: ReactNode
   href: string
   description: string
 }
@@ -135,7 +136,7 @@ export function ContactSection() {
           <p className="text-foreground/50 text-xs sm:text-sm font-mono space-y-1">
             <span className="block">&gt; Built with React, TypeScript, Vite, and shadcn/ui</span>
             <span className="block text-primary/70">
-              &copy; 2025 Jhensen Ray Agni &mdash; Designed &amp; Developed with care
+              &copy; {new Date().getFullYear()} Jhensen Ray Agni &mdash; Designed &amp; Developed with care
             </span>
           </p>
         </div>

@@ -71,7 +71,7 @@ export function Layout({ children }: LayoutProps) {
       />
 
       {/* Navigation Bar */}
-      <NavigationBar />
+      <NavigationBar scrollProgress={scrollProgress} activeSection={activeSection} />
 
       {/* Main Content Area */}
       <main className="relative z-10 pt-16">

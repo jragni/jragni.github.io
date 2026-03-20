@@ -32,7 +32,7 @@ function ExperienceCard({ experience, index }: { experience: ExperienceCardProps
   return (
     <div
       className="relative group"
-      style={{ animationDelay: `${index * 0.1}s` }}
+      style={{ transitionDelay: `${index * 0.1}s` }}
     >
       {/* Timeline dot */}
       <div
@@ -99,18 +99,18 @@ function ExperienceCard({ experience, index }: { experience: ExperienceCardProps
           {/* Expandable items */}
           {hasMore && (
             <>
-              <div
-                className={`space-y-2.5 overflow-hidden transition-all duration-300 ${
+              <ul
+                className={`space-y-2.5 overflow-hidden transition-all duration-300 list-none ${
                   expanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
                 {remainingItems.map((description, descIndex) => (
-                  <li key={descIndex} className="flex gap-3 text-foreground/80 text-sm leading-relaxed list-none">
+                  <li key={descIndex} className="flex gap-3 text-foreground/80 text-sm leading-relaxed">
                     <span className="text-primary mt-1 flex-shrink-0 text-xs">▹</span>
                     <span>{description}</span>
                   </li>
                 ))}
-              </div>
+              </ul>
 
               <button
                 onClick={() => setExpanded((v) => !v)}

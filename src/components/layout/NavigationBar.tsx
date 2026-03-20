@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import type { ReactNode } from 'react'
 import { Menu, X, User, Code2, Briefcase, FolderGit2, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -8,14 +9,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { useActiveSection, type SectionId } from '@/hooks/useActiveSection'
-import { useScrollProgress } from '@/hooks/useScrollProgress'
+import type { SectionId } from '@/hooks/useActiveSection'
 
 interface NavItem {
   id: SectionId
   label: string
   number: string
-  icon: React.ReactNode
+  icon: ReactNode
   href: string
 }
 
@@ -27,9 +27,12 @@ const navigationItems: NavItem[] = [
   { id: 'contact', label: 'CONTACT', number: '05', icon: <Mail className="w-4 h-4" />, href: '#contact' },
 ]
 
-export function NavigationBar() {
-  const activeSection = useActiveSection()
-  const scrollProgress = useScrollProgress()
+interface NavigationBarProps {
+  activeSection: SectionId
+  scrollProgress: number
+}
+
+export function NavigationBar({ activeSection, scrollProgress }: NavigationBarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 

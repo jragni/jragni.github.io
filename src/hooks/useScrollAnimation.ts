@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 export function useScrollAnimation() {
   useEffect(() => {
-    const sections = document.querySelectorAll('section')
+    const sections = document.querySelectorAll('section:not(#home)')
 
     const observerOptions = {
       threshold: 0.15, // Trigger when 15% of section is visible

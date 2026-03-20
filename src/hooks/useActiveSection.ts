@@ -6,6 +6,7 @@ const SECTION_IDS: SectionId[] = ['home', 'about', 'skills', 'experience', 'proj
 
 export function useActiveSection(): SectionId {
   const [activeSection, setActiveSection] = useState<SectionId>('home')
+  const activeSectionRef = useRef<SectionId>('home')
   const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export function useActiveSection(): SectionId {
 
         // Find the section with the highest intersection ratio
         let maxRatio = 0
-        let mostVisible: SectionId = activeSection
+        let mostVisible: SectionId = activeSectionRef.current
 
         SECTION_IDS.forEach((id) => {
           const ratio = sectionVisibility[id] ?? 0
@@ -31,6 +32,7 @@ export function useActiveSection(): SectionId {
 
         if (maxRatio > 0) {
           setActiveSection(mostVisible)
+          activeSectionRef.current = mostVisible
         }
       },
       {
@@ -52,7 +54,7 @@ export function useActiveSection(): SectionId {
         observerRef.current.disconnect()
       }
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
   return activeSection
 }

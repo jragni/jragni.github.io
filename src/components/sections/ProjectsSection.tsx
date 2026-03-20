@@ -121,36 +121,20 @@ function ProjectCard({ project, index, featured = false, onExpand }: ProjectCard
         {/* Actions */}
         <div className="flex gap-2 mt-4">
           {isGithub ? (
-            <>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  btn-scan-hover hud-focus inline-flex items-center gap-1.5
-                  flex-1 justify-center px-3 py-2 font-mono text-xs
-                  border border-primary/30 text-primary hover:bg-primary/10
-                  transition-all duration-200 rounded-sm focus-visible:outline-none
-                "
-              >
-                <Github className="w-3.5 h-3.5" />
-                Code
-              </a>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  btn-scan-hover hud-focus inline-flex items-center gap-1.5
-                  flex-1 justify-center px-3 py-2 font-mono text-xs
-                  bg-primary text-primary-foreground hover:bg-primary/90
-                  transition-all duration-200 rounded-sm focus-visible:outline-none
-                "
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                Demo
-              </a>
-            </>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                btn-scan-hover hud-focus inline-flex items-center gap-1.5
+                flex-1 justify-center px-3 py-2 font-mono text-xs
+                border border-primary/30 text-primary hover:bg-primary/10
+                transition-all duration-200 rounded-sm focus-visible:outline-none
+              "
+            >
+              <Github className="w-3.5 h-3.5" />
+              Code
+            </a>
           ) : (
             <a
               href={project.href}
