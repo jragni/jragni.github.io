@@ -1,170 +1,258 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, Maximize2 } from 'lucide-react'
 import { projectsList } from '@/data/constants'
+import { ProjectModal } from '@/components/ui/project-modal'
+import type { ProjectCardDetails } from '@/types/portfolio'
 
-export function ProjectsSection() {
-  const getGithubLink = (href: string) => {
-    if (href.includes('github.com')) return href
-    return null
-  }
+function formatProjectNumber(index: number): string {
+  return `[${String(index + 1).padStart(2, '0')}]`
+}
 
-  const getLiveLink = (href: string) => {
-    return href
+function ProjectImage({ src, alt, featured = false }: { src: string; alt: string; featured?: boolean }) {
+  const [loaded, setLoaded] = useState(false)
+  const [errored, setErrored] = useState(false)
+
+  if (errored) {
+    return (
+      <div className={`w-full ${featured ? 'aspect-video sm:aspect-[16/7]' : 'aspect-video'} flex items-center justify-center bg-secondary/30`}>
+        <div className="font-mono text-primary text-center">
+          <div className="text-xl mb-1">[ ]</div>
+          <div className="text-xs text-muted-foreground">[IMAGE]</div>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20">
-      <div className="container max-w-6xl">
-        {/* Section Header */}
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            <span className="text-primary font-mono">[04]</span> FEATURED PROJECTS
-          </h2>
-          <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-            A showcase of my work in web development, robotics, and AI systems
-          </p>
+    <div className={`relative w-full ${featured ? 'aspect-video sm:aspect-[16/7]' : 'aspect-video'} bg-secondary/30 overflow-hidden`}>
+      {!loaded && <div className="absolute inset-0 img-skeleton" />}
+      <img
+        src={src}
+        alt={alt}
+        className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+        onLoad={() => setLoaded(true)}
+        onError={() => setErrored(true)}
+      />
+      {/* Teal overlay on hover */}
+      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/15 transition-colors duration-300" />
+      {/* Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent" />
+    </div>
+  )
+}
+
+interface ProjectCardProps {
+  project: ProjectCardDetails
+  index: number
+  featured?: boolean
+  onExpand: (project: ProjectCardDetails, number: string) => void
+}
+
+function ProjectCard({ project, index, featured = false, onExpand }: ProjectCardProps) {
+  const projectNumber = formatProjectNumber(index)
+  const isGithub = project.href.includes('github.com')
+
+  return (
+    <div
+      className={`
+        relative border border-primary/20 hover:border-primary/50 bg-card/50 backdrop-blur-sm
+        rounded-sm overflow-hidden transition-all duration-300 group flex flex-col
+        ${featured ? 'md:col-span-2' : ''}
+      `}
+    >
+      {/* Image */}
+      <div className="relative">
+        <ProjectImage src={project.src} alt={project.title} featured={featured} />
+
+        {/* "VIEW PROJECT" hover overlay text */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="font-mono text-xs sm:text-sm font-bold text-primary tracking-[0.2em] bg-background/60 backdrop-blur-sm px-4 py-2 rounded-sm border border-primary/30">
+            VIEW PROJECT
+          </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {projectsList.map((project, index) => (
-            <Card
-              key={index}
-              className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group overflow-hidden flex flex-col"
-            >
-              {/* Project Image */}
-              <div className="relative aspect-video bg-secondary/30 overflow-hidden">
-                <img
-                  src={project.src}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                    const parent = e.currentTarget.parentElement
-                    if (parent) {
-                      parent.innerHTML = '<div class="w-full h-full flex items-center justify-center font-mono text-primary text-sm">[PROJECT IMAGE]</div>'
-                    }
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
-              </div>
-
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </CardTitle>
-                <CardDescription className="text-foreground/70 leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-
-              <CardContent className="flex-1 flex flex-col justify-between space-y-6">
-                {/* Tech Stack */}
-                <div>
-                  <div className="font-mono text-xs text-muted-foreground mb-3">
-                    TECH STACK
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.skills.map((skill, skillIndex) => (
-                      <Badge
-                        key={skillIndex}
-                        variant="secondary"
-                        className="text-xs bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-colors"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  {getGithubLink(project.href) ? (
-                    <>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="font-mono border-primary text-primary hover:bg-primary/10 flex-1"
-                        asChild
-                      >
-                        <a
-                          href={getGithubLink(project.href)!}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                      {!project.href.endsWith('.com') && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="font-mono border-primary text-primary hover:bg-primary/10 flex-1"
-                          asChild
-                        >
-                          <a
-                            href={getLiveLink(project.href)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Live Demo
-                          </a>
-                        </Button>
-                      )}
-                    </>
-                  ) : (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="font-mono border-primary text-primary hover:bg-primary/10 w-full"
-                      asChild
-                    >
-                      <a
-                        href={getLiveLink(project.href)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Project
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Project number badge */}
+        <div className="absolute top-3 left-3 font-mono text-xs text-primary/80 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-sm border border-primary/20">
+          {projectNumber}
         </div>
 
-        {/* More Projects CTA */}
-        <div className="mt-12 text-center">
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/20 inline-block">
-            <CardContent className="p-6">
-              <p className="text-foreground/80 mb-4">
-                Interested in seeing more of my work?
-              </p>
-              <Button
-                variant="outline"
-                className="font-mono border-primary text-primary hover:bg-primary/10"
-                asChild
+        {/* Expand button */}
+        <button
+          onClick={() => onExpand(project, projectNumber)}
+          className="
+            absolute top-3 right-3 p-1.5 rounded-sm
+            bg-background/80 backdrop-blur-sm border border-primary/20
+            text-muted-foreground hover:text-primary hover:border-primary/60
+            transition-all duration-150 hud-focus focus-visible:outline-none
+            opacity-0 group-hover:opacity-100
+          "
+          aria-label={`Expand details for ${project.title}`}
+        >
+          <Maximize2 className="w-3.5 h-3.5" />
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-5">
+        <h3 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200 mb-2">
+          {project.title}
+        </h3>
+        <p className="text-sm text-foreground/70 leading-relaxed mb-4 flex-1">
+          {project.description}
+        </p>
+
+        {/* Tech Stack */}
+        <div className="space-y-3">
+          <div className="hud-label">TECH STACK</div>
+          <div className="flex flex-wrap gap-1.5">
+            {project.skills.map((skill, skillIndex) => (
+              <Badge
+                key={skillIndex}
+                variant="secondary"
+                className="text-xs bg-secondary/40 hover:bg-primary/15 hover:text-primary hover:border-primary/30 border border-transparent transition-all duration-150"
               >
-                <a
-                  href="https://github.com/jragni"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="w-4 h-4 mr-2" />
-                  View GitHub Profile
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
+                {skill}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="flex gap-2 mt-4">
+          {isGithub ? (
+            <>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  btn-scan-hover hud-focus inline-flex items-center gap-1.5
+                  flex-1 justify-center px-3 py-2 font-mono text-xs
+                  border border-primary/30 text-primary hover:bg-primary/10
+                  transition-all duration-200 rounded-sm focus-visible:outline-none
+                "
+              >
+                <Github className="w-3.5 h-3.5" />
+                Code
+              </a>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  btn-scan-hover hud-focus inline-flex items-center gap-1.5
+                  flex-1 justify-center px-3 py-2 font-mono text-xs
+                  bg-primary text-primary-foreground hover:bg-primary/90
+                  transition-all duration-200 rounded-sm focus-visible:outline-none
+                "
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                Demo
+              </a>
+            </>
+          ) : (
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                btn-scan-hover hud-focus inline-flex items-center gap-1.5
+                flex-1 justify-center px-3 py-2 font-mono text-xs
+                bg-primary text-primary-foreground hover:bg-primary/90
+                transition-all duration-200 rounded-sm focus-visible:outline-none
+              "
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              View Project
+            </a>
+          )}
+          <button
+            onClick={() => onExpand(project, projectNumber)}
+            className="
+              btn-scan-hover hud-focus inline-flex items-center gap-1.5
+              px-3 py-2 font-mono text-xs
+              border border-primary/20 text-muted-foreground hover:text-primary hover:border-primary/40
+              transition-all duration-200 rounded-sm focus-visible:outline-none
+            "
+            aria-label={`Details for ${project.title}`}
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  )
+}
+
+export function ProjectsSection() {
+  const [modalProject, setModalProject] = useState<{ project: ProjectCardDetails; number: string } | null>(null)
+
+  const handleExpand = (project: ProjectCardDetails, number: string) => {
+    setModalProject({ project, number })
+  }
+
+  const handleCloseModal = () => {
+    setModalProject(null)
+  }
+
+  return (
+    <>
+      <section id="projects" className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-16 sm:py-24">
+        <div className="container max-w-6xl">
+          {/* Section Header */}
+          <div className="mb-10 sm:mb-14">
+            <div className="hud-label mb-2">// MISSION PORTFOLIO</div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <span className="text-primary font-mono">[04]</span> FEATURED PROJECTS
+            </h2>
+            <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl">
+              A showcase of my work in web development, robotics, and AI systems
+            </p>
+          </div>
+
+          {/* Projects Grid — first card spans full width on desktop */}
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            {projectsList.map((project, index) => (
+              <ProjectCard
+                key={index}
+                project={project}
+                index={index}
+                featured={index === 0}
+                onExpand={handleExpand}
+              />
+            ))}
+          </div>
+
+          {/* More Projects CTA */}
+          <div className="mt-12 flex justify-center">
+            <a
+              href="https://github.com/jragni"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                btn-scan-hover hud-focus inline-flex items-center gap-2
+                px-6 py-3 font-mono text-sm
+                border border-primary/30 text-primary hover:bg-primary/10
+                transition-all duration-200 rounded-sm focus-visible:outline-none
+              "
+            >
+              <Github className="w-4 h-4" />
+              View GitHub Profile
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Modal */}
+      {modalProject && (
+        <ProjectModal
+          project={modalProject.project}
+          projectNumber={modalProject.number}
+          onClose={handleCloseModal}
+        />
+      )}
+    </>
   )
 }
