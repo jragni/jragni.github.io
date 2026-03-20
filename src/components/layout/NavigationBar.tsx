@@ -136,13 +136,12 @@ export function NavigationBar() {
 
         <Button
           variant="ghost"
-          size="icon"
-          className="text-primary hover:bg-primary/10"
+          className="min-w-[44px] min-h-[44px] h-11 w-11 text-primary border border-primary/40 hover:bg-primary/10 hover:border-primary/70"
           onClick={() => setMobileMenuOpen((v) => !v)}
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </Button>
       </motion.div>
 
