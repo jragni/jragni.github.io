@@ -4,59 +4,78 @@
 
 @layer base {
   :root {
-    /* Cyberpunk Drone HUD Color Palette - Original Theme */
+    /* Color palette */
+    --background: 219 67 11;   /* #0a192f - Dark navy */
+    --foreground: 219 60 88;   /* #ccd6f6 - Light slate */
 
-    /* Dark Backgrounds - Navy/Dark Blue */
-    --background: 219 67 11; /* #0a192f - Dark navy blue */
-    --foreground: 219 60 88; /* #ccd6f6 - Light slate text */
-
-    /* Cards and UI surfaces */
-    --card: 217 59 16; /* #112240 - Lighter navy */
+    --card: 217 59 16;         /* #112240 - Lighter navy */
     --card-foreground: 219 60 88;
 
     --popover: 217 59 16;
     --popover-foreground: 219 60 88;
 
-    /* Primary - Neon Teal accent */
-    --primary: 167 100 70; /* #64FFDA - Neon teal/cyan */
-    --primary-foreground: 217 80 6; /* Dark navy for text on teal */
+    /* Primary - Neon Teal */
+    --primary: 167 100 70;     /* #64FFDA */
+    --primary-foreground: 217 80 6;
 
-    /* Secondary - Dark navy variation */
-    --secondary: 217 59 16; /* #112240 */
+    /* Secondary */
+    --secondary: 217 59 16;
     --secondary-foreground: 219 60 88;
 
-    /* Muted - Subdued elements */
-    --muted: 217 59 16; /* #112240 */
-    --muted-foreground: 219 20 61; /* #8892b0 - Muted slate */
+    /* Muted */
+    --muted: 217 59 16;
+    --muted-foreground: 219 20 61; /* #8892b0 */
 
-    /* Accent - Neon Teal for highlights */
-    --accent: 167 100 70; /* #64FFDA - Neon teal */
+    /* Accent */
+    --accent: 167 100 70;
     --accent-foreground: 217 80 6;
 
-    /* Destructive - Alert red */
-    --destructive: 0 70 50; /* Red for errors */
+    /* Destructive */
+    --destructive: 0 70 50;
     --destructive-foreground: 0 0 98;
 
-    /* Border colors */
-    --border: 167 100 70; /* #64FFDA - Neon teal borders */
+    /* Borders */
+    --border: 167 100 70;
     --input: 217 59 16;
     --ring: 167 100 70;
 
-    /* Special - Warning/Amber for alerts */
-    --warning: 45 93 58; /* Amber */
-    --warning-foreground: 217 80 6;
-
-    /* HUD Grid lines */
-    --grid-lines: 167 100 70; /* #64FFDA teal */
-
-    /* Scanline effect */
-    --scanline: 167 100 70;
-
     --radius: 0.25rem;
+
+    /* --- Design Tokens --- */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+
+    --dur-fast: 150ms;
+    --dur-base: 300ms;
+    --dur-slow: 600ms;
+    --dur-slower: 900ms;
+    --dur-slowest: 1200ms;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+    --shadow-teal-sm: 0 0 8px rgba(100, 255, 218, 0.2);
+    --shadow-teal-md: 0 0 16px rgba(100, 255, 218, 0.3);
+    --shadow-teal-lg: 0 0 32px rgba(100, 255, 218, 0.25), 0 0 64px rgba(100, 255, 218, 0.1);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(100, 255, 218, 0.15);
+
+    --color-bg: #0a192f;
+    --color-primary: #64FFDA;
+    --color-card: #112240;
+    --color-text: #ccd6f6;
+    --color-muted: #8892b0;
   }
 
   .dark {
-    /* Dark mode uses same palette (this IS the dark theme) */
     --background: 219 67 11;
     --foreground: 219 60 88;
   }
@@ -68,8 +87,7 @@
   }
 
   html {
-    /* Scroll padding matches navbar height exactly - no extra space needed */
-    scroll-padding-top: 4rem; /* 64px - navbar is h-16 */
+    scroll-padding-top: 4rem;
   }
 
   body {
@@ -77,12 +95,13 @@
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
-  /* Military monospace font for technical elements */
-  .font-mono-military {
+  /* Monospace elements */
+  code, kbd, samp, pre {
     font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 0.875em;
   }
 
-  /* Typography scale — leverages Inter's optical sizing */
+  /* Typography */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 600;
@@ -90,77 +109,92 @@
     letter-spacing: -0.02em;
   }
 
-  h1 { font-size: 2.25rem; } /* 36px */
-  h2 { font-size: 1.875rem; } /* 30px */
-  h3 { font-size: 1.5rem; } /* 24px */
-  h4 { font-size: 1.25rem; } /* 20px */
-
-  @media (min-width: 768px) {
-    h1 { font-size: 3rem; } /* 48px */
-    h2 { font-size: 2.25rem; } /* 36px */
-    h3 { font-size: 1.875rem; } /* 30px */
-    h4 { font-size: 1.5rem; } /* 24px */
+  /* Sections managed by Framer Motion — no CSS animation override needed */
+  section {
+    opacity: 1;
+    transform: none;
   }
 
-  /* Monospace elements use JetBrains Mono */
-  code, kbd, samp, pre {
-    font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
-    font-size: 0.875em;
-  }
-
-  /* Prose body text defaults */
   p, li {
     line-height: 1.7;
   }
 }
 
-/* Custom military HUD utilities */
+/* ──────────────────────────────────────────────────────────────────────────────
+   Keyframe animations
+   ────────────────────────────────────────────────────────────────────────────── */
+
+/* Animated grid drift — used in Layout background */
+@keyframes grid-drift {
+  0%   { background-position: 0px 0px; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Floating particle — ambient particles in Layout */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-12px) translateX(4px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-6px) translateX(-6px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-18px) translateX(2px);
+    opacity: 0.6;
+  }
+}
+
+/* Typing cursor blink — used in HeroSection */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Status dot pulse — used across sections */
+@keyframes status-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+.status-dot {
+  animation: status-dot-pulse 2s ease-in-out infinite;
+}
+
+/* Teal glow pulse */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: var(--shadow-teal-sm); }
+  50%       { box-shadow: var(--shadow-teal-lg); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   Utility classes
+   ────────────────────────────────────────────────────────────────────────────── */
 @layer utilities {
-  /* Scanline effect */
-  .scanlines {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .scanlines::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(100, 255, 218, 0.03) 0px,
-      rgba(100, 255, 218, 0.03) 1px,
-      transparent 1px,
-      transparent 2px
-    );
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  /* Grid overlay — original (kept for backwards compat) */
+  /* Grid overlay */
   .grid-overlay {
     background-image:
-      linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  /* Grid overlay — reduced opacity variant */
-  .grid-overlay-subtle {
-    background-image:
-      linear-gradient(rgba(100, 255, 218, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100, 255, 218, 0.02) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  /* Grid overlay — alternating pattern */
-  .grid-overlay-alternating {
-    background-image:
-      linear-gradient(rgba(100, 255, 218, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100, 255, 218, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(100, 255, 218, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 255, 218, 0.04) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
@@ -168,50 +202,6 @@
   .tactical-glow {
     box-shadow: 0 0 10px rgba(100, 255, 218, 0.3),
                 0 0 20px rgba(100, 255, 218, 0.1);
-  }
-
-  /* Targeting reticle animation */
-  @keyframes pulse-reticle {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scale(1.05);
-    }
-  }
-
-  .pulse-reticle {
-    animation: pulse-reticle 2s ease-in-out infinite;
-  }
-
-  /* Corner brackets (HUD framing) */
-  .hud-corners {
-    position: relative;
-  }
-
-  .hud-corners::before,
-  .hud-corners::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgb(100 255 218);
-  }
-
-  .hud-corners::before {
-    top: 0;
-    left: 0;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .hud-corners::after {
-    top: 0;
-    right: 0;
-    border-left: none;
-    border-bottom: none;
   }
 
   /* HUD card hover — animated corner brackets */
@@ -226,7 +216,12 @@
     width: 16px;
     height: 16px;
     border: 2px solid rgba(100, 255, 218, 0.4);
-    transition: border-color 200ms ease-out, top 200ms ease-out, left 200ms ease-out, right 200ms ease-out, bottom 200ms ease-out;
+    transition:
+      border-color 200ms ease-out,
+      top 200ms ease-out,
+      left 200ms ease-out,
+      right 200ms ease-out,
+      bottom 200ms ease-out;
     pointer-events: none;
     z-index: 2;
   }
@@ -269,187 +264,44 @@
     }
   }
 
-  /* HUD section gate — decorative boundary between sections */
-  .hud-section-gate {
-    position: relative;
-    height: 60px;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:
-      0 -1px 0 rgba(100, 255, 218, 0.2),
-      0 1px 0 rgba(100, 255, 218, 0.2);
+  /* Scrollbar hide utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 
-  .hud-section-gate::before {
-    content: "// SECTOR BOUNDARY //";
-    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
-    font-size: 0.625rem;
-    letter-spacing: 0.2em;
-    color: rgba(100, 255, 218, 0.2);
-    text-transform: uppercase;
-  }
-
-  .hud-section-gate::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(100, 255, 218, 0.15) 20%,
-      rgba(100, 255, 218, 0.15) 80%,
-      transparent 100%
-    );
-    z-index: -1;
-  }
-
-  /* ============================================================
-     Section scroll-triggered animations
-     ============================================================
-     Default: fade-in-up. Add data-animate="fade-in-left" etc.
-     on a <section> for directional variants. Use CSS custom
-     property --stagger-index (set via JS or inline style) to
-     stagger siblings.
-     ============================================================ */
-
-  /* Shared base state for all animated sections */
-  section {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    /* Stagger support: each section can set --stagger-index
-       (0, 1, 2 ...) to delay its entrance */
-    transition-delay: calc(var(--stagger-index, 0) * 120ms);
-  }
-
-  /* Visible state — default fade-in-up */
-  section.section-visible {
-    opacity: 1;
-    transform: translateY(0) translateX(0) scale(1);
-  }
-
-  /* Variant: fade-in-left */
-  section[data-animate="fade-in-left"] {
-    opacity: 0;
-    transform: translateX(-24px);
-  }
-
-  section[data-animate="fade-in-left"].section-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* Variant: fade-in-right */
-  section[data-animate="fade-in-right"] {
-    opacity: 0;
-    transform: translateX(24px);
-  }
-
-  section[data-animate="fade-in-right"].section-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* Variant: scale-in */
-  section[data-animate="scale-in"] {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-
-  section[data-animate="scale-in"].section-visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Variant timing refinements — slightly different durations */
-  section[data-animate="fade-in-left"],
-  section[data-animate="fade-in-right"] {
-    transition:
-      opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: calc(var(--stagger-index, 0) * 120ms);
-  }
-
-  section[data-animate="scale-in"] {
-    transition:
-      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: calc(var(--stagger-index, 0) * 120ms);
-  }
-
-  /* Vignette effect — original (heavy) */
-  .vignette {
-    position: relative;
-  }
-
-  .vignette::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 25, 47, 0.6) 100%);
-    pointer-events: none;
-  }
-
-  /* Vignette effect — lightened variant */
-  .vignette-light {
-    position: relative;
-  }
-
+  /* Vignette — lightened */
   .vignette-light::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: radial-gradient(ellipse at center, transparent 20%, rgba(10, 25, 47, 0.3) 100%);
     pointer-events: none;
   }
 }
 
-/* Reduced-motion support */
+/* ──────────────────────────────────────────────────────────────────────────────
+   prefers-reduced-motion support
+   ────────────────────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  section {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  section.section-visible {
+  .cursor-blink {
+    animation: none;
     opacity: 1;
-    transform: none;
   }
-  .pulse-reticle {
+  .status-dot {
     animation: none;
   }
-  [data-skill-row],
-  [data-skill-card] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+  .glow-pulse {
+    animation: none;
   }
 }
 
-/* Optimize grid overlay for mobile — larger cells */
+/* Mobile optimizations */
 @media (max-width: 639px) {
   .grid-overlay {
     background-size: 40px 40px;
-  }
-}
-
-/* Remove backdrop-blur on mobile for GPU performance */
-@media (max-width: 639px) {
-  .backdrop-blur-sm {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }

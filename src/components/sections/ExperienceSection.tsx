@@ -1,116 +1,279 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState, useRef } from 'react'
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  AnimatePresence,
+} from 'framer-motion'
+import type { Variants } from '@/types/motion'
 import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, ChevronDown } from 'lucide-react'
 import { workExperienceList } from '@/data/constants'
+import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
 
-export function ExperienceSection() {
+const DEFAULT_VISIBLE_BULLETS = 2
+
+// ── SVG Timeline with scroll-driven pathLength ────────────────────────────────
+function TimelineSVG({ progress }: { progress: ReturnType<typeof useTransform> }) {
   return (
-    <section id="experience" className="min-h-[50vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-      <div className="container max-w-5xl">
-        {/* Section Header */}
-        <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-            <span className="text-primary font-mono">[03]</span> EXPERIENCE
-          </h2>
-          <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-            Professional journey across software engineering, robotics, and systems design
-          </p>
-        </div>
+    <svg
+      className="absolute left-6 top-0 bottom-0 hidden md:block"
+      width="2"
+      style={{ height: '100%' }}
+      aria-hidden="true"
+    >
+      {/* Background track */}
+      <line
+        x1="1"
+        y1="0"
+        x2="1"
+        y2="100%"
+        stroke="rgba(100,255,218,0.15)"
+        strokeWidth="2"
+      />
+      {/* Animated fill */}
+      <motion.line
+        x1="1"
+        y1="0"
+        x2="1"
+        y2="100%"
+        stroke="rgba(100,255,218,0.7)"
+        strokeWidth="2"
+        pathLength="1"
+        style={{ pathLength: progress }}
+      />
+    </svg>
+  )
+}
 
-        {/* Timeline */}
-        <div className="relative space-y-8">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-primary/30 hidden md:block" style={{ boxShadow: '0 0 6px rgba(100, 255, 218, 0.3)' }} />
+// ── Card variants ─────────────────────────────────────────────────────────────
+const cardLeft: Variants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', stiffness: 80, damping: 14 },
+  },
+}
 
-          {workExperienceList.map((experience, index) => (
-            <div key={index} className="relative">
-              {/* Timeline Dot */}
-              <div className="hidden md:block absolute left-8 top-8 w-3 h-3 -ml-[0.375rem] rotate-45 bg-primary ring-2 ring-background" />
+const cardRight: Variants = {
+  hidden: { opacity: 0, x: 40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', stiffness: 80, damping: 14 },
+  },
+}
 
-              {/* Content */}
-              <div className="md:ml-20">
-                <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/50 transition-all duration-300 group hud-card-hover">
-                  <CardHeader>
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                      <div className="flex-1">
-                        <CardTitle className="text-lg sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                          {experience.title}
-                        </CardTitle>
-                        <a
-                          href={experience.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mt-2"
-                        >
-                          <span className="text-lg font-semibold">{experience.companyName}</span>
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      </div>
-                      <Badge
-                        variant="outline"
-                        className="font-mono text-xs border-primary/40 text-foreground/80 self-start"
-                      >
-                        {experience.date}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    {/* Responsibilities */}
-                    <ul className="space-y-3">
-                      {experience.jobDescription.map((description, descIndex) => (
-                        <li key={descIndex} className="flex gap-3 text-foreground/80">
-                          <span className="text-primary mt-1.5 flex-shrink-0">▹</span>
-                          <span className="leading-relaxed">{description}</span>
-                        </li>
-                      ))}
-                    </ul>
+// ── Experience card ────────────────────────────────────────────────────────────
+interface ExpCardProps {
+  experience: typeof workExperienceList[0]
+  index: number
+}
 
-                    <Separator className="bg-primary/20" />
+function ExperienceCard({ experience, index }: ExpCardProps) {
+  const [expanded, setExpanded] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
+  const ref = useRef<HTMLDivElement>(null)
 
-                    {/* Skills/Technologies */}
-                    <div>
-                      <div className="font-mono text-xs text-muted-foreground mb-3">
-                        TECHNOLOGIES USED
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {experience.skills.map((skill, skillIndex) => (
-                          <Badge
-                            key={skillIndex}
-                            variant="secondary"
-                            className="text-xs bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-colors"
-                          >
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+  const variant = index % 2 === 0 ? cardLeft : cardRight
+  const letter = experience.companyName[0]
+
+  const visibleBullets = expanded
+    ? experience.jobDescription
+    : experience.jobDescription.slice(0, DEFAULT_VISIBLE_BULLETS)
+
+  const hasMore = experience.jobDescription.length > DEFAULT_VISIBLE_BULLETS
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={prefersReducedMotion ? undefined : variant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-5% 0px' }}
+      className="relative"
+    >
+      {/* Timeline dot */}
+      <motion.div
+        className="hidden md:flex absolute left-6 top-8 w-3 h-3 -ml-[5px] rounded-full bg-primary ring-4 ring-background items-center justify-center"
+        whileInView={{
+          boxShadow: [
+            '0 0 0 0 rgba(100,255,218,0.4)',
+            '0 0 0 6px rgba(100,255,218,0)',
+          ],
+        }}
+        viewport={{ once: false, margin: '-20% 0px -30% 0px' }}
+        transition={{ duration: 1.2, repeat: Infinity }}
+        aria-hidden="true"
+      />
+
+      {/* Card */}
+      <motion.div
+        className="md:ml-16 border border-primary/30 bg-card/50 backdrop-blur-sm rounded-sm overflow-hidden"
+        whileHover={prefersReducedMotion ? undefined : {
+          y: -4,
+          boxShadow: '0 16px 40px rgba(0,0,0,0.4), 0 0 16px rgba(100,255,218,0.12)',
+          borderColor: 'rgba(100,255,218,0.5)',
+        }}
+        transition={{ duration: 0.2 }}
+      >
+        <div className="p-5 sm:p-6">
+          {/* Header row */}
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+            <div className="flex items-start gap-4">
+              {/* Company letter logo */}
+              <motion.div
+                className="flex-shrink-0 w-10 h-10 border border-primary/60 bg-primary/10 rounded-sm flex items-center justify-center font-mono font-bold text-primary text-lg"
+                whileHover={prefersReducedMotion ? undefined : { scale: 1.1 }}
+                aria-hidden="true"
+              >
+                {letter}
+              </motion.div>
+
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                  {experience.title}
+                </h3>
+                <a
+                  href={experience.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors text-sm font-semibold mt-0.5"
+                >
+                  {experience.companyName}
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
+
+            <Badge
+              variant="outline"
+              className="font-mono text-xs border-primary/40 text-primary self-start flex-shrink-0"
+            >
+              {experience.date}
+            </Badge>
+          </div>
+
+          {/* Bullets — 2 visible by default, expandable */}
+          <ul className="space-y-2 mb-4">
+            {visibleBullets.map((desc, di) => (
+              <li key={di} className="flex gap-2 text-foreground/80 text-sm leading-relaxed">
+                <span className="text-primary mt-1 flex-shrink-0">▹</span>
+                <span>{desc}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Expand / collapse if there are more bullets */}
+          {hasMore && (
+            <AnimatePresence initial={false}>
+              <motion.button
+                className="flex items-center gap-1.5 font-mono text-xs text-primary/60 hover:text-primary transition-colors mb-3 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
+                onClick={() => setExpanded((v) => !v)}
+                aria-expanded={expanded}
+              >
+                <motion.span
+                  animate={{ rotate: expanded ? 180 : 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </motion.span>
+                {expanded
+                  ? 'SHOW LESS'
+                  : `SHOW ALL +${experience.jobDescription.length - DEFAULT_VISIBLE_BULLETS}`}
+              </motion.button>
+            </AnimatePresence>
+          )}
+
+          {/* Tech chips */}
+          <div>
+            <div className="font-mono text-xs text-muted-foreground mb-2">TECH STACK</div>
+            <StaggerChildren className="flex flex-wrap gap-1.5">
+              {experience.skills.map((skill, si) => (
+                <motion.div key={si} variants={fadeUpChild}>
+                  <Badge
+                    variant="secondary"
+                    className="text-xs bg-secondary/50 hover:bg-primary/15 hover:text-primary transition-colors cursor-default"
+                  >
+                    {skill}
+                  </Badge>
+                </motion.div>
+              ))}
+            </StaggerChildren>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+// ── Section ───────────────────────────────────────────────────────────────────
+export function ExperienceSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start center', 'end center'],
+  })
+  const pathProgress = useTransform(scrollYProgress, [0, 1], [0, 1])
+
+  return (
+    <section
+      id="experience"
+      ref={sectionRef}
+      className="min-h-screen flex items-center justify-center px-4 py-12 sm:py-20"
+    >
+      <div className="container max-w-5xl">
+        {/* Section Header */}
+        <StaggerChildren className="mb-8 sm:mb-12">
+          <motion.h2
+            variants={fadeUpChild}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
+          >
+            <span className="text-primary font-mono">[03]</span> EXPERIENCE
+          </motion.h2>
+          <motion.div
+            variants={fadeUpChild}
+            className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md"
+          />
+          <motion.p
+            variants={fadeUpChild}
+            className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl"
+          >
+            Professional journey across software engineering, robotics, and systems design
+          </motion.p>
+        </StaggerChildren>
+
+        {/* Timeline */}
+        <div className="relative space-y-8 pl-0 md:pl-4">
+          <TimelineSVG progress={pathProgress} />
+
+          {workExperienceList.map((experience, index) => (
+            <ExperienceCard key={index} experience={experience} index={index} />
           ))}
         </div>
 
-        {/* Download Resume CTA */}
-        <div className="mt-12 text-center">
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/20 inline-block">
-            <CardContent className="p-6">
-              <p className="text-foreground/80 mb-4">
-                Want to see more details about my experience?
-              </p>
-              <a
-                href="https://docs.google.com/document/d/1FHvri0eEL3-H8Sbb__7zwEXrtZoWXgaXoLcrwwaP2LI/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-colors"
-              >
-                Download Full Resume
-              </a>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Resume CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <div className="inline-block border border-primary/20 bg-card/30 backdrop-blur-sm rounded-sm p-6">
+            <p className="text-foreground/80 mb-4">Want the full picture?</p>
+            <a
+              href="https://docs.google.com/document/d/1FHvri0eEL3-H8Sbb__7zwEXrtZoWXgaXoLcrwwaP2LI/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-2 bg-primary text-primary-foreground font-mono text-sm rounded-sm hover:bg-primary/90 transition-colors"
+            >
+              Full Resume
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
