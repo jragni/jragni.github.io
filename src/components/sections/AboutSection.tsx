@@ -1,213 +1,160 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { useRef } from 'react'
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from '@/components/ui/carousel'
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
+import { ImageGallery } from '@/components/ui/image-gallery'
 import { carouselImages } from './constants'
+import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
 
-interface SlideProps {
-  src: string
-  alt: string
-  caption: string
-  objectPosition?: string
+interface QuickFact {
+  label: string
+  value: string
+  sub?: string[]
 }
 
-function CarouselSlide({ src, alt, caption, objectPosition }: SlideProps) {
-  const [imgError, setImgError] = useState(false)
+const quickFacts: QuickFact[] = [
+  { label: 'LOCATION', value: 'Los Angeles, CA' },
+  { label: 'EXPERIENCE', value: '5+ Years' },
+  { label: 'EDUCATION', value: 'B.S. Mechanical Engineering', sub: ['Manufacturing & Design', 'UC Riverside', 'Software Engineering — Rithm School'] },
+]
+
+
+interface RevealParagraphProps {
+  children: React.ReactNode
+  index: number
+  scrollProgress: ReturnType<typeof useScroll>['scrollYProgress']
+  total: number
+}
+
+function RevealParagraph({ children, index, scrollProgress, total }: RevealParagraphProps) {
+  const prefersReducedMotion = useReducedMotion()
+  const start = 0.05 + (index / total) * 0.3
+  const end = start + 0.15
+
+  const opacity = useTransform(scrollProgress, [start, end], [0, 1])
+  const y = useTransform(scrollProgress, [start, end], [20, 0])
+
+  if (prefersReducedMotion) {
+    return <p className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed break-words">{children}</p>
+  }
 
   return (
-    <div className="relative aspect-[4/3]">
-      {imgError ? (
-        <div className="flex items-center justify-center h-full font-mono text-primary text-sm">
-          [IMAGE]
-        </div>
-      ) : (
-        <>
-          <img
-            src={src}
-            alt={alt}
-            className="object-cover w-full h-full"
-            style={objectPosition ? { objectPosition } : undefined}
-            loading="lazy"
-            onError={() => setImgError(true)}
-          />
-          {/* Caption scrim */}
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-          <p className="absolute bottom-2 left-3 right-3 font-mono text-xs text-white/90 pointer-events-none truncate">
-            {caption}
-          </p>
-        </>
-      )}
-    </div>
+    <motion.p
+      className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed break-words"
+      style={{ opacity, y }}
+    >
+      {children}
+    </motion.p>
   )
 }
 
 export function AboutSection() {
-  const [api, setApi] = useState<CarouselApi>()
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [snapCount, setSnapCount] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
 
-  useEffect(() => {
-    if (!api) return
-
-    setSnapCount(api.scrollSnapList().length)
-    setActiveIndex(api.selectedScrollSnap())
-
-    const onSelect = () => {
-      setActiveIndex(api.selectedScrollSnap())
-    }
-
-    api.on('select', onSelect)
-    return () => {
-      api.off('select', onSelect)
-    }
-  }, [api])
-
-  const scrollToSnap = useCallback(
-    (index: number) => {
-      api?.scrollTo(index)
-    },
-    [api]
-  )
+  const paragraphs = [
+    <>
+      I'm a <span className="text-primary font-semibold">full-stack software engineer</span> with
+      a unique background spanning software development, robotics, and systems engineering. My journey
+      from mechanical engineering to software development has given me a distinctive perspective on
+      problem-solving and system design. <i className="text-primary font-semibold">One mind, any framework</i>.
+    </>,
+    <>
+      Currently, I work at <span className="text-primary">Dovenmuehle Mortgage</span>, where I develop
+      and maintain web and mobile applications that serve thousands of mortgage customers. I specialize
+      in architecting full-stack solutions with{' '}
+      <span className="text-foreground font-semibold">TypeScript</span>,{' '}
+      <span className="text-foreground font-semibold">React</span>, and{' '}
+      <span className="text-foreground font-semibold">Node.js</span>, focusing on scalability, performance optimization, and intuitive user experiences.
+    </>,
+    <>
+      Beyond web development, I'm passionate about <span className="text-primary">robotics and AI</span>.
+      I've built autonomous robots using ROS2, developed computer vision systems with YOLO, and created
+      real-time telemetry dashboards. I love working at the intersection of software and hardware,
+      where code meets the physical world.
+    </>,
+    <>
+      When I'm not coding, you'll find me powerlifting at the gym, training in BJJ, or volunteering for beach cleanups.
+      I also enjoy tinkering with robotics projects and contributing to open-source. I believe in continuous learning—whether
+      it's mastering a new framework, perfecting a lift, or learning a new technique on the mat.
+    </>,
+  ]
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-      <div className="container max-w-5xl">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-x-hidden"
+    >
+      <div className="container max-w-5xl w-full min-w-0">
         {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <StaggerChildren className="mb-8 sm:mb-12">
+          <motion.h2
+            variants={fadeUpChild}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
+          >
             <span className="text-primary font-mono">[01]</span> ABOUT ME
-          </h2>
-          <div className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md" />
-        </div>
+          </motion.h2>
+          <motion.div
+            variants={fadeUpChild}
+            className="h-px bg-gradient-to-r from-primary via-primary/50 to-transparent max-w-md"
+          />
+        </StaggerChildren>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Column - Bio */}
-          <div>
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hud-card-hover rounded-sm">
-              <CardContent className="p-6 sm:p-8 space-y-4">
-                <div className="font-mono text-primary text-xs mb-4">&gt; PROFILE</div>
-
-                <p className="text-lg text-foreground/90 leading-relaxed">
-                  I'm a <span className="text-primary font-semibold">full-stack engineer</span> at{' '}
-                  <span className="text-primary">Dovenmuehle Mortgage</span> where I own the development
-                  of YourMortgageOnline across web, mobile-web, and native. I build, test, and ship
-                  features end-to-end with a focus on creating an intuitive customer experience.
-                </p>
-
-                <p className="text-base text-foreground/75 leading-relaxed">
-                  I graduated from <span className="text-foreground font-semibold">UC Riverside</span> with
-                  a B.S. in Mechanical Engineering, then modeled fleet readiness as a systems engineer
-                  for the <span className="text-foreground font-semibold">Naval Surface Warfare Center</span> and
-                  led aerospace component testing at{' '}
-                  <span className="text-foreground font-semibold">Honeywell Aerospace</span>.
-                  From there I went through Rithm School's full-stack program and stayed on as an
-                  engineering resident. Through all
-                  of it I learned that effective communication, data-driven decisions, and total ownership
-                  are what make teams succeed regardless of the mission or the tech stack. That
-                  background shaped how I approach software. I think in systems, not just syntax.{' '}
-                  <i className="text-primary font-semibold">One mind, any framework</i>.
-                </p>
-
-                <p className="text-base text-foreground/65 leading-relaxed">
-                  I'm an <span className="text-primary">AI-forward</span> engineer who believes the best
-                  software will be built alongside intelligent systems, not replaced by them. Outside of work
-                  I develop <span className="text-primary">robots</span> and integrate AI into real-world
-                  problems. Right now that's an autonomous search-and-rescue system running ROS2, SLAM, and
-                  YOLOv11 for real-time human detection, and a telemetry dashboard that allows live sensor
-                  data streaming and robot control over WebSockets. Long term I want to be somewhere the
-                  engineering actually matters and the team reflects the world it's building for.
-                </p>
-
-                <p className="text-sm text-foreground/55 leading-relaxed">
-                  When I'm not coding or building robots, you'll find me powerlifting at the gym, training
-                  Brazilian Jiu Jitsu, running marathons, or volunteering with PrincessProgramSTEM, AI LA,
-                  and local beach cleanups. Los Angeles born and raised. I don't really have an off switch.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Right Column - Carousel and Quick Facts */}
-          <div className="flex flex-col space-y-6 sm:space-y-8">
-            {/* Carousel container */}
-            <div className="overflow-hidden rounded-sm border border-primary/30 hud-card-hover">
-              <Carousel setApi={setApi}>
-                <CarouselContent>
-                  {carouselImages.map(({ src, alt, caption, objectPosition }, index) => (
-                    <CarouselItem key={index}>
-                      <CarouselSlide src={src} alt={alt} caption={caption} objectPosition={objectPosition} />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="border-primary/30 text-primary hover:bg-primary/10" />
-                <CarouselNext className="border-primary/30 text-primary hover:bg-primary/10" />
-              </Carousel>
-
-              {/* Dot indicators */}
-              {snapCount > 0 && (
-                <div className="flex items-center justify-center gap-2 py-3 bg-card/50">
-                  {Array.from({ length: snapCount }).map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => scrollToSnap(i)}
-                      aria-label={`Go to slide ${i + 1}`}
-                      className={[
-                        'min-w-[44px] min-h-[44px] flex items-center justify-center group',
-                      ].join(' ')}
-                    >
-                      <span className={[
-                        'block h-2 w-2 rounded-full transition-colors duration-200',
-                        i === activeIndex ? 'bg-primary' : 'bg-primary/30',
-                      ].join(' ')} />
-                    </button>
-                  ))}
-                </div>
-              )}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-8 lg:gap-12">
+          {/* Left — Bio with scroll-linked reveal */}
+          <div className="space-y-4 min-w-0 max-w-full overflow-hidden">
+            <div className="border border-primary/30 bg-card/50 backdrop-blur-sm rounded-sm p-4 sm:p-6 md:p-8 space-y-4">
+              {paragraphs.map((para, i) => (
+                <RevealParagraph
+                  key={i}
+                  index={i}
+                  total={paragraphs.length}
+                  scrollProgress={scrollYProgress}
+                >
+                  {para}
+                </RevealParagraph>
+              ))}
             </div>
 
+          </div>
+
+          {/* Right — Image gallery + Quick Facts */}
+          <div className="flex flex-col space-y-6 min-w-0 max-w-full overflow-hidden">
+            <ImageGallery images={carouselImages} />
+
             {/* Quick Facts */}
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 hud-card-hover rounded-sm">
-              <CardContent className="p-4 sm:p-6">
-                <h3 className="font-mono text-primary text-xs sm:text-sm mb-4">&gt; QUICK FACTS</h3>
+            <div className="border border-primary/30 bg-card/50 backdrop-blur-sm rounded-sm p-4 sm:p-6">
+              <div className="font-mono text-xs text-primary mb-4 tracking-widest">&gt; QUICK FACTS</div>
+              <StaggerChildren className="space-y-3">
+                {quickFacts.map((fact) => (
+                  <motion.div key={fact.label} variants={fadeUpChild}>
+                    <div className="font-mono text-xs text-muted-foreground mb-0.5">{fact.label}</div>
+                    <div className="text-xs sm:text-sm text-foreground">{fact.value}</div>
+                    {fact.sub?.map((s) => (
+                      <div key={s} className="text-xs text-muted-foreground">{s}</div>
+                    ))}
+                    <div className="mt-2 h-px bg-primary/15" />
+                  </motion.div>
+                ))}
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground mb-1">LOCATION</div>
-                    <div className="text-xs sm:text-sm text-foreground">Los Angeles, CA</div>
+                <motion.div variants={fadeUpChild}>
+                  <div className="font-mono text-xs text-muted-foreground mb-2">FOCUS AREAS</div>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary" className="text-xs">Web Dev</Badge>
+                    <Badge variant="secondary" className="text-xs">Robotics</Badge>
+                    <Badge variant="secondary" className="text-xs">AI/ML</Badge>
                   </div>
-
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground mb-1">EXPERIENCE</div>
-                    <div className="text-xs sm:text-sm text-foreground">5+ Years</div>
-                  </div>
-
-                  <div className="col-span-2">
-                    <div className="font-mono text-xs text-muted-foreground mb-1">FOCUS AREAS</div>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      <Badge variant="secondary" className="text-xs">Web Dev</Badge>
-                      <Badge variant="secondary" className="text-xs">Robotics</Badge>
-                      <Badge variant="secondary" className="text-xs">AI/ML</Badge>
-                    </div>
-                  </div>
-
-                  <div className="col-span-2">
-                    <div className="font-mono text-xs text-muted-foreground mb-1">EDUCATION</div>
-                    <div className="text-xs sm:text-sm text-foreground">B.S. Mechanical Engineering</div>
-                    <div className="text-xs text-muted-foreground">Manufacturing & Design</div>
-                    <div className="text-xs text-muted-foreground">UC Riverside</div>
-                    <div className="text-xs sm:text-sm text-foreground mt-2">Software Engineering</div>
-                    <div className="text-xs text-muted-foreground">Rithm School</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </motion.div>
+              </StaggerChildren>
+            </div>
           </div>
         </div>
       </div>
