@@ -39,6 +39,11 @@ yarn-error.log*
 
 # AI assist
 .claude
+.claire
 CLAUDE.md
 .planning/
 .superpowers/
+.playwright-mcp/
+
+# screenshots / design artifacts
+*.png
