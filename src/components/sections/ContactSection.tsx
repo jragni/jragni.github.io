@@ -239,7 +239,7 @@ export function ContactSection() {
             <p className="text-foreground/60 text-sm font-mono">
               &gt; Built with React, TypeScript, Vite, and shadcn/ui
               <br />
-              <span className="text-primary">© 2025 Jhensen Ray Agni</span> — Designed &amp; Developed with care
+              <span className="text-primary">© {new Date().getFullYear()} Jhensen Ray Agni</span> — Designed &amp; Developed with care
             </p>
           </div>
         </motion.div>

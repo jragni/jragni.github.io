@@ -23,7 +23,7 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
   return (
     <div className={`space-y-3 ${className}`}>
       {/* Main image */}
-      <div className="relative aspect-square overflow-hidden rounded-sm border border-primary/30 bg-card/50">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-primary/30 bg-card/50">
         <AnimatePresence mode="wait">
           <motion.img
             key={activeIndex}

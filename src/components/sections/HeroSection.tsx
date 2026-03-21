@@ -204,29 +204,36 @@ export function HeroSection() {
             &gt; HELLO, I'M
           </motion.div>
 
-          {/* Animated name */}
+          {/* Animated name — word-aware wrapping */}
           <motion.h1
             variants={childVariant}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight"
             style={{ perspective: 600 }}
           >
-            {NAME.map((char, i) => (
-              <motion.span
-                key={i}
-                custom={i}
-                variants={prefersReducedMotion ? undefined : letterVariants}
-                className="inline-block"
-                style={{ display: char === ' ' ? 'inline' : 'inline-block' }}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
+            {'Jhensen Ray Agni'.split(' ').map((word, wi, words) => (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {word.split('').map((char, ci) => {
+                  const globalIndex = words.slice(0, wi).join(' ').length + (wi > 0 ? 1 : 0) + ci
+                  return (
+                    <motion.span
+                      key={globalIndex}
+                      custom={globalIndex}
+                      variants={prefersReducedMotion ? undefined : letterVariants}
+                      className="inline-block"
+                    >
+                      {char}
+                    </motion.span>
+                  )
+                })}
+                {wi < words.length - 1 && '\u00A0'}
+              </span>
             ))}
           </motion.h1>
 
           {/* Role typewriter */}
           <motion.div
             variants={childVariant}
-            className="text-2xl sm:text-3xl md:text-5xl font-bold text-muted-foreground min-h-[3rem] sm:min-h-[4rem]"
+            className="text-xl sm:text-3xl md:text-5xl font-bold text-muted-foreground min-h-[2.5rem] sm:min-h-[4rem]"
           >
             <span className="font-mono text-primary">&gt;</span>{' '}
             <span className="font-mono">{roleText}</span>

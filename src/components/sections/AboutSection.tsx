@@ -45,12 +45,12 @@ function RevealParagraph({ children, index, scrollProgress, total }: RevealParag
   const y = useTransform(scrollProgress, [start, end], [20, 0])
 
   if (prefersReducedMotion) {
-    return <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{children}</p>
+    return <p className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed break-words">{children}</p>
   }
 
   return (
     <motion.p
-      className="text-base sm:text-lg text-foreground/80 leading-relaxed"
+      className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed break-words"
       style={{ opacity, y }}
     >
       {children}
@@ -97,9 +97,9 @@ export function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-x-hidden"
     >
-      <div className="container max-w-5xl">
+      <div className="container max-w-5xl w-full min-w-0">
         {/* Section Header */}
         <StaggerChildren className="mb-8 sm:mb-12">
           <motion.h2
@@ -114,10 +114,10 @@ export function AboutSection() {
           />
         </StaggerChildren>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-8 lg:gap-12">
           {/* Left — Bio with scroll-linked reveal */}
-          <div className="space-y-4">
-            <div className="border border-primary/30 bg-card/50 backdrop-blur-sm rounded-sm p-6 sm:p-8 space-y-4">
+          <div className="space-y-4 min-w-0 max-w-full overflow-hidden">
+            <div className="border border-primary/30 bg-card/50 backdrop-blur-sm rounded-sm p-4 sm:p-6 md:p-8 space-y-4">
               {paragraphs.map((para, i) => (
                 <RevealParagraph
                   key={i}
@@ -147,7 +147,7 @@ export function AboutSection() {
           </div>
 
           {/* Right — Image gallery + Quick Facts */}
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-6 min-w-0 max-w-full overflow-hidden">
             <ImageGallery images={carouselImages} />
 
             {/* Quick Facts */}
