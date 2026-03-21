@@ -47,8 +47,18 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
         <div className="absolute bottom-0 left-0 w-5 h-5 border-l border-b border-primary/50 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-5 h-5 border-r border-b border-primary/50 pointer-events-none" />
 
+        {/* Caption scrim + text */}
+        {active.caption && (
+          <>
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+            <p className="absolute bottom-2 left-3 right-12 font-mono text-xs text-white/90 pointer-events-none truncate">
+              {active.caption}
+            </p>
+          </>
+        )}
+
         {/* Image counter */}
-        <div className="absolute bottom-2 right-2 font-mono text-[10px] text-primary/70 bg-background/70 px-1.5 py-0.5">
+        <div className="absolute top-2 right-2 font-mono text-[10px] text-primary/70 bg-background/70 px-1.5 py-0.5">
           {String(activeIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
         </div>
       </div>

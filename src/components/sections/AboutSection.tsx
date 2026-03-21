@@ -6,7 +6,6 @@ import {
   useReducedMotion,
 } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
-import { StatCounter } from '@/components/ui/stat-counter'
 import { ImageGallery } from '@/components/ui/image-gallery'
 import { carouselImages } from './constants'
 import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
@@ -23,11 +22,6 @@ const quickFacts: QuickFact[] = [
   { label: 'EDUCATION', value: 'B.S. Mechanical Engineering', sub: ['Manufacturing & Design', 'UC Riverside', 'Software Engineering — Rithm School'] },
 ]
 
-const stats = [
-  { value: 5, label: 'YEARS EXP', suffix: '+' },
-  { value: 15, label: 'PROJECTS', suffix: '+' },
-  { value: 92, label: 'PPE ACCURACY', suffix: '%' },
-]
 
 interface RevealParagraphProps {
   children: React.ReactNode
@@ -130,20 +124,6 @@ export function AboutSection() {
               ))}
             </div>
 
-            {/* Stats dashboard */}
-            <div className="border border-primary/20 bg-card/30 backdrop-blur-sm rounded-sm p-4">
-              <div className="font-mono text-xs text-primary/60 mb-4 tracking-widest">&gt; METRICS.SUMMARY</div>
-              <div className="grid grid-cols-3 gap-4">
-                {stats.map((stat) => (
-                  <StatCounter
-                    key={stat.label}
-                    value={stat.value}
-                    label={stat.label}
-                    suffix={stat.suffix}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right — Image gallery + Quick Facts */}

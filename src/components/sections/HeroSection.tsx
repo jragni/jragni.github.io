@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   motion,
-  AnimatePresence,
   useMotionValue,
   useTransform,
   useReducedMotion,
@@ -96,33 +95,10 @@ function useTypewriter(strings: string[], speed = 50, pause = 1800) {
   return displayText
 }
 
-// ── Datetime display ──────────────────────────────────────────────────────────
-function useLiveDatetime() {
-  const [dt, setDt] = useState('')
-  useEffect(() => {
-    const update = () =>
-      setDt(
-        new Date().toLocaleString('en-US', {
-          month: 'short',
-          day: '2-digit',
-          year: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        }),
-      )
-    update()
-    const id = setInterval(update, 1000)
-    return () => clearInterval(id)
-  }, [])
-  return dt
-}
-
 // ── Main Component ────────────────────────────────────────────────────────────
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion()
   const roleText = useTypewriter(ROLES)
-  const datetime = useLiveDatetime()
   const sectionRef = useRef<HTMLElement>(null)
 
   // Mouse parallax values
@@ -167,30 +143,6 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* Hero corner brackets */}
-      <AnimatePresence>
-        {[
-          { cls: 'top-8 left-8 border-l-2 border-t-2', origin: 'top left' },
-          { cls: 'top-8 right-8 border-r-2 border-t-2', origin: 'top right' },
-          { cls: 'bottom-16 left-8 border-l-2 border-b-2', origin: 'bottom left' },
-          { cls: 'bottom-16 right-8 border-r-2 border-b-2', origin: 'bottom right' },
-        ].map(({ cls, origin }, i) => (
-          <motion.div
-            key={i}
-            className={`absolute w-12 h-12 border-primary/60 pointer-events-none ${cls}`}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{
-              type: 'spring',
-              stiffness: 200,
-              damping: 20,
-              delay: 0.3 + i * 0.05,
-            }}
-            style={{ transformOrigin: origin }}
-          />
-        ))}
-      </AnimatePresence>
-
       {/* Main content — staggered reveal, no boot sequence */}
       <motion.div
         className="relative z-10 container max-w-6xl"
@@ -207,7 +159,7 @@ export function HeroSection() {
           {/* Animated name — word-aware wrapping */}
           <motion.h1
             variants={childVariant}
-            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight"
             style={{ perspective: 600 }}
           >
             {'Jhensen Ray Agni'.split(' ').map((word, wi, words) => (
@@ -324,38 +276,6 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Floating HUD panels */}
-      {/* STATUS panel — top right */}
-      <motion.div
-        className="absolute top-24 right-6 lg:right-12 hidden md:block"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        aria-label="Status panel"
-      >
-        <div className="border border-primary/30 bg-background/60 backdrop-blur-sm px-3 py-2 font-mono text-xs space-y-1">
-          <div className="flex items-center gap-2 text-primary">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary status-dot" />
-            AVAILABLE
-          </div>
-          <div className="text-muted-foreground text-[10px]">{datetime}</div>
-        </div>
-      </motion.div>
-
-      {/* COORDINATES panel — bottom left */}
-      <motion.div
-        className="absolute bottom-20 left-6 lg:left-12 hidden md:block"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.0, duration: 0.5 }}
-        aria-label="Location panel"
-      >
-        <div className="border border-primary/20 bg-background/60 backdrop-blur-sm px-3 py-2 font-mono text-xs space-y-1">
-          <div className="text-muted-foreground">34.0522° N</div>
-          <div className="text-muted-foreground">118.2437° W</div>
-          <div className="text-primary/50 text-[10px]">LOS ANGELES, CA</div>
-        </div>
-      </motion.div>
     </section>
   )
 }

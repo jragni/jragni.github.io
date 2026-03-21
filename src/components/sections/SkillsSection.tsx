@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Code2, Database, Layers, Cpu, GitBranch, Server, ChevronDown } from 'lucide-react'
+import { Code2, Database, Layers, Cpu, GitBranch, Server } from 'lucide-react'
 import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
 
 interface SkillCategory {
@@ -31,7 +30,7 @@ const skillCategories: SkillCategory[] = [
     title: 'Backend & APIs',
     icon: <Server className="w-4 h-4" />,
     primarySkills: ['Node.js', 'Express', 'Django'],
-    secondarySkills: ['Flask', 'gRPC', 'REST APIs'],
+    secondarySkills: ['Flask', 'tRPC', 'REST APIs'],
     description: 'Server-side frameworks and API design',
   },
   {
@@ -58,10 +57,8 @@ const skillCategories: SkillCategory[] = [
 ]
 
 function SkillPanel({ category, index }: { category: SkillCategory; index: number }) {
-  const [expanded, setExpanded] = useState(false)
   const prefersReducedMotion = useReducedMotion()
-  const hasSecondary = category.secondarySkills.length > 0
-  const visibleSecondary = expanded ? category.secondarySkills : []
+  const allSkills = [...category.primarySkills, ...category.secondarySkills]
 
   return (
     <motion.div
@@ -88,7 +85,7 @@ function SkillPanel({ category, index }: { category: SkillCategory; index: numbe
           </span>
         </div>
         <span className="font-mono text-[10px] text-primary/30 tracking-widest">
-          {category.primarySkills.length + category.secondarySkills.length} TOOLS
+          {allSkills.length} TOOLS
         </span>
       </div>
 
@@ -98,9 +95,9 @@ function SkillPanel({ category, index }: { category: SkillCategory; index: numbe
           {category.description}
         </p>
 
-        {/* Primary skills */}
+        {/* All skills — uniform styling */}
         <div className="flex flex-wrap gap-1.5">
-          {category.primarySkills.map((skill) => (
+          {allSkills.map((skill) => (
             <span
               key={skill}
               className="inline-flex items-center px-2.5 py-1 rounded-sm font-mono text-xs
@@ -112,36 +109,7 @@ function SkillPanel({ category, index }: { category: SkillCategory; index: numbe
               {skill}
             </span>
           ))}
-
-          {/* Secondary skills — revealed on expand */}
-          {visibleSecondary.map((skill) => (
-            <span
-              key={skill}
-              className="inline-flex items-center px-2.5 py-1 rounded-sm font-mono text-xs
-                bg-secondary/40 text-muted-foreground border border-primary/10
-                hover:bg-secondary/70 hover:text-foreground hover:border-primary/20
-                transition-all duration-150 cursor-default"
-            >
-              {skill}
-            </span>
-          ))}
         </div>
-
-        {/* Expand/collapse toggle */}
-        {hasSecondary && (
-          <button
-            onClick={() => setExpanded((v) => !v)}
-            className="flex items-center gap-1.5 font-mono text-[10px] text-primary/50
-              hover:text-primary transition-colors duration-150 focus-visible:outline-none
-              focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
-            aria-expanded={expanded}
-          >
-            <ChevronDown
-              className={`w-3 h-3 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
-            />
-            {expanded ? 'SHOW LESS' : `SHOW ALL +${category.secondarySkills.length}`}
-          </button>
-        )}
       </div>
     </motion.div>
   )

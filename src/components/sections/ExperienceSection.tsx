@@ -1,18 +1,15 @@
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import {
   motion,
   useScroll,
   useTransform,
   useReducedMotion,
-  AnimatePresence,
 } from 'framer-motion'
 import type { Variants } from '@/types/motion'
 import { Badge } from '@/components/ui/badge'
-import { ExternalLink, ChevronDown } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { workExperienceList } from '@/data/constants'
 import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
-
-const DEFAULT_VISIBLE_BULLETS = 2
 
 // ── SVG Timeline with scroll-driven pathLength ────────────────────────────────
 function TimelineSVG({ progress }: { progress: ReturnType<typeof useTransform> }) {
@@ -73,18 +70,11 @@ interface ExpCardProps {
 }
 
 function ExperienceCard({ experience, index }: ExpCardProps) {
-  const [expanded, setExpanded] = useState(false)
   const prefersReducedMotion = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
 
   const variant = index % 2 === 0 ? cardLeft : cardRight
   const letter = experience.companyName[0]
-
-  const visibleBullets = expanded
-    ? experience.jobDescription
-    : experience.jobDescription.slice(0, DEFAULT_VISIBLE_BULLETS)
-
-  const hasMore = experience.jobDescription.length > DEFAULT_VISIBLE_BULLETS
 
   return (
     <motion.div
@@ -156,36 +146,15 @@ function ExperienceCard({ experience, index }: ExpCardProps) {
             </Badge>
           </div>
 
-          {/* Bullets — 2 visible by default, expandable */}
+          {/* Bullets — all visible */}
           <ul className="space-y-2 mb-4">
-            {visibleBullets.map((desc, di) => (
+            {experience.jobDescription.map((desc, di) => (
               <li key={di} className="flex gap-2 text-foreground/80 text-sm leading-relaxed">
                 <span className="text-primary mt-1 flex-shrink-0">▹</span>
                 <span>{desc}</span>
               </li>
             ))}
           </ul>
-
-          {/* Expand / collapse if there are more bullets */}
-          {hasMore && (
-            <AnimatePresence initial={false}>
-              <motion.button
-                className="flex items-center gap-1.5 font-mono text-xs text-primary/60 hover:text-primary transition-colors mb-3 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
-                onClick={() => setExpanded((v) => !v)}
-                aria-expanded={expanded}
-              >
-                <motion.span
-                  animate={{ rotate: expanded ? 180 : 0 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </motion.span>
-                {expanded
-                  ? 'SHOW LESS'
-                  : `SHOW ALL +${experience.jobDescription.length - DEFAULT_VISIBLE_BULLETS}`}
-              </motion.button>
-            </AnimatePresence>
-          )}
 
           {/* Tech chips */}
           <div>
