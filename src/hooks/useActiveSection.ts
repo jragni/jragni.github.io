@@ -3,45 +3,44 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 export const SECTIONS = ['home', 'about', 'skills', 'experience', 'projects', 'contact'] as const
 export type SectionId = typeof SECTIONS[number]
 
-interface UseActiveSectionOptions {
-  threshold?: number
-  rootMargin?: string
-}
-
-export function useActiveSection(options: UseActiveSectionOptions = {}): SectionId {
-  const { threshold = 0.3, rootMargin = '-10% 0px -60% 0px' } = options
+export function useActiveSection(): SectionId {
   const [activeSection, setActiveSection] = useState<SectionId>('home')
-  const observerRef = useRef<IntersectionObserver | null>(null)
+  const ratiosRef = useRef<Map<string, number>>(new Map())
 
   const handleIntersect = useCallback((entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id as SectionId
-        if (SECTIONS.includes(id)) {
-          setActiveSection(id)
-        }
+    const ratios = ratiosRef.current
+    for (const entry of entries) {
+      ratios.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0)
+    }
+
+    let bestId: string | null = null
+    let bestRatio = 0
+    for (const [id, ratio] of ratios) {
+      if (ratio > bestRatio) {
+        bestRatio = ratio
+        bestId = id
       }
-    })
+    }
+
+    if (bestId && SECTIONS.includes(bestId as SectionId)) {
+      setActiveSection(bestId as SectionId)
+    }
   }, [])
 
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(handleIntersect, {
-      threshold,
-      rootMargin,
+    const observer = new IntersectionObserver(handleIntersect, {
+      threshold: [0, 0.1, 0.2, 0.3, 0.5],
+      rootMargin: '-10% 0px -40% 0px',
     })
 
     SECTIONS.forEach((id) => {
       const el = document.getElementById(id)
-      if (el) observerRef.current!.observe(el)
+      if (el) observer.observe(el)
     })
 
-    return () => {
-      observerRef.current?.disconnect()
-    }
-  }, [handleIntersect, threshold, rootMargin])
+    return () => observer.disconnect()
+  }, [handleIntersect])
 
-  // Fallback scroll listener — when user scrolls back to very top,
-  // no section may be "intersecting" so we explicitly set active to 'home'.
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY < 100) {

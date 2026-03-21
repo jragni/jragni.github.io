@@ -22,7 +22,6 @@ const navigationItems: NavItem[] = [
 
 export function NavigationBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [hoveredId, setHoveredId] = useState<string | null>(null)
   const activeSection = useActiveSection()
   const prefersReducedMotion = useReducedMotion()
 
@@ -62,49 +61,28 @@ export function NavigationBar() {
             {navigationItems.map((item) => {
               const isActive = activeSection === item.id
               return (
-                <div
+                <motion.button
                   key={item.id}
-                  className="relative"
-                  onMouseEnter={() => setHoveredId(item.id)}
-                  onMouseLeave={() => setHoveredId(null)}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-xs tracking-wide transition-colors duration-150 ${
+                    isActive
+                      ? 'text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                  whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
+                  whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+                  aria-current={isActive ? 'page' : undefined}
                 >
-                  <motion.button
-                    onClick={() => handleNavClick(item.href)}
-                    className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-xs tracking-wide transition-colors duration-150 ${
-                      isActive
-                        ? 'text-primary-foreground'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                    whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
-                    whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
-                    aria-current={isActive ? 'page' : undefined}
-                  >
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-pill"
-                        className="absolute inset-0 bg-primary rounded-full"
-                        transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                      />
-                    )}
-                    <span className="relative z-10">{item.icon}</span>
-                    <span className="relative z-10">{item.label}</span>
-                  </motion.button>
-
-                  {/* Hover tooltip */}
-                  <AnimatePresence>
-                    {hoveredId === item.id && !isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 4, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 8, scale: 1 }}
-                        exit={{ opacity: 0, y: 4, scale: 0.95 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-card border border-primary/20 font-mono text-xs text-primary whitespace-nowrap pointer-events-none"
-                      >
-                        {item.label}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-primary rounded-full"
+                      transition={{ duration: 0 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.icon}</span>
+                  <span className="relative z-10">{item.label}</span>
+                </motion.button>
               )
             })}
           </LayoutGroup>
