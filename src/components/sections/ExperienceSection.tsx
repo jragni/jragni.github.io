@@ -210,7 +210,7 @@ export function ExperienceSection() {
             variants={fadeUpChild}
             className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl"
           >
-            Professional journey across software engineering, robotics, and systems design
+            Professional journey across software engineering, defense systems, and hardware test
           </motion.p>
         </StaggerChildren>
 
