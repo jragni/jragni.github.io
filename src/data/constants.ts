@@ -76,32 +76,18 @@ export const workExperienceList: ExperienceCardProps[] = [
 
 export const projectsList: ProjectCardDetails[] = [
   {
-    description: `Web app I built to coach people through bootcamp prep. 100% of the users I mentored through it graduated. Covers coding challenges, interview prep, and progress tracking with Auth.js-based accounts.`,
-    href: "https://tempo-codestart.vercel.app",
-    skills: ["Next.js", "Typescript", "Tailwind", "Daisy UI", "Auth.js"],
-    src: "/Tempo.png",
-    title: "Tempo Codestart",
-  },
-  {
-    description: `Job board app with filtering, search, and pagination across 500+ listings. React frontend talks to an Express API backed by PostgreSQL. Wrote the SQL queries by hand, no ORM.`,
-    href: "https://ragglesoft-jobly.surge.sh",
-    skills: ["React", "Express", "PostgresQL", "Bootstrap"],
-    src: "/Jobly.png",
-    title: "Jobly",
-  },
-  {
-    description: `Twitter-style microblogging app built with Flask and PostgreSQL. Handles auth, follows, likes, and a feed algorithm. One of my earlier projects but still clean code I'm proud of.`,
-    href: "https://warbler-ragglesoft.onrender.com/",
-    skills: ['flask', 'postgresql', 'HTML', 'css'],
-    src: "/warbler.png",
-    title: "Warbler",
-  },
-  {
     description: `Operator interface that streams live sensor data from autonomous systems. D3.js renders telemetry under 200ms, WebSocket handles the pipe, and you can control multiple devices from one React dashboard.`,
     href: "https://jragni.github.io/robot-telemetry-dashboard/",
     skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "D3.js", "ROS2", "WebSocket"],
     src: "/robot-telemetry-image.png",
     title: "Real-Time Telemetry Dashboard",
+  },
+  {
+    description: `Web app I built to coach people through bootcamp prep. 100% of the users I mentored through it graduated. Covers coding challenges, interview prep, and progress tracking with Auth.js-based accounts.`,
+    href: "https://tempo-codestart.vercel.app",
+    skills: ["Next.js", "Typescript", "Tailwind", "Daisy UI", "Auth.js"],
+    src: "/Tempo.png",
+    title: "Tempo Codestart",
   },
   {
     description: `Developed an autonomous search and rescue system using ROS2, Nav2, OpenCV, and YOLOv11 for real time sensor processing, SLAM-based localization, and motion planning. The Robot autonomously navigates to user specified locations and identifies/tags human positions for rescue.`,
@@ -116,5 +102,19 @@ export const projectsList: ProjectCardDetails[] = [
     skills: ["Python", "Flask", "OpenCV", "C++", "SolidWorks", "Machine Learning", "AI"],
     src: "/pixierover.png",
     title: "Pixie Rover, AI integrated robot",
+  },
+  {
+    description: `Job board app with filtering, search, and pagination across 500+ listings. React frontend talks to an Express API backed by PostgreSQL. Wrote the SQL queries by hand, no ORM.`,
+    href: "https://ragglesoft-jobly.surge.sh",
+    skills: ["React", "Express", "PostgresQL", "Bootstrap"],
+    src: "/Jobly.png",
+    title: "Jobly",
+  },
+  {
+    description: `Twitter-style microblogging app built with Flask and PostgreSQL. Handles auth, follows, likes, and a feed algorithm. One of my earlier projects but still clean code I'm proud of.`,
+    href: "https://warbler-ragglesoft.onrender.com/",
+    skills: ['flask', 'postgresql', 'HTML', 'css'],
+    src: "/warbler.png",
+    title: "Warbler",
   },
 ];
