@@ -206,7 +206,7 @@ export function ProjectsSection() {
             variants={fadeUpChild}
             className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl"
           >
-            A showcase of my work in web development, robotics, and AI systems
+            A showcase of production web applications and engineering-driven side projects
           </motion.p>
         </StaggerChildren>
 

@@ -19,7 +19,8 @@ interface QuickFact {
 const quickFacts: QuickFact[] = [
   { label: 'LOCATION', value: 'Los Angeles, CA' },
   { label: 'EXPERIENCE', value: '5+ Years' },
-  { label: 'EDUCATION', value: 'B.S. Mechanical Engineering', sub: ['Manufacturing & Design', 'UC Riverside', 'Software Engineering — Rithm School'] },
+  { label: 'EDUCATION', value: 'B.S. Mechanical Engineering', sub: ['Manufacturing & Design', 'UC Riverside'] },
+  { label: 'SOFTWARE ENGINEERING', value: 'Rithm School' },
 ]
 
 
@@ -61,29 +62,37 @@ export function AboutSection() {
 
   const paragraphs = [
     <>
-      I'm a <span className="text-primary font-semibold">full-stack software engineer</span> with
-      a unique background spanning software development, robotics, and systems engineering. My journey
-      from mechanical engineering to software development has given me a distinctive perspective on
+      I'm a <span className="text-primary font-semibold">full-stack software engineer</span> with a unique background
+      spanning software development, robotics, and systems engineering.
+      My journey from mechanical engineering to software development has given me a distinctive perspective on
       problem-solving and system design. <i className="text-primary font-semibold">One mind, any framework</i>.
     </>,
     <>
-      Currently, I work at <span className="text-primary">Dovenmuehle Mortgage</span>, where I develop
-      and maintain web and mobile applications that serve thousands of mortgage customers. I specialize
-      in architecting full-stack solutions with{' '}
+      Currently, I work at <span className="text-primary">Dovenmuehle Mortgage</span>, where I build
+      and maintain the <span className="text-foreground font-semibold">YourMortgageOnline</span> platform. It's the web and mobile app that
+      thousands of customers use to make payments and manage their loans every day. I own features end-to-end in{' '}
       <span className="text-foreground font-semibold">TypeScript</span>,{' '}
       <span className="text-foreground font-semibold">React</span>, and{' '}
-      <span className="text-foreground font-semibold">Node.js</span>, focusing on scalability, performance optimization, and intuitive user experiences.
+      <span className="text-foreground font-semibold">Node.js</span>, and I care most about keeping things fast and easy to maintain as the team grows.
     </>,
     <>
-      Beyond web development, I'm passionate about <span className="text-primary">robotics and AI</span>.
-      I've built autonomous robots using ROS2, developed computer vision systems with YOLO, and created
-      real-time telemetry dashboards. I love working at the intersection of software and hardware,
-      where code meets the physical world.
+      Before software, I worked as a systems engineer at <span className="text-primary">NAVSEA</span> analyzing
+      data for the Navy's electrical power systems, and as a test engineer
+      at <span className="text-primary">Honeywell</span> planning and running qualification test campaigns for aerospace
+      components. Those roles taught me a lot, but hardware engineering moves slow. Updates to components take
+      months to years. I wanted a role where I was the builder, the planner, and the architect, and being a
+      software engineer lets you be all three. You can ship the same day you write the code. During the pandemic
+      I started teaching myself to code, joined Rithm School, and landed my first full-stack role.
     </>,
     <>
-      When I'm not coding, you'll find me powerlifting at the gym, training in BJJ, or volunteering for beach cleanups.
-      I also enjoy tinkering with robotics projects and contributing to open-source. I believe in continuous learning—whether
-      it's mastering a new framework, perfecting a lift, or learning a new technique on the mat.
+      Beyond web development, I am passionate about robotics, hard tech, and AI. After work, I enjoy projects
+      that sit at the intersection of all my skill sets, like building robots with ROS2 and putting together
+      a real-time dashboard to control, observe, and diagnose them from a browser.
+    </>,
+    <>
+      When I'm not coding, you'll find me powerlifting, training BJJ, or running. I volunteer
+      with STEM education nonprofits, help organize at <a href="https://www.aila.community" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">AI LA</a> events, and show up for beach cleanups.
+      I pick up new things fast and I don't stop until I get it right.
     </>,
   ]
 
@@ -93,7 +102,7 @@ export function AboutSection() {
       ref={sectionRef}
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-x-hidden"
     >
-      <div className="container max-w-5xl w-full min-w-0">
+      <div className="container max-w-6xl w-full min-w-0">
         {/* Section Header */}
         <StaggerChildren className="mb-8 sm:mb-12">
           <motion.h2
@@ -148,8 +157,8 @@ export function AboutSection() {
                 <motion.div variants={fadeUpChild}>
                   <div className="font-mono text-xs text-muted-foreground mb-2">FOCUS AREAS</div>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="text-xs">Web Dev</Badge>
-                    <Badge variant="secondary" className="text-xs">Robotics</Badge>
+                    <Badge variant="secondary" className="text-xs">Full-Stack Engineering</Badge>
+                    <Badge variant="secondary" className="text-xs">Hard Tech</Badge>
                     <Badge variant="secondary" className="text-xs">AI/ML</Badge>
                   </div>
                 </motion.div>

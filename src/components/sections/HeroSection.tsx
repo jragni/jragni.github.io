@@ -48,13 +48,11 @@ const childVariant: Variants = {
 
 // ── Role type-animation strings ──────────────────────────────────────────────
 const ROLES = [
-  'A Software Engineer',
-  'A Robotics Engineer',
-  'A Mechanical Engineer',
-  'A Systems Engineer',
-  'A Problem Solver',
   'A Full-Stack Developer',
   'A Frontend Engineer',
+  'A Systems Engineer',
+  'A Software Engineer',
+  'A Problem Solver',
 ]
 
 function useTypewriter(strings: string[], speed = 50, pause = 1800) {
@@ -199,9 +197,9 @@ export function HeroSection() {
           >
             <span className="font-mono text-primary">&gt;</span> Full-stack software engineer specializing in{' '}
             <span className="text-foreground font-semibold">web development</span>,{' '}
-            <span className="text-foreground font-semibold">robotics</span>, and{' '}
+            <span className="text-foreground font-semibold">hard tech</span>, and{' '}
             <span className="text-foreground font-semibold">AI systems</span>.
-            Building innovative solutions at the intersection of software and hardware.
+            Building solutions at the intersection of software and hardware.
           </motion.p>
 
           {/* CTA Buttons */}

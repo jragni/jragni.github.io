@@ -48,7 +48,7 @@ const skillCategories: SkillCategory[] = [
     description: 'CI/CD pipelines, containers, and testing',
   },
   {
-    title: 'Robotics & Engineering',
+    title: 'Systems & Hardware',
     icon: <Cpu className="w-4 h-4" />,
     primarySkills: ['ROS/ROS2', 'OpenCV', 'YOLOv8'],
     secondarySkills: ['Computer Vision', 'MATLAB', 'SolidWorks'],
@@ -135,7 +135,7 @@ export function SkillsSection() {
             variants={fadeUpChild}
             className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl"
           >
-            A diverse skill set spanning full-stack development, robotics, and systems engineering
+            Full-stack engineering skills built across production web systems and defense-adjacent technical environments
           </motion.p>
         </StaggerChildren>
 
@@ -157,8 +157,8 @@ export function SkillsSection() {
           <div className="border border-primary/15 bg-card/20 backdrop-blur-sm rounded-sm px-5 py-4">
             <div className="font-mono text-xs text-primary/60 mb-2 tracking-widest">// LEARNING &amp; GROWTH</div>
             <p className="text-sm sm:text-base text-foreground/70">
-              Continuously expanding my skill set through hands-on projects, online courses, and contributions
-              to open-source. Currently exploring advanced topics in AI/ML, cloud architecture, and real-time systems.
+              I learn by building. Right now I'm spending most of my side-project time on cloud architecture,
+              real-time systems, and UI for mission-critical workflows.
             </p>
           </div>
         </motion.div>
