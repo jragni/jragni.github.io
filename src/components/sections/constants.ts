@@ -39,5 +39,10 @@ export const carouselImages = [
     alt: 'AI LA Hackathon group photo',
     caption: 'AI LA Hackathon',
   },
+  {
+    src: '/la-maker-faire.jpeg',
+    alt: 'LA Maker Faire',
+    caption: 'LA Maker Faire',
+  },
 ];
 
