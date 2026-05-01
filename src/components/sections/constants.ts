@@ -43,6 +43,7 @@ export const carouselImages = [
     src: '/la-maker-faire.jpeg',
     alt: 'LA Maker Faire',
     caption: 'LA Maker Faire',
+    objectPosition: 'center 25%',
   },
 ];
 
