@@ -83,7 +83,7 @@ export const projectsList: ProjectCardDetails[] = [
     title: "Real-Time Telemetry Dashboard",
   },
   {
-    description: `Grand Champion at Jewel City Hacks 4.0. Wearable AI system for the vision-impaired — multimodal pipeline combining YOLO World, MediaPipe hand tracking, Whisper STT, GPT-4o vision, and GPT-4o mini intent routing, fused with HC-SR04 distance readings. Users ask natural language questions like "what's in front of me" or "help me grab the bottle" and get spoken answers in real time.`,
+    description: `Grand Champion at Jewel City Hacks 4.0. Built for the vision-impaired: ask "what's in front of me" or "help me grab the bottle" and get a spoken answer in real time. YOLO World detects objects, Whisper takes speech input, GPT-4o vision reads the scene, MediaPipe tracks hands, and an HC-SR04 feeds distance — all routed through GPT-4o mini.`,
     href: "https://devpost.com/software/araveil#updates",
     skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
     src: "/araveil.jpeg",
