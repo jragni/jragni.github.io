@@ -83,7 +83,7 @@ export const projectsList: ProjectCardDetails[] = [
     title: "Real-Time Telemetry Dashboard",
   },
   {
-    description: `Grand Champion at Jewel City Hacks 4.0. Two-device ecosystem for the vision-impaired: a haptic belt with ultrasonic sensors that vibrates proximity and direction, and AI glasses powered by Claude + GPT-4o vision that describe surroundings in real time through natural language.`,
+    description: `Grand Champion at Jewel City Hacks 4.0. Wearable AI system for the vision-impaired — multimodal pipeline combining YOLO World, MediaPipe hand tracking, Whisper STT, GPT-4o vision, and GPT-4o mini intent routing, fused with HC-SR04 distance readings. Users ask natural language questions like "what's in front of me" or "help me grab the bottle" and get spoken answers in real time.`,
     href: "https://devpost.com/software/araveil#updates",
     skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
     src: "/araveil.jpeg",
