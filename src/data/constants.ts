@@ -83,6 +83,13 @@ export const projectsList: ProjectCardDetails[] = [
     title: "Real-Time Telemetry Dashboard",
   },
   {
+    description: `Grand Champion at Jewel City Hacks 4.0. Two-device ecosystem for the vision-impaired: a haptic belt with ultrasonic sensors that vibrates proximity and direction, and AI glasses powered by Claude + GPT-4o vision that describe surroundings in real time through natural language.`,
+    href: "https://devpost.com/software/araveil#updates",
+    skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
+    src: "/araveil.jpeg",
+    title: "Araveil",
+  },
+  {
     description: `Web app I built to coach people through bootcamp prep. 100% of the users I mentored through it graduated. Covers coding challenges, interview prep, and progress tracking with Auth.js-based accounts.`,
     href: "https://tempo-codestart.vercel.app",
     skills: ["Next.js", "Typescript", "Tailwind", "Daisy UI", "Auth.js"],
@@ -95,13 +102,6 @@ export const projectsList: ProjectCardDetails[] = [
     skills: ["ROS2", "Python", "SLAM", "OpenCV", "YOLO", "AI", "Gazebo", "Raspberry Pi"],
     src: "/transbot.jpeg",
     title: "Autonomous Search & Rescue Robot",
-  },
-  {
-    description: `Grand Champion at Jewel City Hacks 4.0. Two-device ecosystem for the vision-impaired: a haptic belt with ultrasonic sensors that vibrates proximity and direction, and AI glasses powered by Claude + GPT-4o vision that describe surroundings in real time through natural language.`,
-    href: "https://devpost.com/software/araveil#updates",
-    skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
-    src: "/araveil.jpeg",
-    title: "Araveil",
   },
   {
     description: `IoT robot that watches for PPE compliance in healthcare settings. Hits 92% detection accuracy with OpenCV. Built the firmware, the vision pipeline, and the Flask reporting layer.`,
