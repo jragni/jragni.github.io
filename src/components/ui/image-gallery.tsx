@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -18,10 +18,15 @@ interface ImageGalleryProps {
 export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const prefersReducedMotion = useReducedMotion()
+  const thumbRefs = useRef<(HTMLButtonElement | null)[]>([])
 
   const active = images[activeIndex]
   const prev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length)
   const next = () => setActiveIndex((i) => (i + 1) % images.length)
+
+  useEffect(() => {
+    thumbRefs.current[activeIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+  }, [activeIndex])
 
   return (
     <div className={`space-y-3 ${className}`}>
@@ -87,6 +92,7 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
         {images.map((img, i) => (
           <motion.button
             key={i}
+            ref={(el) => { thumbRefs.current[i] = el }}
             onClick={() => setActiveIndex(i)}
             className={`relative flex-shrink-0 w-14 h-14 overflow-hidden rounded-sm border transition-colors ${
               i === activeIndex
