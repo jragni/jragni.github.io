@@ -76,18 +76,18 @@ export const workExperienceList: ExperienceCardProps[] = [
 
 export const projectsList: ProjectCardDetails[] = [
   {
+    description: `Grand Champion at Jewel City Hacks 4.0. Built for the vision-impaired: ask "what's in front of me" or "help me grab the bottle" and get a spoken answer in real time. YOLO World detects objects, Whisper takes speech input, GPT-4o vision reads the scene, MediaPipe tracks hands, and an HC-SR04 feeds distance, all routed through GPT-4o mini.`,
+    href: "https://devpost.com/software/araveil#updates",
+    skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
+    src: "/araveil.jpeg",
+    title: "Araveil",
+  },
+  {
     description: `Operator interface that streams live sensor data from autonomous systems. D3.js renders telemetry under 200ms, WebSocket handles the pipe, and you can control multiple devices from one React dashboard.`,
     href: "https://jragni.github.io/robot-telemetry-dashboard/",
     skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "D3.js", "ROS2", "WebSocket"],
     src: "/robot-telemetry-image.png",
     title: "Real-Time Telemetry Dashboard",
-  },
-  {
-    description: `Grand Champion at Jewel City Hacks 4.0. Built for the vision-impaired: ask "what's in front of me" or "help me grab the bottle" and get a spoken answer in real time. YOLO World detects objects, Whisper takes speech input, GPT-4o vision reads the scene, MediaPipe tracks hands, and an HC-SR04 feeds distance — all routed through GPT-4o mini.`,
-    href: "https://devpost.com/software/araveil#updates",
-    skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
-    src: "/araveil.jpeg",
-    title: "Araveil",
   },
   {
     description: `Web app I built to coach people through bootcamp prep. 100% of the users I mentored through it graduated. Covers coding challenges, interview prep, and progress tracking with Auth.js-based accounts.`,
