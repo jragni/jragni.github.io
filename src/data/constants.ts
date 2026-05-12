@@ -76,7 +76,7 @@ export const workExperienceList: ExperienceCardProps[] = [
 
 export const projectsList: ProjectCardDetails[] = [
   {
-    description: `Grand Champion at Jewel City Hacks 4.0. Built for the vision-impaired: ask "what's in front of me" or "help me grab the bottle" and get a spoken answer in real time. YOLO World detects objects, Whisper takes speech input, GPT-4o vision reads the scene, MediaPipe tracks hands, and an HC-SR04 feeds distance, all routed through GPT-4o mini.`,
+    description: `Grand Champion at Jewel City Hacks 4.0. Wearable assistive system for the vision-impaired, built in 24 hours. An ESP32 haptic belt with ultrasonic proximity sensing, paired with AI glasses that answer spoken questions in real time. Integrated YOLO World, GPT-4o vision, MediaPipe, and Whisper into a real-time inference pipeline, with GPT-4o mini handling intent routing across all inputs.`,
     href: "https://devpost.com/software/araveil#updates",
     skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
     src: "/araveil.jpeg",
