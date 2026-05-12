@@ -97,6 +97,13 @@ export const projectsList: ProjectCardDetails[] = [
     title: "Autonomous Search & Rescue Robot",
   },
   {
+    description: `Grand Champion at Jewel City Hacks 4.0. Two-device ecosystem for the vision-impaired: a haptic belt with ultrasonic sensors that vibrates proximity and direction, and AI glasses powered by Claude + GPT-4o vision that describe surroundings in real time through natural language.`,
+    href: "https://devpost.com/software/araveil#updates",
+    skills: ["C++", "Python", "Claude AI", "GPT-4o", "YOLO", "MediaPipe", "Whisper", "ESP32", "Computer Vision", "Embedded Systems"],
+    src: "/araveil.jpeg",
+    title: "Araveil",
+  },
+  {
     description: `IoT robot that watches for PPE compliance in healthcare settings. Hits 92% detection accuracy with OpenCV. Built the firmware, the vision pipeline, and the Flask reporting layer.`,
     href: "https://devpost.com/software/pixie-rover",
     skills: ["Python", "Flask", "OpenCV", "C++", "SolidWorks", "Machine Learning", "AI"],

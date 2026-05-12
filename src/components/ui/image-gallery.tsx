@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface GalleryImage {
   src: string
@@ -19,6 +20,8 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
   const prefersReducedMotion = useReducedMotion()
 
   const active = images[activeIndex]
+  const prev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length)
+  const next = () => setActiveIndex((i) => (i + 1) % images.length)
 
   return (
     <div className={`space-y-3 ${className}`}>
@@ -46,6 +49,22 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
         <div className="absolute top-0 right-0 w-5 h-5 border-r border-t border-primary/50 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-5 h-5 border-l border-b border-primary/50 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-5 h-5 border-r border-b border-primary/50 pointer-events-none" />
+
+        {/* Chevron navigation */}
+        <button
+          onClick={prev}
+          aria-label="Previous image"
+          className="absolute left-2 top-1/2 -translate-y-1/2 p-1 bg-background/60 hover:bg-background/90 border border-primary/30 hover:border-primary/70 text-primary/70 hover:text-primary transition-all"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next image"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 bg-background/60 hover:bg-background/90 border border-primary/30 hover:border-primary/70 text-primary/70 hover:text-primary transition-all"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
 
         {/* Caption scrim + text */}
         {active.caption && (
