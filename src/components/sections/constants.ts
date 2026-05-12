@@ -7,6 +7,11 @@ export const carouselImages = [
     caption: 'Catching waves',
   },
   {
+    src: '/jewel-city-hackathon.jpeg',
+    alt: 'Jewel City 4.0 Hackathon 1st place winners',
+    caption: 'Jewel City 4.0 Hackathon — 1st Place',
+  },
+  {
     src: '/la-marathon.jpg',
     alt: 'LA Marathon finish',
     caption: 'LA Marathon',
