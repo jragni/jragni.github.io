@@ -23,14 +23,14 @@ const skillCategories: SkillCategory[] = [
     title: 'Frontend & Web',
     icon: <Layers className="w-4 h-4" />,
     primarySkills: ['React', 'Next.js', 'Tailwind CSS', 'Redux'],
-    secondarySkills: ['HTML/CSS', 'D3.js', 'Three.js', 'Figma'],
+    secondarySkills: ['HTML/CSS', 'shadcn/ui', 'D3.js', 'Three.js', 'WebRTC', 'WebSocket', 'Figma'],
     description: 'Modern UI frameworks and visual tooling',
   },
   {
     title: 'Backend & APIs',
     icon: <Server className="w-4 h-4" />,
-    primarySkills: ['Node.js', 'Express', 'Django'],
-    secondarySkills: ['Flask', 'tRPC', 'REST APIs'],
+    primarySkills: ['Node.js', 'Express', 'FastAPI', 'Django'],
+    secondarySkills: ['Koa', 'Flask', 'tRPC', 'REST APIs', 'JWT', 'OIDC', 'SAML 2.0'],
     description: 'Server-side frameworks and API design',
   },
   {
@@ -43,15 +43,15 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'DevOps & Testing',
     icon: <GitBranch className="w-4 h-4" />,
-    primarySkills: ['Docker', 'AWS S3', 'Git/GitHub', 'Jest'],
-    secondarySkills: ['PyTest', 'Jenkins', 'Travis CI', 'GitHub Actions', 'Jira', 'Postman'],
+    primarySkills: ['Docker', 'AWS S3', 'Git/GitHub', 'Jest', 'Playwright'],
+    secondarySkills: ['Nginx', 'Linux', 'AWS EC2', 'AWS Elastic Beanstalk', 'PyTest', 'Jenkins', 'Travis CI', 'GitHub Actions', 'Jira', 'Postman'],
     description: 'CI/CD pipelines, containers, and testing',
   },
   {
     title: 'Systems & Hardware',
     icon: <Cpu className="w-4 h-4" />,
-    primarySkills: ['ROS/ROS2', 'OpenCV', 'YOLOv8'],
-    secondarySkills: ['Computer Vision', 'MATLAB', 'SolidWorks'],
+    primarySkills: ['ROS/ROS2', 'OpenCV', 'YOLOv11', 'YOLOv8'],
+    secondarySkills: ['Computer Vision', 'SLAM Toolbox', 'Nav2', 'Arduino', 'KiCad', 'MATLAB', 'SolidWorks'],
     description: 'Autonomous systems, computer vision, and CAD',
   },
 ]
