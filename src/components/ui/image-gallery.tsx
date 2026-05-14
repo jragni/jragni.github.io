@@ -24,7 +24,12 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
   const prev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length)
   const next = () => setActiveIndex((i) => (i + 1) % images.length)
 
+  const isFirstRender = useRef(true)
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     thumbRefs.current[activeIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
   }, [activeIndex])
 
