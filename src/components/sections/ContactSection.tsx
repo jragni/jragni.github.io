@@ -6,7 +6,7 @@ import {
   useReducedMotion,
 } from 'framer-motion'
 import type { Variants } from '@/types/motion'
-import { Mail, Github, Linkedin, ExternalLink } from 'lucide-react'
+import { Mail, Github, Linkedin, Calendar, ExternalLink } from 'lucide-react'
 import { StaggerChildren, fadeUpChild } from '@/components/motion/StaggerChildren'
 
 // ── Terminal typing sequence — toned down copy ────────────────────────────────
@@ -78,6 +78,12 @@ const socialLinks: SocialLink[] = [
     icon: <Mail className="w-5 h-5" />,
     href: 'mailto:jhensenrayagni@gmail.com',
     description: 'Send me a message',
+  },
+  {
+    name: 'Calendly',
+    icon: <Calendar className="w-5 h-5" />,
+    href: 'https://calendly.com/jhensenrayagni',
+    description: 'Book a time to chat',
   },
 ]
 
