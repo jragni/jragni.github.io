@@ -16,7 +16,7 @@ const skillCategories: SkillCategory[] = [
     title: 'Languages',
     icon: <Code2 className="w-4 h-4" />,
     primarySkills: ['TypeScript', 'JavaScript', 'Python'],
-    secondarySkills: ['SQL', 'C/C++'],
+    secondarySkills: ['SQL', 'C/C++', 'Rust'],
     description: 'Core programming languages across web, scripting, and systems',
   },
   {
